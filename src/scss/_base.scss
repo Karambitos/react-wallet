@@ -5,11 +5,16 @@
   font-style: normal;
   font-weight: 400;
   src: url('../assets/fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-regular.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 /* poppins-700 - latin */
 @font-face {
@@ -18,13 +23,17 @@
   font-style: normal;
   font-weight: 700;
   src: url('../assets/fonts/poppins-v20-latin-700.eot'); /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../assets/fonts/poppins-v20-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'), /* Modern Browsers */
-       url('../assets/fonts/poppins-v20-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
+  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-700.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-700.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-
 
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -74,13 +83,13 @@ body {
   a,
   a:hover,
   a:focus {
-      color: var(--color-headline);
-      text-decoration: none;
+    color: var(--color-headline);
+    text-decoration: none;
   }
 
   > em {
-      color: var(--color-accent);
-      font-style: normal;
+    color: var(--color-accent);
+    font-style: normal;
   }
 }
 
@@ -90,39 +99,36 @@ h1,
   @include font-size(40, 55);
 
   @media (min-width: $breakpoint-desktop) {
-      @include font-size(30, 45);
+    @include font-size(30, 45);
   }
 }
 
 h2,
 .h2 {
-@include font-size(30, 45);
+  @include font-size(30, 45);
 }
 
 h3,
 .h3 {
-@include font-size(25, 35);
-
+  @include font-size(25, 35);
 }
 
 h4,
 .h4 {
-@include font-size(20, 30);
-
+  @include font-size(20, 30);
 }
 
 h5,
 .h5 {
-@include font-size(18, 20);
-
+  @include font-size(18, 20);
 }
 
 h6,
 .h6 {
-@include font-size(16, 18);
+  @include font-size(16, 18);
 }
 
-.container{
+.container {
   padding: 12px 20px;
 
   @media (min-width: $breakpoint-tablet) {
@@ -144,7 +150,7 @@ h6,
   width: 1px !important;
 }
 
-.contentMaxWidth{
+.contentMaxWidth {
   max-width: $contentMaxWidth;
   margin: 0 auto;
 }
@@ -163,7 +169,8 @@ h6,
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, color 0.2s ease , border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
   user-select: none;
   border: 1px solid;
 
@@ -185,7 +192,7 @@ h6,
     pointer-events: none;
   }
 
-  &--secondary{
+  &--secondary {
     color: $colorBlue;
     background-color: transparent;
     border-color: $colorBlue;
@@ -199,15 +206,20 @@ h6,
     }
   }
 
-  &--small{
+  &--small {
     @include font-size(14, 14);
     text-transform: none;
     padding: 4px 12px;
   }
-
 }
 
-// form styles 
+// form styles
 #{$input-selectors} {
-  // border: none; 
+  font-family: 'Circe', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
 }
