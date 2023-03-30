@@ -1,0 +1,38 @@
+.table {
+  font-family: 'Circe', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: #4a56e2;
+  color: #fff;
+
+  width: 395px;
+  height: 330px;
+  border-radius: 30px;
+  padding: 20px;
+  background-image: url(./galary/top-vector.svg),
+    url(./galary/bottom-vector.svg);
+  background-repeat: no-repeat;
+  background-size: 395px;
+  background-position: top 0 right 0, top 210px right 0;
+  padding: 20px 50px;
+}
+
+.tableheadtext {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px;
+  padding: 0;
+}
+
+.tablebody {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.tablebodytext {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
