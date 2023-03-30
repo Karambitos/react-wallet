@@ -1,0 +1,19 @@
+/*
+  This mixin can be used to set the font-size and line-height in percents:
+  @include font-size(fontSize, lineHeight);
+*/
+@mixin font-size($fontSize, $lineHeight) {
+  font-size: calc($fontSize / 16) + rem;
+  line-height: calc($lineHeight / $fontSize);
+}
+
+@mixin reset-list {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin reset-list-item {
+  margin-bottom: 0;
+}
