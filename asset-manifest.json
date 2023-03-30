@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-wallet/static/css/main.9dbc2226.css",
-    "main.js": "/react-wallet/static/js/main.47699e63.js",
+    "main.css": "/react-wallet/static/css/main.8fc48221.css",
+    "main.js": "/react-wallet/static/js/main.dd65c436.js",
     "static/media/Circe-Bold.otf": "/react-wallet/static/media/Circe-Bold.3829a43ce57f35080843.otf",
     "static/media/Circe.otf": "/react-wallet/static/media/Circe.c2a2631afc6d5bb5c30b.otf",
     "static/media/poppins-v20-latin-regular.svg": "/react-wallet/static/media/poppins-v20-latin-regular.04277a799cb3f1b29dfa.svg",
@@ -14,14 +14,17 @@
     "static/media/poppins-v20-latin-700.eot": "/react-wallet/static/media/poppins-v20-latin-700.f808204601ecdcaf5c4d.eot",
     "static/media/poppins-v20-latin-regular.woff2": "/react-wallet/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
     "static/media/poppins-v20-latin-700.woff2": "/react-wallet/static/media/poppins-v20-latin-700.d86662fe776dae29ea78.woff2",
+    "static/media/logo.svg": "/react-wallet/static/media/logo.f789f1033c70580e8220066c152361a0.svg",
     "static/media/bottom-vector.svg": "/react-wallet/static/media/bottom-vector.2965f3691046b64b7ba2.svg",
     "index.html": "/react-wallet/index.html",
+    "static/media/logout.svg": "/react-wallet/static/media/logout.ab732f15bb118038be7bf9e1863a4c45.svg",
     "static/media/top-vector.svg": "/react-wallet/static/media/top-vector.51ffac8dd3cf292aa1d6.svg",
-    "main.9dbc2226.css.map": "/react-wallet/static/css/main.9dbc2226.css.map",
-    "main.47699e63.js.map": "/react-wallet/static/js/main.47699e63.js.map"
+    "static/media/divider.svg": "/react-wallet/static/media/divider.4197971255a4c6a047f2d568d14b817e.svg",
+    "main.8fc48221.css.map": "/react-wallet/static/css/main.8fc48221.css.map",
+    "main.dd65c436.js.map": "/react-wallet/static/js/main.dd65c436.js.map"
   },
   "entrypoints": [
-    "static/css/main.9dbc2226.css",
-    "static/js/main.47699e63.js"
+    "static/css/main.8fc48221.css",
+    "static/js/main.dd65c436.js"
   ]
 }
