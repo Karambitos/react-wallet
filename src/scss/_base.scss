@@ -1,0 +1,213 @@
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/poppins-v20-latin-700.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/poppins-v20-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/poppins-v20-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/Circe-Bold.otf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Circe.otf'); /* IE9 Compat Modes */
+}
+
+html {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: hidden;
+  word-wrap: normal;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  color: $color-text;
+  font-family: 'Circe', sans-serif;
+  @include font-size(16, 24);
+  font-weight: 400;
+  overflow-x: hidden;
+  background-color: $colorBG;
+}
+
+#{$heading-selectors} {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+
+  a,
+  a:hover,
+  a:focus {
+      color: var(--color-headline);
+      text-decoration: none;
+  }
+
+  > em {
+      color: var(--color-accent);
+      font-style: normal;
+  }
+}
+
+h1,
+.h1 {
+  font-weight: 700;
+  @include font-size(40, 55);
+
+  @media (min-width: $breakpoint-desktop) {
+      @include font-size(30, 45);
+  }
+}
+
+h2,
+.h2 {
+@include font-size(30, 45);
+}
+
+h3,
+.h3 {
+@include font-size(25, 35);
+
+}
+
+h4,
+.h4 {
+@include font-size(20, 30);
+
+}
+
+h5,
+.h5 {
+@include font-size(18, 20);
+
+}
+
+h6,
+.h6 {
+@include font-size(16, 18);
+}
+
+.container{
+  padding: 12px 20px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 32px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    padding: 45px 16px;
+  }
+}
+
+/* Class for text that should only be visible to screen readers */
+
+.visuallyHidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px !important;
+  overflow: hidden;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px !important;
+}
+
+.contentMaxWidth{
+  max-width: $contentMaxWidth;
+  margin: 0 auto;
+}
+
+.button {
+  @include font-size(18, 20);
+  letter-spacing: 0.1em;
+  appearance: none;
+  border-radius: $button-border-radius-sm;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  outline: none;
+  padding: 12px 30px;
+  flex: 1 0 300px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease , border-color 0.2s ease;
+  user-select: none;
+  border: 1px solid;
+
+  color: $white;
+  background-color: $mainColor;
+  border-color: $mainColor;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $colorBlue;
+    background-color: transparent;
+    border-color: $colorBlue;
+  }
+
+  &:disabled,
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &--secondary{
+    color: $colorBlue;
+    background-color: transparent;
+    border-color: $colorBlue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      background-color: $mainColor;
+      border-color: $mainColor;
+    }
+  }
+
+  &--small{
+    @include font-size(14, 14);
+    text-transform: none;
+    padding: 4px 12px;
+  }
+
+}
+
+// form styles 
+#{$input-selectors} {
+  // border: none; 
+}
