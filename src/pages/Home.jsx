@@ -1,5 +1,10 @@
+import { HomeTab } from 'components/HomeTab';
 const Home = () => {
-  return <h1>HOME</h1>;
+  return (
+    <div>
+      <HomeTab />
+    </div>
+  );
 };
 
 export default Home;
