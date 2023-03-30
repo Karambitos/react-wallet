@@ -59,6 +59,21 @@ export const getCategories = createAsyncThunk(
   }
 );
 
+export const getTransactions = createAsyncThunk(
+  'auth/getCategories',
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().auth.token;
+    try {
+      setAuthHeader(token);
+      const response = await axios.get('/api/transactions');
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // export const refreshUser = createAsyncThunk(
 //   'auth/refreshUser',
 //   async (_, { thunkAPI, getState }) => {

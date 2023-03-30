@@ -4,6 +4,7 @@ import {
   logIn,
   newTransaction,
   getCategories,
+  getTransactions,
 } from 'redux/auth/operations';
 
 const Home = () => {
@@ -50,6 +51,11 @@ const Home = () => {
   const handleGetCategories = () => {
     console.log('handleGetCategories');
     dispatch(getCategories()).unwrap();
+  };
+
+  const handleGetTransaction = () => {
+    console.log('getTransactions');
+    dispatch(getTransactions()).unwrap();
   };
 
   return (
@@ -128,6 +134,7 @@ const Home = () => {
         </button>
       </form>
       <button onClick={handleGetCategories}>getCategories</button>
+      <button onClick={handleGetTransaction}>getTransactions</button>
     </>
   );
 };
