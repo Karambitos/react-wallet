@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.18ca97af.css",
-    "main.js": "/react-homework-template/static/js/main.b7ea8ec4.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.18ca97af.css.map": "/react-homework-template/static/css/main.18ca97af.css.map",
-    "main.b7ea8ec4.js.map": "/react-homework-template/static/js/main.b7ea8ec4.js.map"
+    "main.css": "/react-wallet/static/css/main.18ca97af.css",
+    "main.js": "/react-wallet/static/js/main.b7ea8ec4.js",
+    "index.html": "/react-wallet/index.html",
+    "main.18ca97af.css.map": "/react-wallet/static/css/main.18ca97af.css.map",
+    "main.b7ea8ec4.js.map": "/react-wallet/static/js/main.b7ea8ec4.js.map"
   },
   "entrypoints": [
     "static/css/main.18ca97af.css",
