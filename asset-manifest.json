@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-wallet/static/css/main.a6830075.css",
-    "main.js": "/react-wallet/static/js/main.3eb57291.js",
+    "main.css": "/react-wallet/static/css/main.a34d300f.css",
+    "main.js": "/react-wallet/static/js/main.264dbf04.js",
     "static/media/Circe-Bold.otf": "/react-wallet/static/media/Circe-Bold.3829a43ce57f35080843.otf",
     "static/media/Circe.otf": "/react-wallet/static/media/Circe.c2a2631afc6d5bb5c30b.otf",
     "static/media/poppins-v20-latin-regular.svg": "/react-wallet/static/media/poppins-v20-latin-regular.04277a799cb3f1b29dfa.svg",
@@ -20,11 +20,11 @@
     "static/media/logout.svg": "/react-wallet/static/media/logout.ab732f15bb118038be7bf9e1863a4c45.svg",
     "static/media/top-vector.svg": "/react-wallet/static/media/top-vector.51ffac8dd3cf292aa1d6.svg",
     "static/media/divider.svg": "/react-wallet/static/media/divider.4197971255a4c6a047f2d568d14b817e.svg",
-    "main.a6830075.css.map": "/react-wallet/static/css/main.a6830075.css.map",
-    "main.3eb57291.js.map": "/react-wallet/static/js/main.3eb57291.js.map"
+    "main.a34d300f.css.map": "/react-wallet/static/css/main.a34d300f.css.map",
+    "main.264dbf04.js.map": "/react-wallet/static/js/main.264dbf04.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6830075.css",
-    "static/js/main.3eb57291.js"
+    "static/css/main.a34d300f.css",
+    "static/js/main.264dbf04.js"
   ]
 }
