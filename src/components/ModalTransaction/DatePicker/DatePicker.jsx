@@ -1,7 +1,7 @@
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-import css from './DatePicker.module.css';
-import { ReactComponent as DatePickerIcon } from './DatePickerIcon.svg';
+import css from './DatePicker.module.scss';
+import { ReactComponent as DatePickerIcon } from 'assets/imgages/DatePickerIcon.svg';
 
 export const DatePicker = ({ onSelect }) => {
  const handleChange = e => {

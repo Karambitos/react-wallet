@@ -84,7 +84,7 @@
   height: 44px;
   width: 44px;
   border-radius: 50%;
-  background: #24cca7 url('./icon-plus.svg') no-repeat center;
+  background: #24cca7 url('../../assets/imgages/icon-plus.svg') no-repeat center;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   position: absolute;
   transition: transform 0.3s ease-in-out;
@@ -93,7 +93,7 @@
 .toggleButton.active::before {
   content: '';
   transform: translateX(100%);
-  background: #ff6596 url('./icon-minus.svg') no-repeat center;
+  background: #ff6596 url('../../assets/imgages/icon-minus.svg') no-repeat center;
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 }
 

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './AddTransaction.module.css';
+import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector'
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 
 
 import moment from 'moment';
-import Selector from './Selector';
+import Selector from './Selector/Selector';
 
 const options = ['Option 1', 'Option 2', 'Option 3'];
 
