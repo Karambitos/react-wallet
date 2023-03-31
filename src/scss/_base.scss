@@ -1,3 +1,6 @@
+@import './mixins';
+@import './variables';
+
 /* poppins-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -141,73 +144,99 @@ h6,
   display: flex;
   align-items: stretch;
   padding: 12px 20px;
+  flex-direction: column;
+  gap: 20px;
 
   @media (min-width: $breakpoint-tablet) {
     padding: 32px;
   }
   @media (min-width: $breakpoint-desktop) {
     padding: 45px 16px;
+    flex-direction: row;
+    gap: 100px;
   }
 }
 
 .aside {
-  max-width: 480px;
+  max-width: 768px;
   width: 100%;
+  display: flex;
+  justify-content: stretch;
+}
+
+.navWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (min-width: $breakpoint-tablet) {
+    gap: 30px;
+  }
 }
 
 .aside,
 .main {
   display: flex;
-  flex-direction: column;
   justify-content: stretch;
   height: auto;
   align-items: stretch;
+  gap: 30px;
+  flex-direction: column;
+  align-items: stretch;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    flex-direction: column;
+  }
 }
 
-.main{
+.main {
   width: 100%;
 }
 
-// Tables 
+// Tables
 
 .transactionsTable {
   border: none;
   border-collapse: collapse;
 
-  thead{
+  thead {
     padding: 16px 20px;
     text-align: left;
   }
 
-  th{
+  th {
     overflow: hidden;
     background: $white;
   }
 
-  th:first-child{
+  th:first-child {
     border-top-left-radius: $button-border-radius-xl;
     border-bottom-left-radius: $button-border-radius-xl;
   }
-  th:last-child{
+  th:last-child {
     border-top-right-radius: $button-border-radius-xl;
     border-bottom-right-radius: $button-border-radius-xl;
   }
 
-  th, td {
+  th,
+  td {
     padding: 16px;
   }
 
   th:first-child,
-  td:first-child{
+  td:first-child {
     padding-left: 20px;
   }
   th:last-child,
-  td:last-child{
+  td:last-child {
     padding-right: 20px;
   }
 
-  tbody{
-    tr:not(:last-child){
+  tbody {
+    tr:not(:last-child) {
       border-bottom: 1px solid $colorBorder;
       box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
     }
@@ -225,10 +254,10 @@ h6,
   width: 1px !important;
 }
 
-.textAlignR{
+.textAlignR {
   text-align: right;
 }
-.textAlignL{
+.textAlignL {
   text-align: left;
 }
 
