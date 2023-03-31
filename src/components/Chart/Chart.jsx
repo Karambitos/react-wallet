@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSummaryController } from 'redux/auth/operations';
 import { v4 as uuidv4 } from 'uuid';
+import styles from './Chart.module.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,7 +19,7 @@ export default function Chart() {
   };
 
   const data = {
-    labels: getValues(categoriesSummary, 'name'),
+    // labels: getValues(categoriesSummary, 'name'),
     datasets: [
       {
         label: '# of Votes',
@@ -48,7 +49,15 @@ export default function Chart() {
 
   return (
     <>
-      <Doughnut data={data} />
+      <div className={styles.canvas}>
+        <Doughnut
+          data={data}
+          options={{
+            responsive: true,
+            maintainAspectRatio: true,
+          }}
+        />
+      </div>
 
       <div>
         <span>Category</span>
