@@ -1,11 +1,19 @@
 @import '../../scss/variables';
+@import '../../scss/base';
 
 .balance {
   background-color: $white;
-  width: 395px;
+  min-width: 280px;
+  width: 100%;
   grid-template: 80px;
   border-radius: 30px;
-  margin-bottom: 30px;
+
+  // margin-bottom: 30px;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 395px;
+    min-width: 335px;
+    width: 100%;
+  }
 }
 
 .balancewrapper {
@@ -13,21 +21,23 @@
 }
 
 .balancetext {
-  color: #a6a6a6;
-  font-family: 'Circe', sans-serif;
+  color: $colorGrey;
+  font-family: $font-default;
   font-size: 12px;
   line-height: 1.5;
   text-transform: uppercase;
   margin: 0;
   padding: 8px 0;
+  display: block;
 }
 
 .balancesumm {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-accent;
   font-size: 30px;
   font-weight: 700;
   line-height: 1.5;
   color: $color-text;
   margin: 0;
+  display: block;
   padding: 11px 0;
 }
