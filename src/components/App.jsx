@@ -3,9 +3,10 @@ import '../main.scss';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import Statistics from '../pages/Statistics';
+import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import Layout from '../components/Layout/Layout';
+import BaseStyle from 'pages/BaseStyle';
 
 export default function App() {
   return (
@@ -14,7 +15,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/Statistics" element={<Statistics />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/BaseStyle" element={<BaseStyle />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

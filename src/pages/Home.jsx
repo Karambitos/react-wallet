@@ -1,8 +1,12 @@
-import { HomeTab } from 'components/HomeTab';
+import Balance from 'components/Balance/Balance';
+import Currency from 'components/Currency/Currency';
+
 const Home = () => {
   return (
     <div>
-      <HomeTab />
+      <h1>HOME</h1>
+      <Balance />
+      <Currency />
     </div>
   );
 };
