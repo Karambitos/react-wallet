@@ -1,15 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   register,
   logIn,
   newTransaction,
   getCategories,
   getTransactions,
+  getSummaryController,
 } from 'redux/auth/operations';
 
 const Home = () => {
   const dispatch = useDispatch();
-
+  const categories = useSelector(state => state.auth.categories);
+  console.log(categories);
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -37,15 +39,21 @@ const Home = () => {
   const handleSubmitCreate = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    const select = form.elements.categoryId;
+    const type = select.selectedOptions[0].getAttribute('data-type');
+    const amount =
+      type === 'INCOME'
+        ? +form.elements.amount.value
+        : 0 - +form.elements.amount.value;
     const data = {
       transactionDate: form.elements.transactionDate.value,
-      type: 'EXPENSE',
-      categoryId: form.elements.categoryId.value,
+      type: type,
+      categoryId: select.value,
       comment: 'Some comment',
-      amount: 0 - +form.elements.amount.value,
+      amount: amount,
     };
     dispatch(newTransaction(data)).unwrap();
-    form.reset();
+    // form.reset();
   };
 
   const handleGetCategories = () => {
@@ -56,6 +64,11 @@ const Home = () => {
   const handleGetTransaction = () => {
     console.log('getTransactions');
     dispatch(getTransactions()).unwrap();
+  };
+
+  const handleGetSummaryController = () => {
+    console.log('getSummaryController');
+    dispatch(getSummaryController()).unwrap();
   };
 
   return (
@@ -91,6 +104,7 @@ const Home = () => {
         </button>
       </form>
       <h2>LOgIN</h2>
+      <h3>dsajkhkjdskjdsdskkdfhkhds@mail.com</h3>
       <form onSubmit={handleSubmitLogin} autoComplete="off" className="form">
         <label className="label" htmlFor="email">
           Email
@@ -120,10 +134,13 @@ const Home = () => {
           categoryId
         </label>
         <select name="categoryId">
-          <option value="c9d9e447-1b83-4238-8712-edc77b18b739">Products</option>
-          <option value="27eb4b75-9a42-4991-a802-4aefe21ac3ce">Car</option>
-          <option value="self care">Self Care</option>
-          <option value="education">Education</option>
+          {categories.map(({ id, name, type }) => {
+            return (
+              <option key={id} data-type={type} value={id}>
+                {name}
+              </option>
+            );
+          })}
         </select>
         <label className="label" htmlFor="email">
           Amount
@@ -135,6 +152,7 @@ const Home = () => {
       </form>
       <button onClick={handleGetCategories}>getCategories</button>
       <button onClick={handleGetTransaction}>getTransactions</button>
+      <button onClick={handleGetSummaryController}>getSummaryController</button>
     </>
   );
 };

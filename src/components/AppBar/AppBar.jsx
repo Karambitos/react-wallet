@@ -13,8 +13,8 @@ export default function Header() {
         <NavLink className="nav-link" to="/register">
           Register
         </NavLink>
-        <NavLink className="nav-link" to="/statistics">
-          Statistics
+        <NavLink className="nav-link" to="/dashboard">
+          Dashboard
         </NavLink>
       </nav>
     </header>

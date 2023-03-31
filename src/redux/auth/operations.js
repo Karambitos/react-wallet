@@ -37,7 +37,6 @@ export const newTransaction = createAsyncThunk(
       console.log(credentials);
       const response = await axios.post('/api/transactions', credentials);
       setAuthHeader(token);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -51,7 +50,6 @@ export const getCategories = createAsyncThunk(
     try {
       setAuthHeader(token);
       const response = await axios.get('/api/transaction-categories');
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -60,7 +58,7 @@ export const getCategories = createAsyncThunk(
 );
 
 export const getTransactions = createAsyncThunk(
-  'auth/getCategories',
+  'auth/getTransactions',
   async (_, { rejectWithValue, getState }) => {
     const token = getState().auth.token;
     try {
@@ -74,19 +72,17 @@ export const getTransactions = createAsyncThunk(
   }
 );
 
-// export const refreshUser = createAsyncThunk(
-//   'auth/refreshUser',
-//   async (_, { thunkAPI, getState }) => {
-//     const persistedToken = getState().auth.token;
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue('Unable to fetch user');
-//     }
-//     try {
-//       setAuthHeader(persistedToken);
-//       const response = await axios.get('/users/current');
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const getSummaryController = createAsyncThunk(
+  'auth/getSummaryController',
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().auth.token;
+    try {
+      setAuthHeader(token);
+      const response = await axios.get('/api/transactions-summary');
+      console.log(response.data);
+      // return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
