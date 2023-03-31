@@ -1,9 +1,7 @@
+@import '../../scss/variables';
+
 @media screen and (max-width: 767.8px) {
   .divider {
-    display: none;
-  }
-
-  .exit {
     display: none;
   }
 }
@@ -13,7 +11,11 @@ a {
 }
 
 svg {
-  display: inline-block;
+  display: block;
+}
+
+.headerWrapper {
+  background-color: $white;
 }
 
 .header {
@@ -21,62 +23,65 @@ svg {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding: 20px 32px;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding: 20px 16px;
+    max-width: $breakpoint-desktop;
+  }
 }
 
 .logo {
   width: 120px;
   height: 30px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 181px;
+    height: 40px;
+  }
 }
 
 .user {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.username {
-  color: #bdbdbd;
-  // font-family: 'Circe';
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.exitWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.logout {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-}
-
-.exit {
-  margin-left: 8px;
-  color: #bdbdbd;
-  // font-family: 'Circe';
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    padding: 20px 32px;
-  }
-
-  .logo {
-    width: 181px;
-    height: 40px;
-  }
-
-  .user {
+  @media screen and (min-width: $breakpoint-tablet) {
     gap: 12px;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .header {
-    padding: 20px 16px;
+.username {
+  color: $colorGrey;
+  font-size: 18px;
+}
+
+.logoutWrapper {
+  display: flex;
+  align-items: center;
+  color: $colorGrey;
+  fill: $colorGrey;
+
+  &:hover,
+  &:focus {
+    fill: $mainColor;
+    color: $mainColor;
   }
+}
+
+.exit {
+  @media screen and (max-width: 767.8px) {
+    display: none;
+  }
+
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.logout {
+  width: 18px;
+  height: 18px;
 }

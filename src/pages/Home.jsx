@@ -1,11 +1,14 @@
+import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 
 const Home = () => {
   return (
+
     <div className="pageWrapper">
       <div className="aside">
         <h1>HOME</h1>
+        <Navigation/>
         <Balance />
         <Currency />
       </div>
