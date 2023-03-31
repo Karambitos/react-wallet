@@ -5,6 +5,7 @@ import { ReactComponent as Logout } from '../../images/logout.svg';
 import { ReactComponent as Divider } from '../../images/divider.svg';
 
 import styles from './AppBar.module.scss';
+import { LogoutBtn } from 'components/logoutBtn/logoutBtn';
 
 const AppBar = () => {
   return (
@@ -18,10 +19,12 @@ const AppBar = () => {
           <span className={styles.username}>Name</span>
           <Divider className={styles.divider} />
 
-          <Link to="/login" className={styles.logoutWrapper}>
-            <Logout className={styles.logout} />
-            <span className={styles.exit}>Exit</span>
-          </Link>
+          <LogoutBtn>
+            <Link to="/login" className={styles.logoutWrapper}>
+              <Logout className={styles.logout} />
+              <span className={styles.exit}>Exit</span>
+            </Link>
+          </LogoutBtn>
         </div>
       </header>
     </div>

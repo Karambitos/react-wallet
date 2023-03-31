@@ -8,14 +8,16 @@ import Statistics from 'pages/Statistics';
 import NotFound from '../pages/NotFound';
 import Layout from '../components/Layout/Layout';
 import BaseStyle from 'pages/BaseStyle';
+import { RegisterPage } from 'pages/RegisterPage';
+import { LoginPage } from 'pages/LoginPage';
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/BaseStyle" element={<BaseStyle />} />
