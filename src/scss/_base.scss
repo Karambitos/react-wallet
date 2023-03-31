@@ -68,11 +68,16 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
   color: $color-text;
   font-family: 'Circe', sans-serif;
   @include font-size(16, 24);
   font-weight: 400;
-  overflow-x: hidden;
   background-color: $colorBG;
 }
 
@@ -129,14 +134,35 @@ h6,
 }
 
 .container {
-  padding: 12px 20px;
+  padding: 0;
+  // padding: 12px 20px;
 
-  @media (min-width: $breakpoint-tablet) {
-    padding: 32px;
-  }
-  @media (min-width: $breakpoint-desktop) {
-    padding: 45px 16px;
-  }
+  // @media (min-width: $breakpoint-tablet) {
+  //   padding: 32px;
+  // }
+  // @media (min-width: $breakpoint-desktop) {
+  //   padding: 45px 16px;
+  // }
+}
+
+.pageWrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.aside {
+  max-width: 480px;
+  width: 100%;
+}
+
+.aside,
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 100%;
+  height: auto;
+  align-items: stretch;
 }
 
 /* Class for text that should only be visible to screen readers */
