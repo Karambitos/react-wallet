@@ -1,0 +1,32 @@
+.balance {
+  background-color: #fff;
+  width: 395px;
+  grid-template: 80px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.balancewrapper {
+  padding-left: 40px;
+}
+
+.balancetext {
+  color: #a6a6a6;
+  font-family: 'Circe', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.balancesumm {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000;
+  margin: 0;
+  padding: 11px 0;
+}
+/*# sourceMappingURL=balance.module.css.map */
