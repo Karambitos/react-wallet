@@ -1,0 +1,1 @@
+export const selectModalAddState = state => state.modal.isModalAddTransactionOpen;
