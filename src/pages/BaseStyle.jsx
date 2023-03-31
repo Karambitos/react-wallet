@@ -36,7 +36,13 @@ const BaseStyle = () => {
           {/* // TODO: ИГОРЬ */}
           {/* http://localhost:3000/react-wallet/BaseStyle */}
           <form>
-            <input type="text" />
+            <input type="text" placeholder="Comment" />
+            <input type="date" />
+            <input type="password" />
+            <input type="email" />
+            <input type="url" />
+            <input type="search" />
+            <input type="number" />
           </form>
         </div>
       </div>

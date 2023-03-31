@@ -8,9 +8,7 @@ export default function Layout() {
       <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <div className="contentMaxWidth">
-          <div className="container">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </Suspense>
     </>
