@@ -68,11 +68,16 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
   color: $color-text;
   font-family: 'Circe', sans-serif;
   @include font-size(16, 24);
   font-weight: 400;
-  overflow-x: hidden;
   background-color: $colorBG;
 }
 
@@ -129,6 +134,12 @@ h6,
 }
 
 .container {
+  padding: 0;
+}
+
+.pageWrapper {
+  display: flex;
+  align-items: stretch;
   padding: 12px 20px;
 
   @media (min-width: $breakpoint-tablet) {
@@ -136,6 +147,70 @@ h6,
   }
   @media (min-width: $breakpoint-desktop) {
     padding: 45px 16px;
+  }
+}
+
+.aside {
+  max-width: 480px;
+  width: 100%;
+}
+
+.aside,
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: auto;
+  align-items: stretch;
+}
+
+.main{
+  width: 100%;
+}
+
+// Tables 
+
+.transactionsTable {
+  border: none;
+  border-collapse: collapse;
+
+  thead{
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  th{
+    overflow: hidden;
+    background: $white;
+  }
+
+  th:first-child{
+    border-top-left-radius: $button-border-radius-xl;
+    border-bottom-left-radius: $button-border-radius-xl;
+  }
+  th:last-child{
+    border-top-right-radius: $button-border-radius-xl;
+    border-bottom-right-radius: $button-border-radius-xl;
+  }
+
+  th, td {
+    padding: 16px;
+  }
+
+  th:first-child,
+  td:first-child{
+    padding-left: 20px;
+  }
+  th:last-child,
+  td:last-child{
+    padding-right: 20px;
+  }
+
+  tbody{
+    tr:not(:last-child){
+      border-bottom: 1px solid $colorBorder;
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    }
   }
 }
 
@@ -148,6 +223,13 @@ h6,
   position: absolute !important;
   white-space: nowrap;
   width: 1px !important;
+}
+
+.textAlignR{
+  text-align: right;
+}
+.textAlignL{
+  text-align: left;
 }
 
 .contentMaxWidth {
