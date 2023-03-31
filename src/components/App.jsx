@@ -1,16 +1,13 @@
+import { LoginPage } from 'pages/LoginPage';
+import { RegisterPage } from '../pages/RegisterPage';
+import { LogoutBtn } from './logoutBtn/logoutBtn';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <LogoutBtn />
+      <RegisterPage />
+      <LoginPage />
+    </>
   );
 };
