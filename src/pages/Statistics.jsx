@@ -1,5 +1,9 @@
 const Statistics = () => {
-    return <h1>Statistics</h1>;
-  };
-  
-  export default Statistics;
+  return (
+    <div className="wrapperPeges">
+      <h1>Statistics</h1>
+    </div>
+  );
+};
+
+export default Statistics;

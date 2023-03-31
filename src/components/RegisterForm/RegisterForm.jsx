@@ -1,6 +1,7 @@
 import { Button, Input, InputAdornment } from '@mui/material';
 import { useState } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styled from './register.module.scss';
 
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -34,131 +35,140 @@ export const RegisterForm = ({ cbOnSubmit }) => {
       .required('Please, enter your password'),
   });
   return (
-    <LoginContainer>
-      <div>
-        <img src="../../images/walletLogo.png" alt="" width={200} />{' '}
-        <p>Wallet</p>
+    <div className={styled.wraper}>
+      <h1 className={styled.text}>Finance App</h1>
+      <div className={styled.layer}></div>
+      <div className={styled.hero}></div>
+      <div className={styled.registerContainer}>
+        <div className={styled.box}>
+          <img src="../../images/walletLogo.png" alt="" width={200} />{' '}
+          <p>Wallet</p>
+        </div>
+        <Formik
+          initialValues={{
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+          }}
+          validateOnBlur
+          onSubmit={values => {
+            cbOnSubmit(values);
+          }}
+          validationSchema={validationsSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            isValid,
+            handleSubmit,
+            dirty,
+          }) => {
+            return (
+              <div className={'form'}>
+                <form className={styled.box} onSubmit={handleSubmit}>
+                  <Input
+                    placeholder="E-mail"
+                    onChange={handleChange}
+                    // type="email"
+                    name="email"
+                    // required
+                    value={values.email}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <EmailIcon />
+                      </InputAdornment>
+                    }
+                  />{' '}
+                  {touched.email && errors.email && (
+                    <p className={'error'}>{errors.email}</p>
+                  )}
+                  <Input
+                    onChange={handleChange}
+                    placeholder="Password"
+                    name="password"
+                    value={values.password}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <LockIcon />
+                      </InputAdornment>
+                    }
+                  />{' '}
+                  {touched.password && errors.password && (
+                    <p className={'error'}>{errors.password}</p>
+                  )}
+                  <Input
+                    placeholder="Confirm password"
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    className={'input'}
+                    onBlur={handleBlur}
+                    name={'confirmPassword'}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <LockIcon />
+                      </InputAdornment>
+                    }
+                  />
+                  {touched.confirmPassword && errors.confirmPassword && (
+                    <p className={'error'}>{errors.confirmPassword}</p>
+                  )}
+                  <Input
+                    className={'input'}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    // type={'text'}
+                    name={'username'}
+                    value={values.username}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <AccountBoxIcon />
+                      </InputAdornment>
+                    }
+                  />
+                  {touched.username && errors.username && (
+                    <p className={'error'}>{errors.username}</p>
+                  )}
+                  <div className={styled.box}>
+                    <Button
+                      disabled={!isValid && !dirty}
+                      type="submit"
+                      variant="contained"
+                    >
+                      Register
+                    </Button>
+                    <Button variant="outlined">
+                      <Link to="/login">Login</Link>
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            );
+          }}
+        </Formik>
       </div>
-      <Formik
-        initialValues={{
-          username: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-        }}
-        validateOnBlur
-        onSubmit={values => {
-          cbOnSubmit(values);
-        }}
-        validationSchema={validationsSchema}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          isValid,
-          handleSubmit,
-          dirty,
-        }) => {
-          return (
-            <div className={'form'}>
-              <FormBox onSubmit={handleSubmit}>
-                <Input
-                  placeholder="E-mail"
-                  onChange={handleChange}
-                  // type="email"
-                  name="email"
-                  // required
-                  value={values.email}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <EmailIcon />
-                    </InputAdornment>
-                  }
-                />{' '}
-                {touched.email && errors.email && (
-                  <p className={'error'}>{errors.email}</p>
-                )}
-                <Input
-                  onChange={handleChange}
-                  placeholder="Password"
-                  name="password"
-                  value={values.password}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <LockIcon />
-                    </InputAdornment>
-                  }
-                />{' '}
-                {touched.password && errors.password && (
-                  <p className={'error'}>{errors.password}</p>
-                )}
-                <Input
-                  placeholder="Confirm password"
-                  value={values.confirmPassword}
-                  onChange={handleChange}
-                  className={'input'}
-                  onBlur={handleBlur}
-                  name={'confirmPassword'}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <LockIcon />
-                    </InputAdornment>
-                  }
-                />
-                {touched.confirmPassword && errors.confirmPassword && (
-                  <p className={'error'}>{errors.confirmPassword}</p>
-                )}
-                <Input
-                  className={'input'}
-                  placeholder="Username"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // type={'text'}
-                  name={'username'}
-                  value={values.username}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <AccountBoxIcon />
-                    </InputAdornment>
-                  }
-                />
-                {touched.username && errors.username && (
-                  <p className={'error'}>{errors.username}</p>
-                )}
-                <BtnContainer>
-                  <Button
-                    disabled={!isValid && !dirty}
-                    type="submit"
-                    variant="contained"
-                  >
-                    Register
-                  </Button>
-                  <Button variant="outlined">
-                    <Link to="/login">Login</Link>
-                  </Button>
-                </BtnContainer>
-              </FormBox>
-            </div>
-          );
-        }}
-      </Formik>
-    </LoginContainer>
+    </div>
   );
 };
-const LoginContainer = styled.div`
-  margin-bottom: 40px;
-  padding: 40px 65px 62px;
-  width: 533px;
-  box-sizing: border-box;
-`;
-const FormBox = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const BtnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+// const LoginContainer = styled.div`
+//  position: absolute;
+//     width: 533px;
+//     height: 616px;
+//     left: 656px;
+//     top: 52px;
+
+//     background: #FFFFFF;
+//     border-radius: 20px;
+// `;
+// const FormBox = styled.form`
+//   display: flex;
+//   flex-direction: column;
+// `;
+// const BtnContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;

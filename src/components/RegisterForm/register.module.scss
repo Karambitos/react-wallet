@@ -1,0 +1,124 @@
+@import '../../scss/variables';
+
+.wraper {
+    @media screen and (max-width: $breakpoint-tablet) {
+        background-color: $white;
+        height: 568px;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+        height: 1024px;
+        position: relative;
+        overflow: hidden;
+        background-image: url(../../assets/svg/ellipse_tabl1.svg), url(../../assets/svg/ellipse_tabl2.svg);
+        background-repeat: no-repeat;
+        background-position: top 100% left 0, top 0 right 0;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+        height: 720px;
+        position: relative;
+        overflow: hidden;
+        background-image: url(../../assets/svg/ellipse_desktop1.svg), url(../../assets/svg/ellipse_desktop2.svg);
+        background-repeat: no-repeat;
+        background-position: top 100% left 0, top 0 right 0;
+    }
+
+
+}
+
+.layer {
+    @media screen and (min-width: $breakpoint-desktop) {
+        position: absolute;
+        width: 731px;
+        height: 720px;
+        left: 549px;
+        top: 0px;
+        background: rgba($white, 0.4);
+        backdrop-filter: blur(25px);
+    }
+}
+
+.text {
+    @media screen and (max-width: $breakpoint-tablet) {
+        display: none;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+        position: absolute;
+        left: 390px;
+        top: 167px;
+        font-weight: 400;
+        font-size: 30px;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+        position: absolute;
+        left: 200px;
+        top: 597.5px;
+        font-weight: 400;
+    }
+}
+
+.hero {
+    @media screen and (min-width: $breakpoint-tablet) {
+        background-image: url(../../assets/svg/woman_tabl.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        display: block;
+        width: 260px;
+        height: 250px;
+        left: 90px;
+        top: 60px;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+        background-image: url(../../assets/svg/woman_desktop.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 436px;
+        height: 420px;
+        left: 76px;
+        top: 150px;
+    }
+}
+
+.registerContainer {
+    @media screen and (max-width: $breakpoint-tablet) {
+        position: absolute;
+        width: 320px;
+        height: 568px;
+        left: 0px;
+        top: 0px;
+
+        background: $white;
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+        position: absolute;
+        width: 533px;
+        height: 616px;
+        left: 118px;
+        top: 360px;
+        
+        background: $white;
+        border-radius: 20px;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+        position: absolute;
+        width: 533px;
+        height: 616px;
+        left: 656px;
+        top: 52px;
+
+        background: $white;
+        border-radius: 20px;
+    }
+
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
