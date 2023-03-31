@@ -50,6 +50,8 @@ export const getCategories = createAsyncThunk(
     try {
       setAuthHeader(token);
       const response = await axios.get('/api/transaction-categories');
+      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -79,8 +81,8 @@ export const getSummaryController = createAsyncThunk(
     try {
       setAuthHeader(token);
       const response = await axios.get('/api/transactions-summary');
-      console.log(response.data);
-      // return response.data;
+      // console.log(response.data);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

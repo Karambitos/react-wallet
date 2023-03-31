@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, getCategories, logOut } from './operations';
+import {
+  register,
+  logIn,
+  getCategories,
+  getTransactions,
+  getSummaryController,
+  logOut,
+} from './operations';
 
 const catergories = [
   {
@@ -75,6 +82,13 @@ export const authSlice = createSlice({
     token: null,
     error: null,
     categories: catergories,
+    transactions: {
+      categoriesSummary: [],
+      expenseSummary: 0,
+      incomeSummary: 0,
+      month: null,
+      year: null,
+    },
     isLoggedIn: false,
     isRefreshing: false,
   },
@@ -90,9 +104,24 @@ export const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
+
       // .addCase(getCategories.fulfilled, (state, action) => {
       //   state.categories = action.payload;
       // })
+      // .addCase(getTransactions.fulfilled, (state, action) => {
+      //   state.transactions = action.payload;
+      // })
+
+      .addCase(getSummaryController.fulfilled, (state, action) => {
+        state.transactions = {
+          categoriesSummary: action.payload.categoriesSummary,
+          expenseSummary: action.payload.expenseSummary,
+          incomeSummary: action.payload.incomeSummary,
+          month: action.payload.month,
+          year: action.payload.year,
+        };
+      })
+
       .addMatcher(
         action => action.type.endsWith('/pending'),
         (state, action) => {

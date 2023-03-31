@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Chart from '../components/Chart/Chart';
 import {
   register,
   logIn,
@@ -11,19 +12,19 @@ import {
 const Home = () => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.auth.categories);
-  console.log(categories);
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      register({
-        username: form.elements.username.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
-  };
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+  //   dispatch(
+  //     register({
+  //       username: form.elements.username.value,
+  //       email: form.elements.email.value,
+  //       password: form.elements.password.value,
+  //     })
+  //   );
+  //   form.reset();
+  // };
 
   const handleSubmitLogin = e => {
     e.preventDefault();
@@ -36,6 +37,7 @@ const Home = () => {
     ).unwrap();
     // form.reset();
   };
+
   const handleSubmitCreate = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -52,6 +54,7 @@ const Home = () => {
       comment: 'Some comment',
       amount: amount,
     };
+    console.log(data);
     dispatch(newTransaction(data)).unwrap();
     // form.reset();
   };
@@ -74,7 +77,8 @@ const Home = () => {
   return (
     <>
       <h1>HOME</h1>
-      <form onSubmit={handleSubmit} autoComplete="off" className="form">
+      <Chart />
+      {/* <form onSubmit={handleSubmit} autoComplete="off" className="form">
         <label className="label" htmlFor="name">
           Username
         </label>
@@ -102,7 +106,7 @@ const Home = () => {
         <button className="button" type="submit">
           Register
         </button>
-      </form>
+      </form> */}
       <h2>LOgIN</h2>
       <h3>dsajkhkjdskjdsdskkdfhkhds@mail.com</h3>
       <form onSubmit={handleSubmitLogin} autoComplete="off" className="form">
