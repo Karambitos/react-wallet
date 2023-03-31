@@ -28,7 +28,7 @@ const Home = () => {
           </thead>
           <tbody>
             <tr>
-              <td className="cell">2022-01-01</td>
+              <td className="cell">04-01-19</td>
               <td className="cell">+</td>
               <td className="cell">Groceries</td>
               <td className="cell">Bought food for week</td>
@@ -43,7 +43,7 @@ const Home = () => {
               </td>
             </tr>
             <tr>
-              <td className="cell">2022-01-01</td>
+              <td className="cell">04-01-19</td>
               <td className="cell">+</td>
               <td className="cell">Groceries</td>
               <td className="cell">Bought food for week</td>
@@ -58,7 +58,7 @@ const Home = () => {
               </td>
             </tr>
             <tr>
-              <td className="cell">2022-01-01</td>
+              <td className="cell">04-01-19</td>
               <td className="cell">+</td>
               <td className="cell">Groceries</td>
               <td className="cell">Bought food for week</td>
