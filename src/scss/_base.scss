@@ -201,6 +201,7 @@ h6,
 .transactionsTable {
   border: none;
   border-collapse: collapse;
+  vertical-align: middle;
 
   thead {
     padding: 16px 20px;
@@ -221,6 +222,25 @@ h6,
     border-bottom-right-radius: $button-border-radius-xl;
   }
 
+  th:nth-child(2) {
+    text-align: center;
+  }
+  th:nth-child(5) {
+    text-align: end;
+  }
+
+  td:nth-child(2) {
+    text-align: center;
+  }
+    
+  td:nth-child(5) {
+    text-align: end;
+  }
+  td:nth-child(6) {
+    text-align: end;
+    display: flex;
+  }
+
   th,
   td {
     padding: 16px;
@@ -233,6 +253,11 @@ h6,
   th:last-child,
   td:last-child {
     padding-right: 20px;
+  }
+
+  .tableButton{
+    max-width: 67px;
+    letter-spacing: 0;
   }
 
   tbody {

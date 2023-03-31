@@ -1,6 +1,8 @@
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
+import { IconButton } from 'components/IconButton/IconButton';
+import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 
 const Home = () => {
   return (
@@ -32,10 +34,10 @@ const Home = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <button href="#" className="edit">
-                  I
-                </button>
-                <button href="#" className="button button--small">
+                <IconButton>
+                  <EditIcon />
+                </IconButton>
+                <button href="#" className="button button--small tableButton">
                   Delete
                 </button>
               </td>
@@ -47,10 +49,10 @@ const Home = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <button href="#" className="edit">
-                  I
-                </button>
-                <button href="#" className="button button--small">
+                <IconButton>
+                  <EditIcon />
+                </IconButton>
+                <button href="#" className="button button--small tableButton">
                   Delete
                 </button>
               </td>
@@ -62,10 +64,10 @@ const Home = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <button href="#" className="edit">
-                  I
-                </button>
-                <button href="#" className="button button--small">
+                <IconButton>
+                  <EditIcon />
+                </IconButton>
+                <button href="#" className="button button--small tableButton">
                   Delete
                 </button>
               </td>
