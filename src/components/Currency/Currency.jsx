@@ -37,7 +37,7 @@ const Currency = () => {
   }, []);
 
   return (
-    <div>
+    <div className={style.tablewrapper}>
       <table className={style.table}>
         <thead className={style.tablehead}>
           <tr className={style.tableheadtext}>
