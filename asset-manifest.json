@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-wallet/static/css/main.a34d300f.css",
-    "main.js": "/react-wallet/static/js/main.264dbf04.js",
+    "main.css": "/react-wallet/static/css/main.2e900679.css",
+    "main.js": "/react-wallet/static/js/main.106e07d4.js",
     "static/media/Circe-Bold.otf": "/react-wallet/static/media/Circe-Bold.3829a43ce57f35080843.otf",
     "static/media/Circe.otf": "/react-wallet/static/media/Circe.c2a2631afc6d5bb5c30b.otf",
     "static/media/poppins-v20-latin-regular.svg": "/react-wallet/static/media/poppins-v20-latin-regular.04277a799cb3f1b29dfa.svg",
@@ -15,16 +15,19 @@
     "static/media/poppins-v20-latin-regular.woff2": "/react-wallet/static/media/poppins-v20-latin-regular.405055dd680fa1dcdfa2.woff2",
     "static/media/poppins-v20-latin-700.woff2": "/react-wallet/static/media/poppins-v20-latin-700.d86662fe776dae29ea78.woff2",
     "static/media/logo.svg": "/react-wallet/static/media/logo.f789f1033c70580e8220066c152361a0.svg",
+    "static/media/nav-chart.svg": "/react-wallet/static/media/nav-chart.88d035c850746203b1e2fe58c26ee5f1.svg",
     "static/media/bottom-vector.svg": "/react-wallet/static/media/bottom-vector.2965f3691046b64b7ba2.svg",
     "index.html": "/react-wallet/index.html",
-    "static/media/logout.svg": "/react-wallet/static/media/logout.ab732f15bb118038be7bf9e1863a4c45.svg",
+    "static/media/nav-dollar.svg": "/react-wallet/static/media/nav-dollar.9bc0e13c69f0974f2c39471ce668fe43.svg",
+    "static/media/logout.svg": "/react-wallet/static/media/logout.030b68913f37151d2b4c102bf455a5e3.svg",
+    "static/media/nav-house.svg": "/react-wallet/static/media/nav-house.d348a3737c35f5aa794fdfc67b8720bc.svg",
     "static/media/top-vector.svg": "/react-wallet/static/media/top-vector.51ffac8dd3cf292aa1d6.svg",
     "static/media/divider.svg": "/react-wallet/static/media/divider.4197971255a4c6a047f2d568d14b817e.svg",
-    "main.a34d300f.css.map": "/react-wallet/static/css/main.a34d300f.css.map",
-    "main.264dbf04.js.map": "/react-wallet/static/js/main.264dbf04.js.map"
+    "main.2e900679.css.map": "/react-wallet/static/css/main.2e900679.css.map",
+    "main.106e07d4.js.map": "/react-wallet/static/js/main.106e07d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.a34d300f.css",
-    "static/js/main.264dbf04.js"
+    "static/css/main.2e900679.css",
+    "static/js/main.106e07d4.js"
   ]
 }
