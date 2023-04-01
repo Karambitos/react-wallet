@@ -4,12 +4,12 @@ import Currency from 'components/Currency/Currency';
 
 const Home = () => {
   return (
-
     <div className="pageWrapper">
       <div className="aside">
-        <h1>HOME</h1>
-        <Navigation/>
-        <Balance />
+        <div className="navWrapper">
+          <Navigation />
+          <Balance />
+        </div>
         <Currency />
       </div>
       <div className="main">
