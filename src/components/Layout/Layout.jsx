@@ -29,11 +29,11 @@ export default function Layout() {
           <Balance />
           <Currency />
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
-          <div className="contentMaxWidth">
+        <div className="main">
+          <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
       </div>
       <div>
         <ModalTransaction />
