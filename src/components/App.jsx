@@ -1,8 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import '../main.scss';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
 import Statistics from 'pages/Statistics';
 import NotFound from '../pages/NotFound';
@@ -16,13 +14,13 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="/BaseStyle" element={<BaseStyle />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/BaseStyle" element={<BaseStyle />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

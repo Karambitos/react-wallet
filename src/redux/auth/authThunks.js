@@ -1,15 +1,6 @@
 import axios from 'axios';
-
+import { setAuthHeader, clearAuthHeader } from '../../api';
 const { createAsyncThunk } = require('@reduxjs/toolkit');
-
-axios.defaults.baseURL = 'https://wallet.goit.ua';
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
 
 export const registerUser = createAsyncThunk(
   'auth/registration',
@@ -61,6 +52,7 @@ export const logoutUser = createAsyncThunk(
     const { token } = getState().auth;
     try {
       setAuthHeader(token);
+      console.log(token);
       const { data } = await axios.delete(`/api/auth/sign-out`, token);
       clearAuthHeader();
       return data;
