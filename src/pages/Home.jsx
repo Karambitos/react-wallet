@@ -25,10 +25,10 @@ const Home = () => {
           <td className="cell">Bought food for week</td>
           <td className="cell">5 000.00</td>
           <td className="cell actions">
-            <button href="#" className="edit">
-              I
-            </button>
-            <button href="#" className="button button--small">
+            <IconButton>
+              <EditIcon />
+            </IconButton>
+            <button href="#" className="button button--small tableButton">
               Delete
             </button>
           </td>
@@ -40,10 +40,10 @@ const Home = () => {
           <td className="cell">Bought food for week</td>
           <td className="cell">5 000.00</td>
           <td className="cell actions">
-            <button href="#" className="edit">
-              I
-            </button>
-            <button href="#" className="button button--small">
+            <IconButton>
+              <EditIcon />
+            </IconButton>
+            <button href="#" className="button button--small tableButton">
               Delete
             </button>
           </td>
@@ -55,10 +55,10 @@ const Home = () => {
           <td className="cell">Bought food for week</td>
           <td className="cell">5 000.00</td>
           <td className="cell actions">
-            <button href="#" className="edit">
-              I
-            </button>
-            <button href="#" className="button button--small">
+            <IconButton>
+              <EditIcon />
+            </IconButton>
+            <button href="#" className="button button--small tableButton">
               Delete
             </button>
           </td>
