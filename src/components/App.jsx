@@ -16,13 +16,13 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="/BaseStyle" element={<BaseStyle />} />
-        <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/BaseStyle" element={<BaseStyle />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
