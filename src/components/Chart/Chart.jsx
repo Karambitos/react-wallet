@@ -13,10 +13,29 @@ export default function Chart() {
   const categoriesSummary = useSelector(
     state => state.transactions.categoriesSummary.categories
   );
-  console.log(categoriesSummary);
-
+  const incomeSummary = useSelector(
+    state => state.transactions.categoriesSummary.incomeSummary
+  );
+  const expenseSummary = useSelector(
+    state => state.transactions.categoriesSummary.expenseSummary
+  );
   const dispatch = useDispatch();
-  const balans = '₴24 000.00';
+
+  function formattedValue(value) {
+    const formattedNum = Math.abs(value).toFixed(2);
+    const formatter = new Intl.NumberFormat('en-US');
+    const formattedString = formatter.format(formattedNum);
+    const replacedString = formattedString.replace(',', ' ');
+    const decimalPart = formattedNum.split('.')[1] || '00';
+    const isNegative = value.toString().includes('-') ? '-' : '';
+    return `₴ ${isNegative}${replacedString}.${decimalPart}`;
+  }
+
+  function countUserBalance() {
+    return formattedValue(expenseSummary + incomeSummary);
+  }
+
+  const doughnutKey = `doughnut-${countUserBalance()}`;
 
   const getValues = (array, value) => {
     return array.filter(item => item.type !== 'INCOME').map(obj => obj[value]);
@@ -54,7 +73,13 @@ export default function Chart() {
   };
 
   useEffect(() => {
-    dispatch(getSummaryController(4, 2023));
+    dispatch(
+      getSummaryController({
+        month: new Date().getMonth() + 1,
+        year: new Date().getFullYear(),
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -63,6 +88,7 @@ export default function Chart() {
       <div className={styles.wrapper}>
         <div className={styles.chart}>
           <Doughnut
+            key={doughnutKey}
             data={dataChart}
             options={optionsChart}
             plugins={[
@@ -74,7 +100,7 @@ export default function Chart() {
                   ctx.restore();
                   ctx.font = 'bold 18px Circe';
                   ctx.textBaseline = 'middle';
-                  const text = balans;
+                  const text = countUserBalance();
                   const textX = (width - ctx.measureText(text).width) / 2;
                   const textY = height / 2;
                   ctx.fillText(text, textX, textY);

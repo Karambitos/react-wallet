@@ -6,8 +6,10 @@ import { ReactComponent as Divider } from '../../images/divider.svg';
 
 import styles from './AppBar.module.scss';
 import { LogoutBtn } from 'components/logoutBtn/logoutBtn';
+import { useSelector } from 'react-redux';
 
 const AppBar = () => {
+  const userName = useSelector(state => state.auth.user.username);
   return (
     <div className={styles.headerWrapper}>
       <header className={styles.header}>
@@ -16,7 +18,7 @@ const AppBar = () => {
         </Link>
 
         <div className={styles.user}>
-          <span className={styles.username}>Name</span>
+          <span className={styles.username}>{userName}</span>
           <Divider className={styles.divider} />
 
           <LogoutBtn>

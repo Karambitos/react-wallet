@@ -8,14 +8,12 @@ export default function StatisticsList({ backgroundColor }) {
   );
 
   const sumRef = value => {
-    const totalToPositive = -value;
-    const formattedNum = (
-      Math.round((totalToPositive / 100) * 100) / 100
-    ).toFixed(2);
+    const formattedNum = Math.abs(value).toFixed(2);
     const formatter = new Intl.NumberFormat('en-US');
     const formattedString = formatter.format(formattedNum);
     const replacedString = formattedString.replace(',', ' ');
-    return replacedString;
+    const decimalPart = formattedNum.split('.')[1] || '00';
+    return `${replacedString}.${decimalPart}`;
   };
   return (
     <>
@@ -47,7 +45,7 @@ export default function StatisticsList({ backgroundColor }) {
       </div>
       <div className={styles.total}>
         <span>Income:</span>
-        <span className={styles.green}>{sumRef(-incomeSummary)}</span>
+        <span className={styles.green}>{sumRef(incomeSummary)}</span>
       </div>
     </>
   );
