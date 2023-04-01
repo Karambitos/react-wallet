@@ -1,6 +1,8 @@
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
+import { IconButton } from 'components/IconButton/IconButton';
+import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 
 const Home = () => {
   return (
