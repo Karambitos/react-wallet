@@ -1,88 +1,87 @@
 import React, { useEffect } from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, ChartOptions } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSummaryController } from 'redux/auth/operations';
-import { v4 as uuidv4 } from 'uuid';
 import styles from './Chart.module.scss';
+import Filter from './Filter/Filter';
+import StatisticsList from './StatisticsList/StatisticsList';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip);
 
 export default function Chart() {
-  const { categoriesSummary, expenseSummary, incomeSummary } = useSelector(
-    state => state.auth.transactions
-  );
+  const { categoriesSummary } = useSelector(state => state.auth.transactions);
   const dispatch = useDispatch();
+  const balans = '₴24 000.00';
 
   const getValues = (array, value) => {
-    return array.map(obj => obj[value]);
+    return array.filter(item => item.type !== 'INCOME').map(obj => obj[value]);
+    // return array.map(obj => obj[value]);
   };
 
-  const data = {
-    // labels: getValues(categoriesSummary, 'name'),
+  const backgroundColor = [
+    'rgba(254, 208, 87, 1)',
+    'rgba(255, 216, 208, 1)',
+    'rgba(253, 148, 152, 1)',
+    'rgba(197, 186, 255, 1)',
+    'rgba(110, 120, 232, 1)',
+    'rgba(74, 86, 226, 1)',
+    'rgba(129, 225, 255, 1)',
+    'rgba(36, 204, 167, 1)',
+    'rgb(25, 255, 0, 1)',
+    'rgba(221, 55, 194, 0.8)',
+    'rgba(66, 5, 142, 0.8)',
+    'rgba(15, 102, 255, 0.2)',
+  ];
+
+  const dataChart = {
+    labels: getValues(categoriesSummary, 'name'),
     datasets: [
       {
-        label: '# of Votes',
         data: getValues(categoriesSummary, 'total'),
-        backgroundColor: [
-          'rgba(51, 236, 167, 0.8)',
-          'rgba(84, 184, 249, 0.8)',
-          'rgba(14, 242, 231, 0.8)',
-          'rgba(221, 55, 194, 0.8)',
-          'rgba(1, 114, 201, 0.8)',
-          'rgba(66, 5, 142, 0.8)',
-          'rgba(223, 158, 197, 0.8)',
-          'rgba(15, 116, 232, 0.8)',
-          'rgba(28, 189, 100, 0.8)',
-          'rgba(207, 114, 104, 0.8)',
-          'rgba(15, 102, 255, 0.2)',
-          'rgba(25, 118, 16, 0.8)',
-          'rgba(214, 249, 210, 0.8)',
-        ],
+        backgroundColor: backgroundColor,
+        borderWidth: 0,
       },
     ],
   };
 
+  const optionsChart = {
+    cutout: 105,
+  };
+
   useEffect(() => {
-    dispatch(getSummaryController());
+    dispatch(getSummaryController(3, 2023));
   }, []);
 
   return (
-    <>
-      <div className={styles.canvas}>
+    <div className={styles.wrapper}>
+      <div className={styles.chart}>
         <Doughnut
-          data={data}
-          options={{
-            responsive: true,
-            maintainAspectRatio: true,
-          }}
+          data={dataChart}
+          options={optionsChart}
+          plugins={[
+            {
+              beforeDraw(chart) {
+                const { width } = chart;
+                const { height } = chart;
+                const { ctx } = chart;
+                ctx.restore();
+                ctx.font = 'bold 18px Circe';
+                ctx.textBaseline = 'middle';
+                const text = balans;
+                const textX = (width - ctx.measureText(text).width) / 2;
+                const textY = height / 2;
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+              },
+            },
+          ]}
         />
       </div>
-
-      <div>
-        <span>Category</span>
-        <span>Sum</span>
+      <div className={styles.main}>
+        <Filter />
+        <StatisticsList backgroundColor={backgroundColor} />
       </div>
-      <ul>
-        {categoriesSummary.map(({ name, total, type }) => {
-          if (type !== 'INCOME') {
-            return (
-              <li key={uuidv4()}>
-                <span>{name}</span>
-                <span>{-total}</span>
-              </li>
-            );
-          }
-        })}
-      </ul>
-      <div>
-        <span>Expenses:</span>
-        <span> {expenseSummary}</span>
-      </div>
-      <div>
-        <span>Income:</span>
-        <span>{incomeSummary}</span>
-      </div>
-    </>
+    </div>
   );
 }

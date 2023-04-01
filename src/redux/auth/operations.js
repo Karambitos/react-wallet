@@ -76,12 +76,20 @@ export const getTransactions = createAsyncThunk(
 
 export const getSummaryController = createAsyncThunk(
   'auth/getSummaryController',
-  async (_, { rejectWithValue, getState }) => {
+  async (
+    { month = new Date().getMonth(), year = new Date().getFullYear() },
+    { rejectWithValue, getState }
+  ) => {
     const token = getState().auth.token;
+    console.log(month);
+    // { month = new Date().getMonth(), year = new Date().getFullYear() },
+    // console.log(`/api/transactions-summary?month=${month}&year=${year}`);
     try {
       setAuthHeader(token);
-      const response = await axios.get('/api/transactions-summary');
-      // console.log(response.data);
+      const response = await axios.get(
+        `/api/transactions-summary?month=${month}&year=${year}`
+      );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
