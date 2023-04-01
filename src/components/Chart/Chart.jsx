@@ -57,7 +57,7 @@ export default function Chart() {
   }, []);
 
   return (
-    <>
+    <div className={styles.mainWrapper}>
       <h2 className={styles.title}>Statistics</h2>
       <div className={styles.wrapper}>
         <div className={styles.chart}>
@@ -88,6 +88,6 @@ export default function Chart() {
           <StatisticsList backgroundColor={backgroundColor} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
