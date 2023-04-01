@@ -10,9 +10,10 @@ import StatisticsList from './StatisticsList/StatisticsList';
 ChartJS.register(ArcElement, Tooltip);
 
 export default function Chart() {
-  const { categoriesSummary } = useSelector(
-    state => state.transactions.transactions
+  const categoriesSummary = useSelector(
+    state => state.transactions.categoriesSummary.categories
   );
+  console.log(categoriesSummary);
 
   const dispatch = useDispatch();
   const balans = '₴24 000.00';

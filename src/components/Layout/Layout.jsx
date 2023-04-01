@@ -1,26 +1,19 @@
 import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import AppBar from '../AppBar/AppBar';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
-import { useDispatch } from 'react-redux';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
+import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 
 export default function Layout() {
-  const dispatch = useDispatch();
-
-  const handleOpenModal = () => {
-    dispatch(setModalAddTransactionOpen(true));
-  };
+  const modalIsOpen = useSelector(selectModalAddState);
 
   return (
     <>
-      <button type="button" onClick={handleOpenModal}>
-        ОТКРОЙ МЕНЯ
-      </button>
       <AppBar />
 
       <div className="pageWrapper contentMaxWidth">
@@ -35,9 +28,7 @@ export default function Layout() {
           </Suspense>
         </div>
       </div>
-      <div>
-        <ModalTransaction />
-      </div>
+      <div>{modalIsOpen && <ModalTransaction />}</div>
     </>
   );
 }
