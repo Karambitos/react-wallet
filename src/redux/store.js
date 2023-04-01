@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import { authReducer } from './auth/slice';
+import auth from './auth/authSlice';
 import {
   persistStore,
   persistReducer,
@@ -16,7 +16,7 @@ import { currencyReducer } from './currency/slice';
 import { modalAddReducer } from './modalAddTransaction/slice'
 
 const authPersistConfig = {
-  key: 'auth',
+  key: 'token',
   storage,
   // whitelist: ['token'],
 };
@@ -39,10 +39,11 @@ const middleware = [
     },
   }),
 ];
+const authersiterRedusec = persistReducer(authPersistConfig, auth);
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: authersiterRedusec,
     currency: persistReducer(currencyPersistConfig, currencyReducer),
     modal: persistReducer(modalPersistConfig, modalAddReducer),
   },
@@ -50,3 +51,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+//roiffgserrr@gmail.com
+//AAAaaa111

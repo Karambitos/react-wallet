@@ -8,6 +8,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Link, Navigate } from 'react-router-dom';
+import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
   const validationsSchema = yup.object().shape({
@@ -62,6 +63,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
           handleSubmit,
           dirty,
         }) => {
+          // isSafe(values.password);
           return (
             <div className={'form'}>
               <FormBox onSubmit={handleSubmit}>
@@ -91,10 +93,11 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       <LockIcon />
                     </InputAdornment>
                   }
-                />{' '}
+                />
                 {touched.password && errors.password && (
                   <p className={'error'}>{errors.password}</p>
                 )}
+                <IsSafePassword value={values.password} />
                 <Input
                   placeholder="Confirm password"
                   value={values.confirmPassword}
