@@ -14,3 +14,28 @@ export const fetchAllTransactions = createAsyncThunk(
     }
   }
 );
+
+export const fetchAddTransactions = createAsyncThunk(
+  'transactions/fetchAdd',
+  async (credentials, thunkAPI) => {
+    console.log(credentials);
+    try {
+      const response = await axios.post('/api/transactions', credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchAllCategories = createAsyncThunk(
+  'categories/get',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('api/transaction-categories');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

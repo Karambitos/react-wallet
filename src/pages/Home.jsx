@@ -1,6 +1,7 @@
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
+import HomeTab from 'components/HomeTab/HomeTab';
 
 const Home = () => {
   return (
@@ -73,6 +74,8 @@ const Home = () => {
           </tbody>
         </table>
       </div>
+
+      <HomeTab />
     </div>
   );
 };

@@ -1,32 +1,21 @@
 import AppBar from '../AppBar/AppBar';
 import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice'
 import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
+import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 
 export default function Layout() {
-    const dispatch = useDispatch();
-
-    const handleOpenModal = () => {
-      dispatch(setModalAddTransactionOpen(true));
-    };
-
-    
+  const modalIsOpen = useSelector(selectModalAddState);
   return (
     <>
-      <button type="button" onClick={handleOpenModal}>
-        ОТКРОЙ МЕНЯ
-      </button>
       <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         <div className="contentMaxWidth">
           <Outlet />
         </div>
       </Suspense>
-      <div>
-        <ModalTransaction  />
-      </div>
+      <div>{modalIsOpen && <ModalTransaction />}</div>
     </>
   );
 }
