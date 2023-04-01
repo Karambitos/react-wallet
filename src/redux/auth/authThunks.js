@@ -61,6 +61,7 @@ export const logoutUser = createAsyncThunk(
     const { token } = getState().auth;
     try {
       setAuthHeader(token);
+      console.log(token);
       const { data } = await axios.delete(`/api/auth/sign-out`, token);
       clearAuthHeader();
       return data;
