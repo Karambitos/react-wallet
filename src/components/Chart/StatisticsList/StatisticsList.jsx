@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './StatisticsList.module.scss';
 
 export default function StatisticsList({ backgroundColor }) {
-  const { categoriesSummary, expenseSummary, incomeSummary } = useSelector(
-    state => state.transactions.transactions
+  const { categories, expenseSummary, incomeSummary } = useSelector(
+    state => state.transactions.categoriesSummary
   );
 
   const sumRef = value => {
@@ -24,7 +24,7 @@ export default function StatisticsList({ backgroundColor }) {
         <span>Sum</span>
       </div>
       <ul className={styles.list}>
-        {categoriesSummary
+        {categories
           .filter(item => item.type !== 'INCOME')
           .map(({ name, total, type }, index) => {
             return (

@@ -10,7 +10,7 @@ const initialState = {
   isLoading: false,
   error: null,
   categoriesSummary: {
-    catrgories: [],
+    categories: [],
     expenseSummary: 0,
     incomeSummary: 0,
     month: null,
