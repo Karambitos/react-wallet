@@ -1,19 +1,23 @@
 @import '../../scss/variables';
 
+svg {
+  display: block;
+}
+
 .nav {
   display: flex;
   justify-content: center;
-  gap: 32px;
-
+  gap: 35px;
+  padding-top: 5px;
   @media screen and (min-width: $breakpoint-tablet) {
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 28px;
   }
 }
 
 .navLink {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -25,6 +29,9 @@
 
 .navIcon {
   display: block;
+  border-radius: 6px;
+  fill: #6E78E8;
+  
 
   @media screen and (min-width: $breakpoint-tablet) {
     width: 24px;
@@ -39,9 +46,6 @@
 
   font-family: 'Poppins';
   font-size: 18px;
-
-  display: flex;
-  align-items: center;
 
   color: $color-text;
 }

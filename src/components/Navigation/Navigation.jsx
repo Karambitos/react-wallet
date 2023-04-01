@@ -8,17 +8,17 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => {
   return (
-    <nav  className={styles.nav}>
+    <nav className={styles.nav}>
       <NavLink to="/" className={styles.navLink}>
-        <HomePageIcon className={styles.navIcon}/>
+        <HomePageIcon className={styles.navIcon} />
         <span className={styles.navText}>Home</span>
       </NavLink>
       <NavLink to="/statistics" className={styles.navLink}>
-        <StatisticsPageIcon className={styles.navIcon}/>
+        <StatisticsPageIcon className={styles.navIcon} />
         <span className={styles.navText}>Statistics</span>
       </NavLink>
-      <NavLink to="/" className={styles.navLinkCurrency}>
-        <CurrencyIcon  className={styles.navIcon }/>
+      <NavLink to="/currency" className={styles.navLinkCurrency}>
+        <CurrencyIcon className={styles.navIcon} />
       </NavLink>
     </nav>
   );
