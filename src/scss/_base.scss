@@ -423,6 +423,10 @@ h6,
   }
 }
 
+.select__control:hover {
+  border-color: blue;
+}
+
 .active svg {
   fill: #4a56e2 !important;
   box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
