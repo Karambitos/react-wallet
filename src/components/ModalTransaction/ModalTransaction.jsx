@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
-
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector';
-import { selectAllCategories } from 'redux/transactions/selectors';
+import { selectCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
@@ -17,7 +16,7 @@ export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
   );
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
   const [comment, setComment] = useState('');
@@ -26,7 +25,7 @@ export const ModalTransaction = () => {
 
   const dispatch = useDispatch();
   const modalState = useSelector(selectModalAddState);
-  const categories = useSelector(selectAllCategories);
+  const categories = useSelector(selectCategories);
 
   useEffect(() => {
     dispatch(fetchAllCategories());
@@ -158,6 +157,17 @@ export const ModalTransaction = () => {
                 />
               </div>
             )}
+            <div className={styles.numberAndCalendarWrapper}>
+              <input
+                className={styles.inputNumber}
+                type="number"
+                placeholder="0.00"
+                required
+                value={amountNumber}
+                name="amount"
+                onChange={handleChange}
+              />
+            </div>
             <div className={styles.numberAndCalendarWrapper}>
               <input
                 className={styles.inputNumber}

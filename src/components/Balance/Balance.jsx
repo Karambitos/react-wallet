@@ -12,7 +12,6 @@ const Balance = () => {
 
   useEffect(() => {
     if (transactions.length !== 0) {
-      console.log(transactions);
       setBalanceAfter(transactions[transactions.length - 1].balanceAfter);
     }
   }, [transactions]);
