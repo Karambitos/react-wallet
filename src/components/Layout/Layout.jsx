@@ -17,8 +17,10 @@ export default function Layout() {
       <AppBar />
       <div className="pageWrapper contentMaxWidth">
         <div className="aside">
-          <Navigation />
-          <Balance />
+          <div className="navWrapper">
+            <Navigation />
+            <Balance />
+          </div>
           <Currency />
         </div>
         <div className="main">
