@@ -205,6 +205,9 @@ h6,
   thead {
     padding: 16px 20px;
     text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   th {
@@ -231,7 +234,7 @@ h6,
   td:nth-child(2) {
     text-align: center;
   }
-    
+
   td:nth-child(5) {
     text-align: end;
   }

@@ -32,6 +32,22 @@ export const fetchAddTransactions = createAsyncThunk(
   }
 );
 
+export const fetchDeleteTransactions = createAsyncThunk(
+  'transactions/fetchDelete',
+  async (transactionId, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/api/transactions/${transactionId}`);
+      if (response.status === 204) {
+        return transactionId;
+      } else {
+        return;
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchAllCategories = createAsyncThunk(
   'categories/get',
   async (_, thunkAPI) => {
