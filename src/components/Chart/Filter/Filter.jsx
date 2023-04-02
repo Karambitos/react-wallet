@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getSummaryController } from 'redux/transactions/operations';
-import styles from './Filter.module.scss';
+// import styles from './Filter.module.scss';
 
 export default function Filter() {
   const [year, setYear] = useState(new Date().getFullYear());
