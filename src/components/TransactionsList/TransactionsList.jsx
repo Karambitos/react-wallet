@@ -61,24 +61,6 @@ export const TransactionsList = () => {
                 </button>
               </td>
             </tr>
-            <tr>
-              <td className="cell">04-01-19</td>
-              <td className="cell">+</td>
-              <td className="cell">Groceries</td>
-              <td className="cell">Bought food for week</td>
-              <td className="cell">5 000.00</td>
-              <td className="cell actions">
-                <IconButton type="button" aria-label="edit">
-                  <EditIcon />
-                </IconButton>
-                <button
-                  href="#"
-                  className={`${css.tableButton} button button button--small`}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
           </tbody>
         </table>
       )}
@@ -86,27 +68,27 @@ export const TransactionsList = () => {
         <ul className={css.mobileTransactionsList}>
           <li>
             <ul className={css.mobileTransaction}>
-              <li >
+              <li>
                 <span className={css.mobileTransList__title}>Date</span>{' '}
                 <span>04.01.19</span>
               </li>
-              <li >
+              <li>
                 <span className={css.mobileTransList__title}>Type</span>{' '}
                 <span>-</span>
               </li>
-              <li >
+              <li>
                 <span className={css.mobileTransList__title}>Category</span>{' '}
                 <span>Other</span>
               </li>
-              <li >
+              <li>
                 <span className={css.mobileTransList__title}>Comment</span>{' '}
                 <span>Gift for your wife</span>
               </li>
-              <li >
+              <li>
                 <span className={css.mobileTransList__title}>Sum</span>{' '}
                 <span className={css.mobileTransaction__summ}>300.00</span>
               </li>
-              <li  >
+              <li>
                 <button
                   type="button"
                   className={`${css.tableButton} button button button--small`}
