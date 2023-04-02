@@ -9,6 +9,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Link, Navigate } from 'react-router-dom';
+import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
   const validationsSchema = yup.object().shape({
@@ -154,21 +155,3 @@ export const RegisterForm = ({ cbOnSubmit }) => {
     </div>
   );
 };
-// const LoginContainer = styled.div`
-//  position: absolute;
-//     width: 533px;
-//     height: 616px;
-//     left: 656px;
-//     top: 52px;
-
-//     background: #FFFFFF;
-//     border-radius: 20px;
-// `;
-// const FormBox = styled.form`
-//   display: flex;
-//   flex-direction: column;
-// `;
-// const BtnContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
