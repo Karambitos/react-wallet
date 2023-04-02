@@ -23,6 +23,10 @@ const TransactionsList = () => {
     return type === 'EXPENSE' ? '-' : '+';
   };
 
+  const getTransactionColor = type => {
+    return type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+  };
+
   const getCategory = categoryId => {
     switch (categoryId) {
       case 'c9d9e447-1b83-4238-8712-edc77b18b739':
@@ -52,6 +56,15 @@ const TransactionsList = () => {
     }
   };
 
+  const sumRef = value => {
+    const formattedNum = Math.abs(value).toFixed(2);
+    const formatter = new Intl.NumberFormat('en-US');
+    const formattedString = formatter.format(formattedNum);
+    const replacedString = formattedString.replaceAll(',', ' ');
+    const decimalPart = formattedNum.split('.')[1] || '00';
+    return `${replacedString}.${decimalPart}`;
+  };
+
   const isMobile = useMediaQuery({
     query: '(max-width: 767.98px)',
   });
@@ -66,26 +79,28 @@ const TransactionsList = () => {
           <table className="transactionsTable">
             <thead>
               <tr>
-                <th className="cell">Date</th>
-                <th className="cell">Type</th>
-                <th className="cell">Category</th>
-                <th className="cell">Comment</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Comment</th>
                 <th className="cell textAlignL">Sum</th>
-                <th className="cell"></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {transactions.map(transaction => (
                 <tr key={transaction.id}>
-                  <td className="cell">{transaction.transactionDate}</td>
-                  <td className="cell">
-                    {getTransactionType(transaction.type)}
+                  <td>{transaction.transactionDate}</td>
+                  <td>{getTransactionType(transaction.type)}</td>
+                  <td>{getCategory(transaction.categoryId)}</td>
+                  <td>{transaction.comment}</td>
+                  <td
+                    style={{
+                      color: getTransactionColor(transaction.type),
+                    }}
+                  >
+                    {sumRef(transaction.amount)}
                   </td>
-                  <td className="cell">
-                    {getCategory(transaction.categoryId)}
-                  </td>
-                  <td className="cell">{transaction.comment}</td>
-                  <td className="cell">{transaction.amount}</td>
                   <td className="cell actions">
                     <IconButton type="button" aria-label="edit">
                       <EditIcon />
