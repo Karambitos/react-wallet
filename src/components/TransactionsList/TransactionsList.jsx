@@ -1,10 +1,3 @@
-// import React from 'react';
-
-// export const TransactionsList = () => {
-//   return <div>TransactionsList</div>;
-// };
-
-
 import { useMediaQuery } from 'react-responsive';
 import css from './TransactionsList.module.scss';
 import { IconButton } from 'components/IconButton/IconButton';
