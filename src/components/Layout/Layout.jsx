@@ -8,6 +8,7 @@ import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector';
+import Loader from 'components/Loader/Loader';
 
 export default function Layout() {
   const modalIsOpen = useSelector(selectModalAddState);
@@ -25,7 +26,7 @@ export default function Layout() {
           <Currency />
         </div>
         <div className="main">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </div>
