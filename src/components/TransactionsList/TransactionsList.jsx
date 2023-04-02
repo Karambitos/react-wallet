@@ -75,7 +75,10 @@ const TransactionsList = () => {
   return (
     <>
       {isTabletOrDesktop && (
-        <div style={{ overflow: 'auto', height: '400px' }}>
+        <div
+          className={css.transactionsTableWrapper}
+          style={{ overflow: 'auto', height: '400px' }}
+        >
           <table className="transactionsTable">
             <thead>
               <tr>
@@ -113,7 +116,6 @@ const TransactionsList = () => {
                     </IconButton>
                     <button
                       href="#"
-                      className="button button--small tableButton"
                       onClick={() =>
                         dispatch(fetchDeleteTransactions(transaction.id))
                       }
