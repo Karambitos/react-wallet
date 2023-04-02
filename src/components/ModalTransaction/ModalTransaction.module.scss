@@ -47,6 +47,7 @@
 }
 
 .modalAddTrans {
+  position: relative;
   background-color: #fff;
 
   max-width: 320px;
@@ -77,35 +78,29 @@ max-width: 540px;
 }
 
 
-// 
-.button-modal-close {
+
+.closeButton {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 16px;
-  height: 16px;
+  top: 20px;
+  right: 20px;
   background-color: transparent;
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-
-  &__icon {
-    position: absolute;
-    transition: 250ms fill cubic-bezier(0.075, 0.82, 0.165, 1);
-    // fill: $black-color;
-  }
-
-  &:hover,
-  &:focus {
-    .button-modal-close__icon {
-      fill: #ff6596;
-    }
-
-  }
+  
 }
 
+
+
+.closeButtonIcon {
+  width: 16px;
+  height: 16px;
+ 
+  transition: stroke 0.2s ease-in-out;
+}
+
+.closeButton:hover .closeButtonIcon {
+  fill: #4A56E2;
+}
 
 
 .title {
