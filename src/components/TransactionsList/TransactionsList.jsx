@@ -109,9 +109,9 @@ const TransactionsList = () => {
       )}
 
       {isMobile && (
-        <ul className={css.mobileTransList}>
+        <ul className={css.mobileTransactionsList}>
           <li>
-            <ul className={css.mobileTransList__item}>
+            <ul className={css.mobileTransaction}>
               <li>
                 <span className={css.mobileTransList__title}>Date</span>{' '}
                 <span>04.01.19</span>
@@ -130,7 +130,7 @@ const TransactionsList = () => {
               </li>
               <li>
                 <span className={css.mobileTransList__title}>Sum</span>{' '}
-                <span>300.00</span>
+                <span className={css.mobileTransaction__summ}>300.00</span>
               </li>
               <li>
                 <button
