@@ -40,6 +40,12 @@ export const ModalTransaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive, categories]);
 
+  const handleBackDropClick = event => {
+    if (event.currentTarget === event.target) {
+      handleCloseModal();
+    }
+  };
+
   useEffect(() => {
     const handleKeyPress = event => {
       if (event.key === 'Escape') {
@@ -116,7 +122,7 @@ export const ModalTransaction = () => {
   };
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay}>
+    <div className={styles.overlay} onClick={handleBackDropClick}>
       <div className={styles.modalAddTrans}>
         <button className={styles.closeButton} onClick={handleCloseModal}>
           <CloseIcon className={styles.closeButtonIcon} />

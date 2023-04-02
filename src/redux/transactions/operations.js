@@ -64,7 +64,6 @@ export const fetchAllCategories = createAsyncThunk(
     }
   }
 );
-// dsajkhkjdskjdsdskkdfhkhds@mail.com
 
 export const getSummaryController = createAsyncThunk(
   'auth/getSummaryController',

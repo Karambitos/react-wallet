@@ -10,15 +10,16 @@
   font-weight: 400;
   src: url('../assets/fonts/poppins-v20-latin-regular.eot');
   /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('../assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-regular.woff2')
+      format('woff2'),
     /* Super Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
-    /* Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'),
+      url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-regular.ttf')
+      format('truetype'),
     /* Safari, Android, iOS */
-    url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+      url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
   /* Legacy iOS */
 }
 
@@ -31,15 +32,16 @@
   font-weight: 700;
   src: url('../assets/fonts/poppins-v20-latin-700.eot');
   /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('../assets/fonts/poppins-v20-latin-700.woff2') format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-700.woff2')
+      format('woff2'),
     /* Super Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
-    /* Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-700.ttf') format('truetype'),
+      url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-700.ttf')
+      format('truetype'),
     /* Safari, Android, iOS */
-    url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
+      url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
   /* Legacy iOS */
 }
 
@@ -104,13 +106,13 @@ body {
     text-decoration: none;
   }
 
-  >em {
+  > em {
     color: var(--color-accent);
     font-style: normal;
   }
 }
 
-#modal-root{
+#modal-root {
   z-index: 10;
 }
 
@@ -155,15 +157,17 @@ h6,
   position: relative;
 
   @media screen and (min-width: $breakpoint-mobile-horizontal) {
-    background-image: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg);
+    background-image: url(../assets/svg/ellipse_tabl1.svg),
+      url(../assets/svg/ellipse_tabl2.svg);
     background-repeat: no-repeat;
     background-position: top 100% left 0, top 0 right 0;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
-      background-image: url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg);
-      background-repeat: no-repeat;
-      background-position: top 100% left 0, top 0 right 0;
+    background-image: url(../assets/svg/ellipse_desktop1.svg),
+      url(../assets/svg/ellipse_desktop2.svg);
+    background-repeat: no-repeat;
+    background-position: top 100% left 0, top 0 right 0;
   }
 }
 
@@ -180,10 +184,9 @@ h6,
   height: 100%;
   position: relative;
 
-
   @media (min-width: $breakpoint-tablet) {
     padding: 32px;
-    &:before{
+    &:before {
       content: '';
       width: 100vw;
       height: 100vh;
@@ -216,7 +219,7 @@ h6,
   gap: 10px;
   width: 100%;
   @media (min-width: $breakpoint-tablet) {
-    gap: 30px
+    gap: 30px;
   }
 }
 
@@ -415,11 +418,11 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   outline: none;
 
-  &::placeholder{
-    color: #E0E0E0;
+  &::placeholder {
+    color: #e0e0e0;
   }
 }
 

@@ -75,10 +75,7 @@ const TransactionsList = () => {
   return (
     <>
       {isTabletOrDesktop && (
-        <div
-          className={css.transactionsTableWrapper}
-          style={{ overflow: 'auto', height: '400px' }}
-        >
+        <div className={css.transactionsTableWrapper}>
           <table className="transactionsTable">
             <thead>
               <tr>
