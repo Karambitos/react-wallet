@@ -17,7 +17,12 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    user: {
+      id: '',
+      username: '',
+      email: '',
+      balance: 0,
+    },
     token: null,
     isLoading: false,
     isRefreshing: false,
@@ -60,7 +65,12 @@ const authSlice = createSlice({
     },
     [logoutUser.fulfilled]: (state, { payload }) => {
       return {
-        user: null,
+        user: {
+          id: '',
+          username: '',
+          email: '',
+          balance: 0,
+        },
         isLoading: false,
         error: null,
         isRefreshing: false,

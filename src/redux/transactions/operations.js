@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setAuthHeader, clearAuthHeader } from '../../api';
+import { setAuthHeader } from '../../api';
 
 export const fetchAllTransactions = createAsyncThunk(
   'transactions/fetchAll',
@@ -64,17 +64,15 @@ export const fetchAllCategories = createAsyncThunk(
 export const getSummaryController = createAsyncThunk(
   'auth/getSummaryController',
   async (
-    { month = new Date().getMonth(), year = new Date().getFullYear() },
+    { month = new Date().getMonth() + 1, year = new Date().getFullYear() },
     { rejectWithValue, getState }
   ) => {
     const token = getState().auth.token;
     try {
       setAuthHeader(token);
       const response = await axios.get(
-        // `/api/transactions-summary?month=${month}&year=${year}`
-        `/api/transactions-summary`
+        `/api/transactions-summary?month=${month}&year=${year}`
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

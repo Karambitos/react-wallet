@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import {
   fetchAllTransactions,
   fetchDeleteTransactions,
@@ -7,6 +8,7 @@ import {
 import { selectAllTransactions } from 'redux/transactions/selectors';
 import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
+import css from './TransactionsList.module.scss';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -50,46 +52,105 @@ const TransactionsList = () => {
     }
   };
 
+  const isMobile = useMediaQuery({
+    query: '(max-width: 767.98px)',
+  });
+  const isTabletOrDesktop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
+
   return (
-    <div style={{ overflow: 'auto', height: '400px' }}>
-      <table className="transactionsTable">
-        <thead>
-          <tr>
-            <th className="cell">Date</th>
-            <th className="cell">Type</th>
-            <th className="cell">Category</th>
-            <th className="cell">Comment</th>
-            <th className="cell textAlignL">Sum</th>
-            <th className="cell"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map(transaction => (
-            <tr key={transaction.id}>
-              <td className="cell">{transaction.transactionDate}</td>
-              <td className="cell">{getTransactionType(transaction.type)}</td>
-              <td className="cell">{getCategory(transaction.categoryId)}</td>
-              <td className="cell">{transaction.comment}</td>
-              <td className="cell">{transaction.amount}</td>
-              <td className="cell actions">
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
+    <>
+      {isTabletOrDesktop && (
+        <div style={{ overflow: 'auto', height: '400px' }}>
+          <table className="transactionsTable">
+            <thead>
+              <tr>
+                <th className="cell">Date</th>
+                <th className="cell">Type</th>
+                <th className="cell">Category</th>
+                <th className="cell">Comment</th>
+                <th className="cell textAlignL">Sum</th>
+                <th className="cell"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map(transaction => (
+                <tr key={transaction.id}>
+                  <td className="cell">{transaction.transactionDate}</td>
+                  <td className="cell">
+                    {getTransactionType(transaction.type)}
+                  </td>
+                  <td className="cell">
+                    {getCategory(transaction.categoryId)}
+                  </td>
+                  <td className="cell">{transaction.comment}</td>
+                  <td className="cell">{transaction.amount}</td>
+                  <td className="cell actions">
+                    <IconButton type="button" aria-label="edit">
+                      <EditIcon />
+                    </IconButton>
+                    <button
+                      href="#"
+                      className="button button--small tableButton"
+                      onClick={() =>
+                        dispatch(fetchDeleteTransactions(transaction.id))
+                      }
+                      className={`${css.tableButton} button button button--small`}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {isMobile && (
+        <ul className={css.mobileTransList}>
+          <li>
+            <ul className={css.mobileTransList__item}>
+              <li>
+                <span className={css.mobileTransList__title}>Date</span>{' '}
+                <span>04.01.19</span>
+              </li>
+              <li>
+                <span className={css.mobileTransList__title}>Type</span>{' '}
+                <span>-</span>
+              </li>
+              <li>
+                <span className={css.mobileTransList__title}>Category</span>{' '}
+                <span>Other</span>
+              </li>
+              <li>
+                <span className={css.mobileTransList__title}>Comment</span>{' '}
+                <span>Gift for your wife</span>
+              </li>
+              <li>
+                <span className={css.mobileTransList__title}>Sum</span>{' '}
+                <span>300.00</span>
+              </li>
+              <li>
                 <button
-                  href="#"
-                  className="button button--small tableButton"
-                  onClick={() =>
-                    dispatch(fetchDeleteTransactions(transaction.id))
-                  }
+                  type="button"
+                  className={`${css.tableButton} button button button--small`}
                 >
                   Delete
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                <div>
+                  <IconButton type="button" aria-label="edit">
+                    <EditIcon />
+                    <span className={css.editButtonTitle}>Edit</span>
+                  </IconButton>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      )}
+    </>
   );
 };
 
