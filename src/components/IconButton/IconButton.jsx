@@ -8,7 +8,7 @@ export const IconButton = ({ children, onClick, ...allyProps }) => {
       onClick={onClick}
       {...allyProps}
     >
-      {children}
+      <div className={css.iconButtonContainer}>{children}</div>
     </button>
   );
 };
