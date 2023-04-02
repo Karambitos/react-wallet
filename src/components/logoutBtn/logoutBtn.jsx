@@ -4,18 +4,26 @@
 // import { logoutUser } from 'redux/auth/authThanks';
 
 // import { Button } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from 'redux/auth/authThunks';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+import { useState } from 'react';
 
 export const LogoutBtn = ({ children }) => {
-  const dispatch = useDispatch();
-  const handleClick = form => {
-    dispatch(logoutUser(form));
+  const [showModalLogout, setShowModalLogout] = useState(false);
+
+  const handleClick = () => {
+    handleModalToggle();
+  };
+
+  const handleModalToggle = () => {
+    setShowModalLogout(s => !s);
   };
 
   return (
-    <button variant="contained" onClick={handleClick}>
-      {children}
-    </button>
+    <>
+      <button variant="contained" onClick={handleClick}>
+        {children}
+      </button>
+      {showModalLogout && <ModalLogout onClose={handleModalToggle} />}
+    </>
   );
 };

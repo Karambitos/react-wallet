@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMonth, selectYear } from 'redux/statisticsFilter/selectors';
+import { updateMonth, updateYear } from 'redux/statisticsFilter/slice';
 import { getSummaryController } from 'redux/transactions/operations';
 // import styles from './Filter.module.scss';
 
 export default function Filter() {
-  const [year, setYear] = useState(new Date().getFullYear());
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const month = useSelector(selectMonth);
+  const year = useSelector(selectYear);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getSummaryController({ month, year }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleYearChange = event => {
-    setYear(event.target.value);
+    dispatch(updateYear(event.target.value));
     dispatch(getSummaryController({ month: month, year: event.target.value }));
   };
 
   const handleMonthChange = event => {
-    setMonth(event.target.value);
+    dispatch(updateMonth(event.target.value));
     dispatch(getSummaryController({ month: event.target.value, year: year }));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    setYear(new Date().getFullYear());
-    setMonth(new Date().getMonth() + 1);
   };
   return (
     <form onSubmit={handleSubmit}>

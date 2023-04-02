@@ -1,5 +1,6 @@
 import { Button, Input, InputAdornment } from '@mui/material';
 import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { useState } from 'react';
 // import styles from 'styles-components';
 import styles from './login.module.scss';
@@ -23,10 +24,13 @@ export const LoginForm = ({ cbOnSubmit }) => {
   console.log();
   return (
     <div className="mainContainer">
-      {/* <h1 className={styles.text}>Finance App</h1> */}
       <div className={styles.formWrapper}>
-        {/* <div className={styles.blur}></div> */}
-        <div className={styles.image}></div>
+        <div className={styles.imageWrapper}>
+          <div className={styles.image}>
+            <Image />
+          </div>
+          <h1 className={styles.text}>Finance App</h1>
+        </div>
         <div className={styles.formContainer}>
           <div className={styles.formContainerInner}>
             <Logo className={styles.logo} />
@@ -59,10 +63,13 @@ export const LoginForm = ({ cbOnSubmit }) => {
                   </InputAdornment>
                 }
               />
-              <button type="submit" className="button">
+              <button type="submit" className={`${styles.button} button`}>
                 Log in
               </button>
-              <Link to="/register" className="button button--secondary">
+              <Link
+                to="/register"
+                className={`${styles.button} button button--secondary`}
+              >
                 Register
               </Link>
             </form>

@@ -399,8 +399,12 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
   outline: none;
+
+  &::placeholder{
+    color: #E0E0E0;
+  }
 }
 
 .active svg {

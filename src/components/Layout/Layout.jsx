@@ -16,7 +16,6 @@ export default function Layout() {
     <div className="mainContainer">
       <div className="blur"></div>
       <AppBar />
-
       <div className="pageWrapper contentMaxWidth">
         <div className="aside">
           <div className="navWrapper">
