@@ -110,6 +110,10 @@ body {
   }
 }
 
+#modal-root{
+  z-index: 10;
+}
+
 h1,
 .h1 {
   font-weight: 700;
@@ -150,7 +154,7 @@ h6,
   overflow: hidden;
   position: relative;
 
-  @media screen and (min-width: $breakpoint-tablet) {
+  @media screen and (min-width: $breakpoint-mobile-horizontal) {
     background-image: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg);
     background-repeat: no-repeat;
     background-position: top 100% left 0, top 0 right 0;
@@ -377,8 +381,7 @@ h6,
     &:hover,
     &:focus,
     &:active {
-      color: $white;
-      background-color: $mainColor;
+      color: $mainColor;
       border-color: $mainColor;
     }
   }

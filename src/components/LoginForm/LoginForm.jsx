@@ -1,13 +1,12 @@
-import { Button, Input, InputAdornment } from '@mui/material';
+import { Input, InputAdornment } from '@mui/material';
+import { useMediaQuery } from 'react-responsive';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { useState } from 'react';
-// import styles from 'styles-components';
 import styles from './login.module.scss';
-
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link, Navigate, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = ({ cbOnSubmit }) => {
   const [formLogin, setFormLogin] = useState({ email: '', password: '' });
@@ -21,19 +20,24 @@ export const LoginForm = ({ cbOnSubmit }) => {
 
     cbOnSubmit(formLogin);
   };
-  console.log();
+  const isTablet = useMediaQuery({
+    query: '(min-width: 580px)',
+  });
+
   return (
     <div className="mainContainer">
-      <div className={styles.formWrapper}>
-        <div className={styles.imageWrapper}>
-          <div className={styles.image}>
-            <Image />
+      <div className="mainForm">
+        {isTablet && (
+          <div className="mainForm-wrapperImage">
+            <div className="mainForm-image">
+              <Image />
+            </div>
+            <h1 className="mainForm-title">Finance App</h1>
           </div>
-          <h1 className={styles.text}>Finance App</h1>
-        </div>
-        <div className={styles.formContainer}>
-          <div className={styles.formContainerInner}>
-            <Logo className={styles.logo} />
+        )}
+        <div className="mainForm-wrapperForm">
+          <div className="mainForm-wrapperFormInner">
+            <Logo className="mainForm-logo" />
             <form onSubmit={handleSubmit}>
               <Input
                 placeholder="E-mail"
@@ -63,12 +67,12 @@ export const LoginForm = ({ cbOnSubmit }) => {
                   </InputAdornment>
                 }
               />
-              <button type="submit" className={`${styles.button} button`}>
+              <button type="submit" className="mainForm-button button">
                 Log in
               </button>
               <Link
                 to="/register"
-                className={`${styles.button} button button--secondary`}
+                className=" mainForm-button button button--secondary"
               >
                 Register
               </Link>
