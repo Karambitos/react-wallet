@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllTransactions } from './operations';
 import { fetchAddTransactions } from './operations';
+import { fetchDeleteTransactions } from './operations';
 import { fetchAllCategories } from './operations';
 import { getSummaryController } from './operations';
 
@@ -22,32 +23,25 @@ export const transactionsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      // .addCase(fetchAllTransactions.pending, (state, _) => {
-      //   state.isLoading = true;
-      // })
+
       .addCase(fetchAllTransactions.fulfilled, (state, action) => {
         state.transactions = action.payload;
       })
-      // .addCase(fetchAllTransactions.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.transactions = action.payload;
-      // })
-      // .addCase(fetchAddTransactions.pending, (state, _) => {
-      //   state.isLoading = true;
-      // })
+
       .addCase(fetchAddTransactions.fulfilled, (state, action) => {
         state.transactions.push(action.payload);
       })
-      // .addCase(fetchAddTransactions.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload;
-      // })
+
+      .addCase(fetchDeleteTransactions.fulfilled, (state, action) => {
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload
+        );
+        state.transactions.splice(index, 1);
+      })
+
       .addCase(fetchAllCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
       })
-      // .addCase(fetchAllCategories.rejected, (state, action) => {
-      //   state.error = action.payload;
-      // })
 
       .addCase(getSummaryController.fulfilled, (state, action) => {
         state.categoriesSummary = {
