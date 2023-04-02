@@ -22,7 +22,7 @@ const AppBar = () => {
           <Divider className={styles.divider} />
 
           <LogoutBtn>
-            <Link to="/login" className={styles.logoutWrapper}>
+            <Link to="#" className={styles.logoutWrapper}>
               <Logout className={styles.logout} />
               <span className={styles.exit}>Exit</span>
             </Link>

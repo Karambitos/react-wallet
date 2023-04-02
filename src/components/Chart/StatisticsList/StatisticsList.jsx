@@ -11,7 +11,7 @@ export default function StatisticsList({ backgroundColor }) {
     const formattedNum = Math.abs(value).toFixed(2);
     const formatter = new Intl.NumberFormat('en-US');
     const formattedString = formatter.format(formattedNum);
-    const replacedString = formattedString.replace(',', ' ');
+    const replacedString = formattedString.replaceAll(',', ' ');
     const decimalPart = formattedNum.split('.')[1] || '00';
     return `${replacedString}.${decimalPart}`;
   };

@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSummaryController } from 'redux/transactions/operations';
+import { useSelector } from 'react-redux';
 import styles from './Chart.module.scss';
 import Filter from './Filter/Filter';
 import StatisticsList from './StatisticsList/StatisticsList';
@@ -18,13 +17,12 @@ export default function Chart() {
   const categoriesSummary = useSelector(selectAllCategories);
   const incomeSummary = useSelector(selectIncomeSummary);
   const expenseSummary = useSelector(selectExpenseSummary);
-  const dispatch = useDispatch();
 
   function formattedValue(value) {
     const formattedNum = Math.abs(value).toFixed(2);
     const formatter = new Intl.NumberFormat('en-US');
     const formattedString = formatter.format(formattedNum);
-    const replacedString = formattedString.replace(',', ' ');
+    const replacedString = formattedString.replaceAll(',', ' ');
     const decimalPart = formattedNum.split('.')[1] || '00';
     const isNegative = value.toString().includes('-') ? '-' : '';
     return `₴ ${isNegative}${replacedString}.${decimalPart}`;
@@ -69,16 +67,6 @@ export default function Chart() {
   const optionsChart = {
     cutout: 105,
   };
-
-  useEffect(() => {
-    dispatch(
-      getSummaryController({
-        month: new Date().getMonth() + 1,
-        year: new Date().getFullYear(),
-      })
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className={styles.mainWrapper}>

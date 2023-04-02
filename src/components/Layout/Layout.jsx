@@ -15,7 +15,6 @@ export default function Layout() {
   return (
     <>
       <AppBar />
-
       <div className="pageWrapper contentMaxWidth">
         <div className="aside">
           <Navigation />
