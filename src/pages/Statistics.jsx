@@ -1,5 +1,7 @@
+import Chart from 'components/Chart/Chart';
+
 const Statistics = () => {
-    return <h1>Statistics</h1>;
-  };
-  
-  export default Statistics;
+  return <Chart />;
+};
+
+export default Statistics;
