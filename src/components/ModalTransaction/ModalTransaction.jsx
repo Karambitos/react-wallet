@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
+
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 import { selectAllCategories } from 'redux/transactions/selectors';
@@ -14,7 +15,7 @@ export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
   );
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
   const [comment, setComment] = useState('');
@@ -43,7 +44,6 @@ export const ModalTransaction = () => {
       category => category.type === type
     );
 
-    console.log(categories);
     if (filteredCategory.length === 1) {
       setCategoryId(filteredCategory[0].id);
     }
@@ -104,8 +104,15 @@ export const ModalTransaction = () => {
     <>
       {modalState ? (
         <div className={styles.overlay}>
-          <div className={styles.modal}>
-            <h2 className={styles.title}>Add transaction</h2>
+          <div className={styles.modalAddTrans}>
+            {/* <button
+              type="button"
+              class="button-modal-close"
+              data-ingredients-modal-close
+            >
+             
+            </button> */}
+            <h1 className={styles.title}>Add transaction</h1>
 
             <div className={styles.toggleContainer}>
               <span
@@ -131,31 +138,34 @@ export const ModalTransaction = () => {
             </div>
             <form onSubmit={handleSubmit} className={styles.form}>
               {isActive && (
-                <Selector
-                  options={categoryFiltered}
-                  onSelect={handleOptionSelect}
-                />
+                <div className={styles.selectorWrapper}>
+                  <Selector
+                    options={categoryFiltered}
+                    onSelect={handleOptionSelect}
+                  />
+                </div>
               )}
-
-              <input
-                className={styles.inputNumber}
-                type="number"
-                placeholder="0.00"
-                required
-                value={amountNumber}
-                name="amount"
-                onChange={handleChange}
-              />
-              <div className={styles.datePickerContainer}>
+              <div className={styles.numberAndCalendarWrapper}>
                 <input
-                  className={styles.inputCalendar}
-                  value={transactionDate}
-                  onChange={setTransactionDate}
+                  className={styles.inputNumber}
+                  type="number"
+                  placeholder="0.00"
+                  required
+                  value={amountNumber}
+                  name="amount"
+                  onChange={handleChange}
                 />
-                <DatePicker
-                  onSelect={handleSelectDate}
-                  initialValue={new Date()}
-                />
+                <div className={styles.datePickerContainer}>
+                  <input
+                    className={styles.inputCalendar}
+                    value={transactionDate}
+                    onChange={setTransactionDate}
+                  />
+                  <DatePicker
+                    onSelect={handleSelectDate}
+                    initialValue={new Date()}
+                  />
+                </div>
               </div>
               <input
                 type="text"
