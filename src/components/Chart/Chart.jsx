@@ -6,19 +6,18 @@ import { getSummaryController } from 'redux/transactions/operations';
 import styles from './Chart.module.scss';
 import Filter from './Filter/Filter';
 import StatisticsList from './StatisticsList/StatisticsList';
+import {
+  selectAllCategories,
+  selectExpenseSummary,
+  selectIncomeSummary,
+} from 'redux/transactions/selectors';
 
 ChartJS.register(ArcElement, Tooltip);
 
 export default function Chart() {
-  const categoriesSummary = useSelector(
-    state => state.transactions.categoriesSummary.categories
-  );
-  const incomeSummary = useSelector(
-    state => state.transactions.categoriesSummary.incomeSummary
-  );
-  const expenseSummary = useSelector(
-    state => state.transactions.categoriesSummary.expenseSummary
-  );
+  const categoriesSummary = useSelector(selectAllCategories);
+  const incomeSummary = useSelector(selectIncomeSummary);
+  const expenseSummary = useSelector(selectExpenseSummary);
   const dispatch = useDispatch();
 
   function formattedValue(value) {
@@ -39,7 +38,6 @@ export default function Chart() {
 
   const getValues = (array, value) => {
     return array.filter(item => item.type !== 'INCOME').map(obj => obj[value]);
-    // return array.map(obj => obj[value]);
   };
 
   const backgroundColor = [

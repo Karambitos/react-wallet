@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
+import { getBalanse } from 'redux/auth/authSelectors';
 import style from './balance.module.scss';
 
 const Balance = () => {
-  const userBalance = useSelector(state => state.auth.user.balance);
-
+  const userBalance = useSelector(getBalanse);
   const formattedUserBalance = `₴ ${formattedValue(userBalance.toFixed(2))}`;
 
   function formattedValue(value) {
