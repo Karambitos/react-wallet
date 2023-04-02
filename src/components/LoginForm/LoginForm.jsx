@@ -1,10 +1,12 @@
-import { Button, Input, InputAdornment } from '@mui/material';
+import { Input, InputAdornment } from '@mui/material';
+import { useMediaQuery } from 'react-responsive';
+import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { useState } from 'react';
-import styled from 'styled-components';
-
+import styles from './login.module.scss';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link, Navigate, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = ({ cbOnSubmit }) => {
   const [formLogin, setFormLogin] = useState({ email: '', password: '' });
@@ -18,67 +20,66 @@ export const LoginForm = ({ cbOnSubmit }) => {
 
     cbOnSubmit(formLogin);
   };
-  console.log();
-  return (
-    <LoginContainer>
-      <div>
-        <img src="../../images/walletLogo.png" alt="" width={200} />{' '}
-        <p>Wallet</p>
-      </div>
-      <FormBox onSubmit={handleSubmit}>
-        <Input
-          placeholder="E-mail"
-          id="input-with-icon-adornment"
-          type="email"
-          name="email"
-          value={formLogin.name}
-          required
-          onChange={handleChange}
-          startAdornment={
-            <InputAdornment position="start">
-              <EmailIcon />
-            </InputAdornment>
-          }
-        />
-        <Input
-          placeholder="Password"
-          id="input-with-icon-adornment"
-          type="text"
-          name="password"
-          value={formLogin.name}
-          required
-          onChange={handleChange}
-          startAdornment={
-            <InputAdornment position="start">
-              <LockIcon />
-            </InputAdornment>
-          }
-        />
-        <BoxContainer>
-          <Button type="submit" variant="contained">
-            Log in
-          </Button>
+  const isTablet = useMediaQuery({
+    query: '(min-width: 580px)',
+  });
 
-          {/* <Button variant="outlined">Register</Button> */}
-          <Button variant="outlined">
-            <Link to="/register">Register</Link>
-          </Button>
-        </BoxContainer>
-      </FormBox>
-    </LoginContainer>
+  return (
+    <div className="mainContainer">
+      <div className="mainForm">
+        {isTablet && (
+          <div className="mainForm-wrapperImage">
+            <div className="mainForm-image">
+              <Image />
+            </div>
+            <h1 className="mainForm-title">Finance App</h1>
+          </div>
+        )}
+        <div className="mainForm-wrapperForm">
+          <div className="mainForm-wrapperFormInner">
+            <Logo className="mainForm-logo" />
+            <form onSubmit={handleSubmit}>
+              <Input
+                placeholder="E-mail"
+                id="input-with-icon-adornment"
+                type="email"
+                name="email"
+                value={formLogin.name}
+                required
+                onChange={handleChange}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                }
+              />
+              <Input
+                placeholder="Password"
+                id="input-with-icon-adornment"
+                type="text"
+                name="password"
+                value={formLogin.name}
+                required
+                onChange={handleChange}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <LockIcon />
+                  </InputAdornment>
+                }
+              />
+              <button type="submit" className="mainForm-button button">
+                Log in
+              </button>
+              <Link
+                to="/register"
+                className=" mainForm-button button button--secondary"
+              >
+                Register
+              </Link>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
-const LoginContainer = styled.div`
-  margin-bottom: 40px;
-  padding: 40px 65px 62px;
-
-  width: 533px;
-`;
-const FormBox = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const BoxContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
