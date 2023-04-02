@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { setAuthHeader } from '../../api';
 
 export const fetchAllTransactions = createAsyncThunk(
@@ -38,6 +40,9 @@ export const fetchDeleteTransactions = createAsyncThunk(
     try {
       const response = await axios.delete(`/api/transactions/${transactionId}`);
       if (response.status === 204) {
+        toast.success('Transaction deleted successfully!', {
+          className: 'custom-toast',
+        });
         return transactionId;
       } else {
         return;
