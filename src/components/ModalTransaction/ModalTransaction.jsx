@@ -10,7 +10,7 @@ import { selectAllCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
-import Selector from './Selector/Selector';
+import Selector from '../Selector/Selector';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
 export const ModalTransaction = () => {
