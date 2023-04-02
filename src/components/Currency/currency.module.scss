@@ -9,16 +9,10 @@
 }
 
 .currencywrapper {
-  ::after {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-  }
 }
 
 .table {
+  position: relative;
   font-family: $font-default;
   font-weight: 700;
   font-size: 18px;
@@ -29,14 +23,25 @@
 
   border-radius: 30px;
   background-image: url(./galary/bottom-vector.svg);
-  // url(./galary/top-vector.svg),
 
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top 250px right 250px;
-  // top 0 right 0,
-
   padding: 20px 0px;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 60px;
+    background-color: $white;
+    opacity: 0.2;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    top: 0;
+    right: 0;
+  }
+
   @media (min-width: $breakpoint-tablet) {
     min-width: 335px;
     width: 100%;
