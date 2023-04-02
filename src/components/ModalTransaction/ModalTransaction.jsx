@@ -41,19 +41,19 @@ export const ModalTransaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive, categories]);
 
-   useEffect(() => {
-     const handleKeyPress = event => {
-       if (event.key === 'Escape') {
-         handleCloseModal();
-       }
-     };
+  useEffect(() => {
+    const handleKeyPress = event => {
+      if (event.key === 'Escape') {
+        handleCloseModal();
+      }
+    };
 
-     document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('keydown', handleKeyPress);
 
-     return () => {
-       document.removeEventListener('keydown', handleKeyPress);
-     };
-   }, []);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   const filteredAllCategories = () => {
     const filteredCategory = categories.filter(
@@ -117,39 +117,39 @@ export const ModalTransaction = () => {
   };
 
   return ReactDOM.createPortal(
-  
-      <div className={styles.overlay}>
-        <div className={styles.modalAddTrans}>
-          <button className={styles.closeButton} onClick={handleCloseModal}>
-            <CloseIcon className={styles.closeButtonIcon} />
-          </button>
-          {/* {children} */}
-  
-          <h1 className={styles.title}>Add transaction</h1>
-  
-          <div className={styles.toggleContainer}>
-            <span
-              className={`${styles.toggleText} ${
-                !isActive ? styles.activeIncome : ''
-              }`}
-            >
-              Income
-            </span>
-            <div
-              className={`${styles.toggleButton} ${
-                isActive ? styles.active : ''
-              }`}
-              onClick={toggle}
-            ></div>
-            <span
-              className={`${styles.toggleText} ${
-                isActive ? styles.activeExpense : ''
-              }`}
-            >
-              Expense
-            </span>
-          </div>
-          <form onSubmit={handleSubmit} className={styles.form}>
+    <div className={styles.overlay}>
+      <div className={styles.modalAddTrans}>
+        <button className={styles.closeButton} onClick={handleCloseModal}>
+          <CloseIcon className={styles.closeButtonIcon} />
+        </button>
+        {/* {children} */}
+
+        <h1 className={styles.title}>Add transaction</h1>
+
+        <div className={styles.toggleContainer}>
+          <span
+            className={`${styles.toggleText} ${
+              !isActive ? styles.activeIncome : ''
+            }`}
+          >
+            Income
+          </span>
+          <div
+            className={`${styles.toggleButton} ${
+              isActive ? styles.active : ''
+            }`}
+            onClick={toggle}
+          ></div>
+          <span
+            className={`${styles.toggleText} ${
+              isActive ? styles.activeExpense : ''
+            }`}
+          >
+            Expense
+          </span>
+        </div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.inputsWrapper}>
             {isActive && (
               <div className={styles.selectorWrapper}>
                 <Selector
@@ -189,23 +189,22 @@ export const ModalTransaction = () => {
               name="comment"
               onChange={handleChange}
             />
-            <div className={styles.buttonsContainer}>
-              <button type="submit" className={styles.buttonAdd}>
-                <span className={styles.buttonAddName}>Add</span>
-              </button>
-              <button
-                type="button"
-                className={styles.buttonCancel}
-                onClick={handleCloseModal}
-              >
-                <span className={styles.buttonCancelName}>Cancel</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>,
-      document.getElementById('modalAddTransaction')
-   
+          </div>
+          <div className={styles.buttonsContainer}>
+            <button type="submit" className={styles.buttonAdd}>
+              <span className={styles.buttonAddName}>Add</span>
+            </button>
+            <button
+              type="button"
+              className={styles.buttonCancel}
+              onClick={handleCloseModal}
+            >
+              <span className={styles.buttonCancelName}>Cancel</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>,
+    document.getElementById('modalAddTransaction')
   );
 };
-
