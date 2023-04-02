@@ -148,45 +148,47 @@ export const ModalTransaction = () => {
           </span>
         </div>
         <form onSubmit={handleSubmit} className={styles.form}>
-          {isActive && (
-            <div className={styles.selectorWrapper}>
-              <Selector
-                options={categoryFiltered}
-                onSelect={handleOptionSelect}
+          <div className={styles.inputsWrapper}>
+            {isActive && (
+              <div className={styles.selectorWrapper}>
+                <Selector
+                  options={categoryFiltered}
+                  onSelect={handleOptionSelect}
+                />
+              </div>
+            )}
+            <div className={styles.numberAndCalendarWrapper}>
+              <input
+                className={styles.inputNumber}
+                type="number"
+                placeholder="0.00"
+                required
+                value={amountNumber}
+                name="amount"
+                onChange={handleChange}
               />
+              <div className={styles.datePickerContainer}>
+                <input
+                  className={styles.inputCalendar}
+                  value={transactionDate}
+                  onChange={setTransactionDate}
+                />
+                <DatePicker
+                  onSelect={handleSelectDate}
+                  initialValue={new Date()}
+                />
+              </div>
             </div>
-          )}
-          <div className={styles.numberAndCalendarWrapper}>
             <input
-              className={styles.inputNumber}
-              type="number"
-              placeholder="0.00"
+              type="text"
+              className={styles.inputComment}
+              placeholder="Comment"
+              value={comment}
               required
-              value={amountNumber}
-              name="amount"
+              name="comment"
               onChange={handleChange}
             />
-            <div className={styles.datePickerContainer}>
-              <input
-                className={styles.inputCalendar}
-                value={transactionDate}
-                onChange={setTransactionDate}
-              />
-              <DatePicker
-                onSelect={handleSelectDate}
-                initialValue={new Date()}
-              />
-            </div>
           </div>
-          <input
-            type="text"
-            className={styles.inputComment}
-            placeholder="Comment"
-            value={comment}
-            required
-            name="comment"
-            onChange={handleChange}
-          />
           <div className={styles.buttonsContainer}>
             <button type="submit" className={styles.buttonAdd}>
               <span className={styles.buttonAddName}>Add</span>
