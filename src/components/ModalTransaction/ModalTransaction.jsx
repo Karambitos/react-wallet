@@ -4,7 +4,7 @@ import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector';
-import { selectAllCategories } from 'redux/transactions/selectors';
+import { selectCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
@@ -23,7 +23,7 @@ export const ModalTransaction = () => {
 
   const dispatch = useDispatch();
   const modalState = useSelector(selectModalAddState);
-  const categories = useSelector(selectAllCategories);
+  const categories = useSelector(selectCategories);
 
   useEffect(() => {
     dispatch(fetchAllCategories());
