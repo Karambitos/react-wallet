@@ -25,9 +25,14 @@ const customStyles = {
     color: 'black',
   }),
 };
-const defaultInputValue = '';
 
-function Selector({ options, onSelect }) {
+function Selector({
+  options,
+  onSelect,
+  styles,
+  defaultInputValue,
+  placeholder,
+}) {
   const handleOptionSelect = selectedOption => {
     onSelect(selectedOption.value);
   };
@@ -39,8 +44,8 @@ function Selector({ options, onSelect }) {
         label: option.name,
       }))}
       onChange={handleOptionSelect}
-      placeholder="Select an option"
-      styles={customStyles}
+      placeholder={placeholder ? placeholder : 'Select an option'}
+      styles={styles ? styles : customStyles}
       defaultInputValue={defaultInputValue}
     />
   );
