@@ -2,14 +2,20 @@
 
 .tablewrapper {
   display: none;
+  width: 100%;
   @media (min-width: $breakpoint-tablet) {
     display: block;
   }
 }
 
 .currencywrapper {
-  // display: flex;
-  // gap: 30px;
+  ::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+  }
 }
 
 .table {
@@ -19,19 +25,22 @@
   line-height: 1.5;
   background-color: #4a56e2;
   color: #fff;
+  width: 100%;
 
   border-radius: 30px;
-  background-image: url(./galary/top-vector.svg),
-    url(./galary/bottom-vector.svg);
+  background-image: url(./galary/bottom-vector.svg);
+  // url(./galary/top-vector.svg),
+
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: top 0 right 0, top 210px right 0;
+  background-position: top 250px right 250px;
+  // top 0 right 0,
+
   padding: 20px 0px;
   @media (min-width: $breakpoint-tablet) {
     min-width: 335px;
-    max-width: 395px;
     width: 100%;
-    background-position: top 0 right 0, top 100px right 0;
+    background-position: top 100px right 0;
   }
 }
 
