@@ -1,10 +1,3 @@
-// import React from 'react';
-
-// export const TransactionsList = () => {
-//   return <div>TransactionsList</div>;
-// };
-
-
 import { useMediaQuery } from 'react-responsive';
 import css from './TransactionsList.module.scss';
 import { IconButton } from 'components/IconButton/IconButton';
@@ -90,30 +83,30 @@ export const TransactionsList = () => {
         </table>
       )}
       {isMobile && (
-        <ul className={css.mobileTransList}>
+        <ul className={css.mobileTransactionsList}>
           <li>
-            <ul className={css.mobileTransList__item}>
-              <li>
+            <ul className={css.mobileTransaction}>
+              <li >
                 <span className={css.mobileTransList__title}>Date</span>{' '}
                 <span>04.01.19</span>
               </li>
-              <li>
+              <li >
                 <span className={css.mobileTransList__title}>Type</span>{' '}
                 <span>-</span>
               </li>
-              <li>
+              <li >
                 <span className={css.mobileTransList__title}>Category</span>{' '}
                 <span>Other</span>
               </li>
-              <li>
+              <li >
                 <span className={css.mobileTransList__title}>Comment</span>{' '}
                 <span>Gift for your wife</span>
               </li>
-              <li>
+              <li >
                 <span className={css.mobileTransList__title}>Sum</span>{' '}
-                <span>300.00</span>
+                <span className={css.mobileTransaction__summ}>300.00</span>
               </li>
-              <li>
+              <li  >
                 <button
                   type="button"
                   className={`${css.tableButton} button button button--small`}
