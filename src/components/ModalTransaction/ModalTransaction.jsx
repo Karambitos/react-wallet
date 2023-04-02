@@ -167,17 +167,6 @@ export const ModalTransaction = () => {
                 name="amount"
                 onChange={handleChange}
               />
-            </div>
-            <div className={styles.numberAndCalendarWrapper}>
-              <input
-                className={styles.inputNumber}
-                type="number"
-                placeholder="0.00"
-                required
-                value={amountNumber}
-                name="amount"
-                onChange={handleChange}
-              />
               <div className={styles.datePickerContainer}>
                 <input
                   className={styles.inputCalendar}
