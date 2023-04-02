@@ -90,13 +90,19 @@ const TransactionsList = () => {
             <tbody>
               {transactions.map(transaction => (
                 <tr key={transaction.id}>
-                  <td>{transaction.transactionDate}</td>
+                  <td>
+                    {new Date(transaction.transactionDate).toLocaleDateString(
+                      'ru-RU',
+                      { year: '2-digit', month: '2-digit', day: '2-digit' }
+                    )}
+                  </td>
                   <td>{getTransactionType(transaction.type)}</td>
                   <td>{getCategory(transaction.categoryId)}</td>
                   <td>{transaction.comment}</td>
                   <td
                     style={{
                       color: getTransactionColor(transaction.type),
+                      fontWeight: '700',
                     }}
                   >
                     {sumRef(transaction.amount)}
