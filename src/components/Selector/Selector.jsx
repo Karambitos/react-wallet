@@ -25,6 +25,7 @@ const customStyles = {
     color: 'black',
   }),
 };
+const defaultInputValue = '';
 
 function Selector({ options, onSelect }) {
   const handleOptionSelect = selectedOption => {
@@ -33,13 +34,14 @@ function Selector({ options, onSelect }) {
 
   return (
     <Select
-      options={options.map(option => ({
-        value: option.id,
+      options={options.map((option, index) => ({
+        value: option.id ? option.id : index + 1,
         label: option.name,
       }))}
       onChange={handleOptionSelect}
       placeholder="Select an option"
       styles={customStyles}
+      defaultInputValue={defaultInputValue}
     />
   );
 }
