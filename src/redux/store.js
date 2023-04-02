@@ -15,6 +15,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { currencyReducer } from './currency/slice';
 import { modalAddReducer } from './modalAddTransaction/slice';
+import { statisticsFilterReducer } from './statisticsFilter/slice';
 
 const authPersistConfig = {
   key: 'token',
@@ -49,6 +50,7 @@ export const store = configureStore({
 
     currency: persistReducer(currencyPersistConfig, currencyReducer),
     modal: persistReducer(modalPersistConfig, modalAddReducer),
+    statisticsFilter: statisticsFilterReducer,
   },
   middleware,
 });
