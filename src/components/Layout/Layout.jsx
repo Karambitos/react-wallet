@@ -14,12 +14,15 @@ export default function Layout() {
 
   return (
     <div className="mainContainer">
+      <div className="blur"></div>
       <AppBar />
 
       <div className="pageWrapper contentMaxWidth">
         <div className="aside">
-          <Navigation />
-          <Balance />
+          <div className="navWrapper">
+            <Navigation />
+            <Balance />
+          </div>
           <Currency />
         </div>
         <div className="main">
