@@ -1,39 +1,36 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getSummaryController } from 'redux/transactions/operations';
-import styles from './Filter.module.scss';
+// import styles from './Filter.module.scss';
 
 export default function Filter() {
-  const [year, setYear] = useState('');
-  const [month, setMonth] = useState('');
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const dispatch = useDispatch();
 
-  console.log(year, month);
   const handleYearChange = event => {
     setYear(event.target.value);
-    dispatch(getSummaryController(month, year));
-    console.log(year);
+    dispatch(getSummaryController({ month: month, year: event.target.value }));
   };
 
   const handleMonthChange = event => {
     setMonth(event.target.value);
-    dispatch(getSummaryController(month, year));
-    console.log(month);
+    dispatch(getSummaryController({ month: event.target.value, year: year }));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    setYear('');
-    setMonth('');
+    setYear(new Date().getFullYear());
+    setMonth(new Date().getMonth() + 1);
   };
   return (
     <form onSubmit={handleSubmit}>
       <select id="year" name="year" value={year} onChange={handleYearChange}>
-        <option value="2023">2023</option>
-        <option value="2022">2022</option>
-        <option value="2021">2021</option>
-        <option value="2021">2020</option>
-        <option value="2021">2019</option>
+        <option value={2023}>2023</option>
+        <option value={2022}>2022</option>
+        <option value={2021}>2021</option>
+        <option value={2020}>2020</option>
+        <option value={2019}>2019</option>
       </select>
       <select
         id="month"
@@ -41,19 +38,18 @@ export default function Filter() {
         value={month}
         onChange={handleMonthChange}
       >
-        {/* //TODO: defaultValue="04" */}
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
+        <option value={1}>January</option>
+        <option value={2}>February</option>
+        <option value={3}>March</option>
+        <option value={4}>April</option>
+        <option value={5}>May</option>
+        <option value={6}>June</option>
+        <option value={7}>July</option>
+        <option value={8}>August</option>
+        <option value={9}>September</option>
+        <option value={10}>October</option>
+        <option value={11}>November</option>
+        <option value={12}>December</option>
       </select>
     </form>
   );
