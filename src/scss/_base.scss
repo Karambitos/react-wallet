@@ -371,30 +371,48 @@ h6,
   outline: none;
 }
 
-.wrapperPeges {
-  @media screen and (max-width: $breakpoint-tablet) {
-    background: rgba($white, 0.4);
-    backdrop-filter: blur(25px);
-    height: 568px;
-  }
+// .wrapperPeges {
+//   @media screen and (max-width: $breakpoint-tablet) {
+//     background: rgba($white, 0.4);
+//     backdrop-filter: blur(25px);
+//     height: 568px;
+//   }
+
+//   @media screen and (min-width: $breakpoint-tablet) {
+//     height: 1024px;
+//     position: relative;
+//     overflow: hidden;
+//     background: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg) rgba($white, 0.4);
+//     background-repeat: no-repeat;
+//     background-position: top 100% left 0, top 0 right 0;
+//   }
+
+//   @media screen and (min-width: $breakpoint-desktop) {
+//     height: 720px;
+//     position: relative;
+//     overflow: hidden;
+//     background: 
+// url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg) rgba($white, 0.4) ;
+//     background-repeat: no-repeat;
+//     background-position: top 100% left 0, top 0 right 0;
+//   }
+// }
+
+.mainContainer {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 
   @media screen and (min-width: $breakpoint-tablet) {
-    height: 1024px;
-    position: relative;
-    overflow: hidden;
-    background: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg) rgba($white, 0.4);
+    background-image: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg);
     background-repeat: no-repeat;
     background-position: top 100% left 0, top 0 right 0;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
-    height: 720px;
-    position: relative;
-    overflow: hidden;
-    background: 
-url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg) rgba($white, 0.4) ;
-    background-repeat: no-repeat;
-    background-position: top 100% left 0, top 0 right 0;
+      background-image: url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg);
+      background-repeat: no-repeat;
+      background-position: top 100% left 0, top 0 right 0;
   }
 }
 

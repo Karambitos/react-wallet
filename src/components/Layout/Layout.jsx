@@ -13,7 +13,7 @@ export default function Layout() {
   const modalIsOpen = useSelector(selectModalAddState);
 
   return (
-    <>
+    <div className="mainContainer">
       <AppBar />
 
       <div className="pageWrapper contentMaxWidth">
@@ -29,6 +29,6 @@ export default function Layout() {
         </div>
       </div>
       <div>{modalIsOpen && <ModalTransaction />}</div>
-    </>
+    </div>
   );
 }
