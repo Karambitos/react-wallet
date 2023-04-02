@@ -39,7 +39,7 @@ export const TransactionsList = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <IconButton>
+                <IconButton type="button" aria-label="edit">
                   <EditIcon />
                 </IconButton>
                 <button
@@ -57,7 +57,7 @@ export const TransactionsList = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <IconButton>
+                <IconButton type="button" aria-label="edit">
                   <EditIcon />
                 </IconButton>
                 <button
@@ -75,7 +75,7 @@ export const TransactionsList = () => {
               <td className="cell">Bought food for week</td>
               <td className="cell">5 000.00</td>
               <td className="cell actions">
-                <IconButton>
+                <IconButton type="button" aria-label="edit">
                   <EditIcon />
                 </IconButton>
                 <button
@@ -121,7 +121,7 @@ export const TransactionsList = () => {
                   Delete
                 </button>
                 <div>
-                  <IconButton>
+                  <IconButton type="button" aria-label="edit">
                     <EditIcon />
                     <span className={css.editButtonTitle}>Edit</span>
                   </IconButton>
