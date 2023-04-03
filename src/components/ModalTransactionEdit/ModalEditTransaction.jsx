@@ -19,7 +19,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   );
   const [formData, setFormData] = useState({
     type: transaction.type || '',
-    amount: transaction.amount || '',
+    amount: transaction.amount ,
     transactionDate: transaction.transactionDate || '',
     comment: transaction.comment || '',
   });
@@ -65,7 +65,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   }, []);
 
  const selectedType = isActive ? 'EXPENSE' : 'INCOME'
-
+ const parsedAmount = parseInt(formData.amount);
   const handleSubmit = e => {
     e.preventDefault();
     const updatedTransaction = {
@@ -73,7 +73,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
       type: selectedType,
       categoryId: selectedCategoryId,
       comment: formData.comment,
-      amount: formData.amount,
+      amount: parsedAmount,
     };
     dispatch(
       fetchUpdateTransactions({

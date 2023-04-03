@@ -142,8 +142,13 @@ const TransactionsList = () => {
                   >
                     {sumRef(transaction.amount)}
                   </td>
-                  <td className="cell actions">
-                    <IconButton type="button" aria-label="edit">
+
+                  <td className={`${css.th} cell textAlignL`}>
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                       onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                     </IconButton>
                     <button
