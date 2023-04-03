@@ -15,7 +15,10 @@
 }
 
 .balancewrapper {
-  padding-left: 40px;
+  padding: 10px 20px;
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 40px ;
+  }
 }
 
 .balancetext {
