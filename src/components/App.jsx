@@ -1,30 +1,22 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import '../main.scss';
 import { PrivateRoute } from 'hoc/PrivateRoute';
 import { PublicRoute } from 'hoc/PublicRoute';
-// import Layout from './Layout/Layout';
-
-import Layout from '../components/Layout/Layout';
-import Home from 'pages/Home';
-import Statistics from 'pages/Statistics';
 import NotFound from 'pages/NotFound';
 import BaseStyle from 'pages/BaseStyle';
-import { RegisterPage } from 'pages/RegisterPage';
-import { LoginPage } from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import LoginPage from 'pages/LoginPage';
+import '../main.scss';
 
-// const Home = lazy(() => import('pages/Home'));
-// const Statistics = lazy(() => import('pages/Statistics'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
-// const BaseStyle = lazy(() => import('pages/BaseStyle'));
-// const NotFound = lazy(() => import('pages/NotFound'));
+import Layout from './Layout/Layout';
+const Home = lazy(() => import('pages/Home'));
+const Statistics = lazy(() => import('pages/Statistics'));
 
 export default function App() {
   return (
     <>
-      <ToastContainer position="top-center" autoClose={1000} />
+      <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route

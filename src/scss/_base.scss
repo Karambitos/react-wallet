@@ -335,12 +335,18 @@ h6,
 }
 
 .custom-toast {
-  background-color: #3cb371;
-  color: #fff;
+
+  color: $mainColor;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
+}
+.Toastify__toast-icon svg {
+  fill: $mainColor;
+}
+.Toastify__progress-bar--success{
+  background: $mainColor;
 }
 
 /* Class for text that should only be visible to screen readers */
@@ -433,7 +439,7 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border: 1px solid #E0E0E0;
+  border-bottom: 1px solid #E0E0E0;
   outline: none;
 
   &::placeholder{
