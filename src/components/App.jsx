@@ -8,6 +8,7 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 import '../main.scss';
+import CurrencyMob from 'pages/Currencymob';
 const Home = lazy(() => import('pages/Home'));
 const Statistics = lazy(() => import('pages/Statistics'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -32,6 +33,12 @@ export default function App() {
               path="/statistics"
               element={
                 <PrivateRoute redirectTo="/login" component={<Statistics />} />
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <PrivateRoute redirectTo="/login" component={<CurrencyMob />} />
               }
             />
           </Route>

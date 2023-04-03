@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import AppBar from '../AppBar/AppBar';
 import Navigation from 'components/Navigation/Navigation';
@@ -9,9 +9,20 @@ import Currency from 'components/Currency/Currency';
 import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
 import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 import Loader from 'components/Loader/Loader';
+import { useState, useEffect } from 'react';
 
 export default function Layout() {
   const modalIsOpen = useSelector(selectModalAddState);
+  const location = useLocation();
+
+  const [isBalanceRender, setBalanceStatus] = useState(true);
+  useEffect(() => {
+    if (location.pathname === '/currency') {
+      setBalanceStatus(false);
+    } else {
+      setBalanceStatus(true);
+    }
+  }, [location]);
 
   return (
     <div className="mainContainer">
@@ -21,7 +32,7 @@ export default function Layout() {
         <div className="aside">
           <div className="navWrapper">
             <Navigation />
-            <Balance />
+            {isBalanceRender && <Balance />}
           </div>
           <Currency />
         </div>
