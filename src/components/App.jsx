@@ -17,6 +17,8 @@ const BaseStyle = lazy(() => import('pages/BaseStyle'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export default function App() {
+  // const isAuth = useSelector(getIsAuth);
+
   return (
     <>
       <ToastContainer position="top-right" autoClose={1000} />

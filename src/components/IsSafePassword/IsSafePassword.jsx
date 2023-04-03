@@ -26,5 +26,16 @@ export const IsSafePassword = ({ value }) => {
     background: color(),
     borderRadius: '4px',
   });
-  return <div style={changePasswordColor()}></div>;
+  const progressContainer = () => ({
+    width: '100 %',
+    height: '4px',
+    borderRadius: '4px',
+
+    background: 'rgba(229, 241, 239, 1)',
+  });
+  return (
+    <div className="safe_password" style={progressContainer()}>
+      <div style={changePasswordColor()}></div>
+    </div>
+  );
 };
