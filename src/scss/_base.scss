@@ -464,3 +464,11 @@ h6,
   font-weight: 700;
   @include font-size(18, 27);
 }
+
+.backdrop {
+  display: grid;
+  place-content: center;
+  // justify-content: center;
+  // align-items: center;
+  height: 100vh;
+}
