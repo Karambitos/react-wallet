@@ -94,30 +94,35 @@ const TransactionsList = () => {
       {isLoading && <Loader />}
       {isTabletOrDesktop && (
         <div className={css.transactionsTableWrapper}>
-          <table className="transactionsTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Comment</th>
-                <th className="cell textAlignL">Sum</th>
-                <th></th>
+          <table className={css.transactionsTable}>
+            <thead className={css.thead}>
+              <tr className={css.tr}>
+                <th className={css.th}>Date</th>
+                <th className={css.th}>Type</th>
+                <th className={css.th}>Category</th>
+                <th className={css.th}>Comment</th>
+                <th className={`${css.th} cell textAlignL`}>Sum</th>
+                <th className={css.th}></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={css.tbody}>
               {transactions.map(transaction => (
-                <tr key={transaction.id}>
-                  <td>
+                <tr key={transaction.id} className={css.tr}>
+                  <td className={css.td}>
                     {new Date(transaction.transactionDate).toLocaleDateString(
                       'ru-RU',
                       { year: '2-digit', month: '2-digit', day: '2-digit' }
                     )}
                   </td>
-                  <td>{getTransactionType(transaction.type)}</td>
-                  <td>{getCategory(transaction.categoryId)}</td>
-                  <td>{transaction.comment}</td>
+                  <td className={css.td}>
+                    {getTransactionType(transaction.type)}
+                  </td>
+                  <td className={css.td}>
+                    {getCategory(transaction.categoryId)}
+                  </td>
+                  <td className={css.td}>{transaction.comment}</td>
                   <td
+                    className={css.td}
                     style={{
                       color: getTransactionColor(transaction.type).color,
                       fontWeight: '700',
@@ -125,7 +130,7 @@ const TransactionsList = () => {
                   >
                     {sumRef(transaction.amount)}
                   </td>
-                  <td className="cell actions">
+                  <td className={`${css.th} cell textAlignL`}>
                     <IconButton type="button" aria-label="edit">
                       <EditIcon />
                     </IconButton>
