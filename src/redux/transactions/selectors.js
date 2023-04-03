@@ -7,3 +7,5 @@ export const selectIncomeSummary = state =>
   state.transactions.categoriesSummary.incomeSummary;
 export const selectExpenseSummary = state =>
   state.transactions.categoriesSummary.expenseSummary;
+
+export const selectIsLoading = state => state.isLoading;
