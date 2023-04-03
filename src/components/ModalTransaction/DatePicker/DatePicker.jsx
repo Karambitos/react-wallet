@@ -5,7 +5,7 @@ import { ReactComponent as DatePickerIcon } from 'assets/imgages/DatePickerIcon.
 
 export const DatePicker = ({ onSelect }) => {
   const handleChange = e => {
-    onSelect(e.format('DD.MM.YYYY'));
+    onSelect(e.format('YYYY-MM-DD'));
   };
 
   const renderInput = (props, openCalendar) => {
