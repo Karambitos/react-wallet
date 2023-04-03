@@ -144,4 +144,12 @@
     background: transparent !important;
     margin-bottom: 40px;
   }
+
+  p.error {
+    margin: -30px 0 20px 0;
+    color: red;
+    @include font-size(14, 16);
+  }
 }
+
+

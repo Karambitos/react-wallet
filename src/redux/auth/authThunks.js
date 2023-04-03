@@ -41,6 +41,7 @@ export const getCurrentUser = createAsyncThunk(
     try {
       setAuthHeader(token);
       const { data } = await axios.get(`/api/users/current`, token);
+      console.log('(getCurrentUser) balance ', data.balance);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -53,7 +54,6 @@ export const logoutUser = createAsyncThunk(
     const { token } = getState().auth;
     try {
       setAuthHeader(token);
-      console.log(token);
       const { data } = await axios.delete(`/api/auth/sign-out`, token);
       clearAuthHeader();
       return data;
