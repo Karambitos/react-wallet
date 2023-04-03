@@ -19,10 +19,6 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: $colorBlue;
-    -webkit-box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-    -moz-box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-    box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-
     border-radius: 5px;
   }
 }
