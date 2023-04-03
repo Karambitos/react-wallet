@@ -1,6 +1,6 @@
 import { Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
-import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { useState } from 'react';
 import styles from './login.module.scss';

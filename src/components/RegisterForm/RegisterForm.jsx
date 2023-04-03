@@ -1,7 +1,7 @@
 import { Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
 import styles from './register.module.scss';
-import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/woman_desktop.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
