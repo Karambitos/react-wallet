@@ -1,16 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { fetchUpdateTransactions } from 'redux/transactions/operations';
-// import { selectModalAddState } from 'redux/modalAddTransaction/selector';
-// import { selectCategories } from 'redux/transactions/selectors';
-// import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
-// import { fetchAddTransactions } from 'redux/transactions/operations';
-// import { fetchAllCategories } from 'redux/transactions/operations';
-// import Selector from '../Selector/Selector';
+
 import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
@@ -69,14 +64,14 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     };
   }, []);
 
-  console.log(selectedCategoryId);
+ const selectedType = isActive ? 'EXPENSE' : 'INCOME'
 
   const handleSubmit = e => {
     e.preventDefault();
     const updatedTransaction = {
       transactionDate: formData.transactionDate,
-      type: formData.type,
-      categoryId: formData.categoryId,
+      type: selectedType,
+      categoryId: selectedCategoryId,
       comment: formData.comment,
       amount: formData.amount,
     };
@@ -171,80 +166,4 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   );
 };
 
-//  // const [type, setType] = useState('INCOME');
-//  const [categoryId, setCategoryId] = useState('');
-//  const [comment, setComment] = useState('');
-//  const [amountNumber, setAmountNumber] = useState('');
-//  const [categoryFiltered, setCategoryFiltered] = useState([]);
 
-//  const dispatch = useDispatch();
-//  const modalState = useSelector(selectModalAddState);
-//  const categories = useSelector(selectCategories);
-
-//  useEffect(() => {
-//    dispatch(fetchAllCategories());
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//  }, []);
-
-//  useEffect(() => {
-//    if (!categories) {
-//      return;
-//    }
-//    filteredAllCategories();
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//  }, [isActive, categories]);
-
-//  const filteredAllCategories = () => {
-//    const filteredCategory = categories.filter(
-//      category => category.type === type
-//    );
-
-//    if (filteredCategory.length === 1) {
-//      setCategoryId(filteredCategory[0].id);
-//    }
-//    setCategoryFiltered(filteredCategory);
-//  };
-
-//  const handleSubmit = e => {
-//    e.preventDefault();
-//    const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
-
-//    dispatch(
-//      fetchAddTransactions({
-//        transactionDate,
-//        type,
-//        categoryId,
-//        comment,
-//        amount,
-//      })
-//    );
-//    dispatch(setModalAddTransactionOpen(false));
-//  };
-
-//  const handleOptionSelect = useCallback(
-//    option => {
-//      setCategoryId(option);
-//    },
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//    [categories]
-//  );
-
-//  const handleSelectDate = date => {
-//    setTransactionDate(date);
-//  };
-
-//  const handleChange = event => {
-//    const { name, value } = event.target;
-//    switch (name) {
-//      case 'comment':
-//        setComment(value);
-//        break;
-
-//      case 'amount':
-//        setAmountNumber(value);
-//        break;
-
-//      default:
-//        return;
-//    }
-//  };
