@@ -4,7 +4,7 @@ import css from './DatePicker.module.scss';
 import { ReactComponent as DatePickerIcon } from 'assets/imgages/DatePickerIcon.svg';
 
 export const DatePicker = ({ onSelect }) => {
- const handleChange = e => {
+  const handleChange = e => {
     onSelect(e.format('DD.MM.YYYY'));
   };
 
@@ -15,6 +15,7 @@ export const DatePicker = ({ onSelect }) => {
   };
   return (
     <Datetime
+      className={css.rdtPickerOpenUpwards}
       renderInput={renderInput}
       closeOnSelect
       onChange={handleChange}
@@ -22,4 +23,3 @@ export const DatePicker = ({ onSelect }) => {
     />
   );
 };
-
