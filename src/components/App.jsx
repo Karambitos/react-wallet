@@ -1,54 +1,70 @@
-import { lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import '../main.scss';
+import { MobileRoute } from 'hoc/MobileRoute';
 import { PrivateRoute } from 'hoc/PrivateRoute';
 import { PublicRoute } from 'hoc/PublicRoute';
-// import Layout from './Layout/Layout';
 
-import Layout from '../components/Layout/Layout';
-import Home from 'pages/Home';
-import Statistics from 'pages/Statistics';
-import NotFound from 'pages/NotFound';
-import BaseStyle from 'pages/BaseStyle';
-import { RegisterPage } from 'pages/RegisterPage';
-import { LoginPage } from 'pages/LoginPage';
+import Layout from './Layout/Layout';
+import Loader from './Loader/Loader';
 
-// const Home = lazy(() => import('pages/Home'));
-// const Statistics = lazy(() => import('pages/Statistics'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
-// const BaseStyle = lazy(() => import('pages/BaseStyle'));
-// const NotFound = lazy(() => import('pages/NotFound'));
+import '../main.scss';
+import CurrencyMob from 'pages/Currencymob';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from 'redux/auth/authThunks';
+const Home = lazy(() => import('pages/Home'));
+const Statistics = lazy(() => import('pages/Statistics'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const BaseStyle = lazy(() => import('pages/BaseStyle'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
+
   return (
     <>
       <ToastContainer position="top-center" autoClose={1000} />
-      <Routes>
-        <Route path="/" element={<Layout />}>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <PrivateRoute redirectTo="/login" component={<Home />} />
+              }
+            />
+            <Route
+              path="/statistics"
+              element={
+                <PrivateRoute redirectTo="/login" component={<Statistics />} />
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <MobileRoute redirectTo="/login" component={<CurrencyMob />} />
+              }
+            />
+          </Route>
           <Route
-            index
-            element={<PrivateRoute redirectTo="/login" component={<Home />} />}
+            path="/login"
+            element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
           />
           <Route
-            path="/statistics"
+            path="/register"
             element={
-              <PrivateRoute redirectTo="/login" component={<Statistics />} />
+              <PublicRoute redirectTo="/" component={<RegisterPage />} />
             }
           />
-        </Route>
-        <Route
-          path="/login"
-          element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
-        />
-        <Route
-          path="/register"
-          element={<PublicRoute redirectTo="/" component={<RegisterPage />} />}
-        />
-        <Route path="/BaseStyle" element={<BaseStyle />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="/BaseStyle" element={<BaseStyle />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

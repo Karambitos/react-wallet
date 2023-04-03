@@ -9,7 +9,7 @@ import { fetchUpdateTransactions } from './operations'
 const initialState = {
   transactions: [],
   categories: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
   categoriesSummary: {
     categories: [],

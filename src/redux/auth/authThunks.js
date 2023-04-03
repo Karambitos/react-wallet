@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { setAuthHeader, clearAuthHeader } from '../../api';
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
@@ -28,6 +29,7 @@ export const loginUser = createAsyncThunk(
       setAuthHeader(token);
       return { user, token };
     } catch (error) {
+      Notify.failure('Incorect email or password');
       return rejectWithValue(error.message);
     }
   }
@@ -39,7 +41,6 @@ export const getCurrentUser = createAsyncThunk(
     try {
       setAuthHeader(token);
       const { data } = await axios.get(`/api/users/current`, token);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -52,7 +53,6 @@ export const logoutUser = createAsyncThunk(
     const { token } = getState().auth;
     try {
       setAuthHeader(token);
-      console.log(token);
       const { data } = await axios.delete(`/api/auth/sign-out`, token);
       clearAuthHeader();
       return data;

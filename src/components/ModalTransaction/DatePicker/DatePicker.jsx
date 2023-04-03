@@ -4,8 +4,8 @@ import css from './DatePicker.module.scss';
 import { ReactComponent as DatePickerIcon } from 'assets/imgages/DatePickerIcon.svg';
 
 export const DatePicker = ({ onSelect }) => {
- const handleChange = e => {
-    onSelect(e.format('DD.MM.YYYY'));
+  const handleChange = e => {
+    onSelect(e.format('YYYY-MM-DD'));
   };
 
   const renderInput = (props, openCalendar) => {
@@ -13,8 +13,10 @@ export const DatePicker = ({ onSelect }) => {
       <DatePickerIcon onClick={openCalendar} className={css.datePickerIcon} />
     );
   };
+
   return (
     <Datetime
+      className={css.rdtPickerOpenUpwards}
       renderInput={renderInput}
       closeOnSelect
       onChange={handleChange}
@@ -22,4 +24,3 @@ export const DatePicker = ({ onSelect }) => {
     />
   );
 };
-
