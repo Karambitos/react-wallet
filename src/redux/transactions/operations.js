@@ -41,7 +41,7 @@ export const fetchDeleteTransactions = createAsyncThunk(
       const response = await axios.delete(`/api/transactions/${transactionId}`);
       if (response.status === 204) {
         toast.success('Transaction deleted successfully!', {
-          className: 'custom-toast',
+          className: 'custom-toast-message',
         });
         return transactionId;
       } else {
@@ -64,7 +64,6 @@ export const fetchAllCategories = createAsyncThunk(
     }
   }
 );
-// dsajkhkjdskjdsdskkdfhkhds@mail.com
 
 export const getSummaryController = createAsyncThunk(
   'auth/getSummaryController',

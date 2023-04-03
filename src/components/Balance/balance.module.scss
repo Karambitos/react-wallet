@@ -9,14 +9,16 @@
   border-radius: 30px;
 
   @media (min-width: $breakpoint-tablet) {
-    // max-width: 395px;
     min-width: 335px;
     width: 100%;
   }
 }
 
 .balancewrapper {
-  padding-left: 40px;
+  padding: 10px 20px;
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 40px ;
+  }
 }
 
 .balancetext {
