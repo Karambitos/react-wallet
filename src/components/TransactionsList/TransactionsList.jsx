@@ -6,13 +6,18 @@ import {
   fetchDeleteTransactions,
 } from 'redux/transactions/operations';
 import { getCurrentUser } from 'redux/auth/authThunks';
-import { selectAllTransactions } from 'redux/transactions/selectors';
+import {
+  selectAllTransactions,
+  selectIsLoading,
+} from 'redux/transactions/selectors';
 import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
+import Loader from 'components/Loader/Loader';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchAllTransactions());
@@ -86,6 +91,7 @@ const TransactionsList = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       {isTabletOrDesktop && (
         <div className={css.transactionsTableWrapper}>
           <table className="transactionsTable">

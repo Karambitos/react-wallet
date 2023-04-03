@@ -152,6 +152,8 @@ h6,
 }
 
 .mainContainer {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
@@ -175,44 +177,6 @@ h6,
   padding: 0;
 }
 
-.pageWrapper {
-  display: flex;
-  align-items: stretch;
-  padding: 12px 20px;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
-  position: relative;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: 32px;
-    &:before {
-      content: '';
-      width: 100vw;
-      height: 100vh;
-      backdrop-filter: blur(40px);
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: 45px 16px;
-    flex-direction: row;
-    gap: 100px;
-  }
-}
-
-.aside {
-  width: 100%;
-  @media (min-width: $breakpoint-desktop) {
-    max-width: 394px;
-  }
-}
-
 .navWrapper {
   display: flex;
   flex-direction: column;
@@ -223,20 +187,75 @@ h6,
   }
 }
 
+.pageWrapper {
+  display: flex;
+  align-items: stretch;
+  padding: 0 20px;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100%;
+  flex: 1;
+  position: relative;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 32px;
+    &:before {
+      content: '';
+      width: 100vw;
+      min-height: 100vh;
+      height: 100%;
+      backdrop-filter: blur(40px);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 16px;
+    flex-direction: row;
+    gap: 140px;
+  }
+}
+
+.aside {
+  width: 100%;
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 394px;
+    position: relative;
+    &:before {
+      content: '';
+      width: 2px;
+      height: 100%;
+      box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+        1px 0px 0px rgba(255, 255, 255, 0.6);
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -69px;
+    }
+  }
+}
+
 .aside,
 .main {
   display: flex;
   height: auto;
   gap: 30px;
+  padding: 12px 0;
   flex-direction: column;
   align-items: stretch;
   z-index: 2;
 
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
+    padding: 32px 0;
   }
 
   @media (min-width: $breakpoint-desktop) {
+    padding: 45px 0;
     flex-direction: column;
   }
 }
@@ -321,12 +340,17 @@ h6,
 }
 
 .custom-toast {
-  background-color: #3cb371;
-  color: #fff;
+  color: $mainColor;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
+}
+.Toastify__toast-icon svg {
+  fill: $mainColor;
+}
+.Toastify__progress-bar--success {
+  background: $mainColor;
 }
 
 /* Class for text that should only be visible to screen readers */
@@ -350,6 +374,7 @@ h6,
 
 .contentMaxWidth {
   max-width: $contentMaxWidth;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -418,7 +443,7 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   outline: none;
 
   &::placeholder {
@@ -426,7 +451,16 @@ h6,
   }
 }
 
+.select__control:hover {
+  border-color: blue;
+}
+
 .active svg {
   fill: #4a56e2 !important;
   box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
+}
+
+.active span {
+  font-weight: 700;
+  @include font-size(18, 27);
 }

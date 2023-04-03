@@ -7,9 +7,13 @@ import styles from './login.module.scss';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from 'redux/auth/authSelectors';
+import Loader from 'components/Loader/Loader';
 
 export const LoginForm = ({ cbOnSubmit }) => {
   const [formLogin, setFormLogin] = useState({ email: '', password: '' });
+  const isLoading = useSelector(getIsLoading);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -27,6 +31,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
   return (
     <div className="mainContainer">
       <div className="mainForm">
+        {isLoading && <Loader />}
         {isTablet && (
           <div className="mainForm-wrapperImage">
             <div className="mainForm-image">
@@ -38,7 +43,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
         <div className="mainForm-wrapperForm">
           <div className="mainForm-wrapperFormInner">
             <Logo className="mainForm-logo" />
-            <form onSubmit={handleSubmit}>
+            <form className="mainForm-form" onSubmit={handleSubmit}>
               <Input
                 placeholder="E-mail"
                 id="input-with-icon-adornment"

@@ -1,20 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getBalanse } from 'redux/auth/authSelectors';
 import style from './balance.module.scss';
-import { useEffect, useState } from 'react';
+import { getBalance } from '../../redux/auth/authSelectors';
 
 const Balance = () => {
-  const [balanceAfter, setBalanceAfter] = useState(0);
-  const userBalance = useSelector(getBalanse);
-  const transactions = useSelector(state => state.transactions.transactions);
-  const formattedUserBalance = `₴ ${formattedValue(userBalance.toFixed(2))}`;
-  const formattedBalanceAfter = `₴ ${formattedValue(balanceAfter.toFixed(2))}`;
-
-  useEffect(() => {
-    if (transactions.length !== 0) {
-      setBalanceAfter(transactions[transactions.length - 1].balanceAfter);
-    }
-  }, [transactions]);
+  const balance = useSelector(getBalance);
+  const formattedBalance = `₴ ${formattedValue(balance.toFixed(2))}`;
 
   function formattedValue(value) {
     const formattedNum = Math.abs(value).toFixed(2);
@@ -29,9 +19,7 @@ const Balance = () => {
     <div className={style.balance}>
       <div className={style.balancewrapper}>
         <span className={style.balancetext}>Your balance</span>
-        <span className={style.balancesumm}>
-          {formattedBalanceAfter || formattedUserBalance}
-        </span>
+        <span className={style.balancesumm}>{formattedBalance}</span>
       </div>
     </div>
   );

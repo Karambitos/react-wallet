@@ -205,26 +205,19 @@
 .inputNumber {
   display: flex;
   width: 100%;
-
   min-height: 32px;
-
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
-
   background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #bdbdbd;
 }
 
 .inputNumber::placeholder {
   font-family: $font-default;
-
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
-
-  color: #bdbdbd;
+  color: #E0E0E0;
 }
 
 .datePickerContainer {

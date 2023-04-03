@@ -43,16 +43,12 @@ export default function ModalLogout({ onClose }) {
         <div className={styles.buttonsWrap}>
           <button
             type="button"
-            className={`button ${styles.button}`}
+            className="button button--secondary"
             onClick={handleLogout}
           >
             Yes
           </button>
-          <button
-            type="button"
-            className={`button ${styles.button} ${styles.buttonReverse}`}
-            onClick={() => onClose()}
-          >
+          <button type="button" className="button" onClick={() => onClose()}>
             No
           </button>
         </div>

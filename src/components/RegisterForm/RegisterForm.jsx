@@ -9,6 +9,9 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from 'redux/auth/authSelectors';
+import Loader from 'components/Loader/Loader';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
   const validationsSchema = yup.object().shape({
@@ -34,12 +37,14 @@ export const RegisterForm = ({ cbOnSubmit }) => {
       .typeError('Must be string')
       .required('Please, enter your password'),
   });
+  const isLoading = useSelector(getIsLoading);
   const isTablet = useMediaQuery({
     query: '(min-width: 580px)',
   });
   return (
     <div className="mainContainer">
       <div className="mainForm">
+        {isLoading && <Loader />}
         {isTablet && (
           <div className="mainForm-wrapperImage">
             <div className="mainForm-image">
@@ -75,7 +80,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                 dirty,
               }) => {
                 return (
-                  <form className={styles.box} onSubmit={handleSubmit}>
+                  <form className="mainForm-form" onSubmit={handleSubmit}>
                     <Input
                       placeholder="E-mail"
                       onChange={handleChange}

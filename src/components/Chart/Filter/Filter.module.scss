@@ -2,8 +2,13 @@
 @import '../../../scss/mixins';
 
 
-form {
+.form {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    gap: 32px;
+    margin-bottom: 20px;
+
+    > div{
+        width: 100%;
+    }
 }
