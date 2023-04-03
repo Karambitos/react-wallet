@@ -20,7 +20,6 @@ import { statisticsFilterReducer } from './statisticsFilter/slice';
 const authPersistConfig = {
   key: 'token',
   storage,
-  // whitelist: ['token'],
 };
 
 const currencyPersistConfig = {
@@ -56,5 +55,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-//roiffgserrr@gmail.com
-//AAAaaa111
