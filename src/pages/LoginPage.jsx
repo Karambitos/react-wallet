@@ -11,12 +11,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <LoginForm
-        cbOnSubmit={handleSubmit}
-        // btnTitle={'Registrate'}
-        // linkTitle={'Login'}
-        // pathName="/login"
-      />
+      <LoginForm cbOnSubmit={handleSubmit} />
     </>
   );
 };

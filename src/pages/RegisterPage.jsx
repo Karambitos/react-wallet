@@ -16,12 +16,7 @@ export const RegisterPage = () => {
   };
   return (
     <>
-      <RegisterForm
-        cbOnSubmit={handleSubmit}
-        // btnTitle={'Registrate'}
-        // linkTitle={'Login'}
-        // pathName="/login"
-      />
+      <RegisterForm cbOnSubmit={handleSubmit} />
     </>
   );
 };
