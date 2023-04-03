@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { MobileRoute } from 'hoc/MobileRoute';
 import { PrivateRoute } from 'hoc/PrivateRoute';
 import { PublicRoute } from 'hoc/PublicRoute';
 
@@ -46,7 +47,7 @@ export default function App() {
             <Route
               path="/currency"
               element={
-                <PrivateRoute redirectTo="/login" component={<CurrencyMob />} />
+                <MobileRoute redirectTo="/login" component={<CurrencyMob />} />
               }
             />
           </Route>

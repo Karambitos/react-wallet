@@ -28,11 +28,6 @@ export const fetchAddTransactions = createAsyncThunk(
     try {
       const response = await axios.post('/api/transactions', credentials);
       dispatch(balanceUpdate(response.data.balanceAfter));
-      console.log(
-        '(fetchAddTransactions) balanceAfter',
-        response.data.balanceAfter
-      );
-
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
