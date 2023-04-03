@@ -41,7 +41,6 @@ export const getCurrentUser = createAsyncThunk(
     try {
       setAuthHeader(token);
       const { data } = await axios.get(`/api/users/current`, token);
-      console.log('(getCurrentUser) balance ', data.balance);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

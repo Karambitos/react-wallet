@@ -73,11 +73,9 @@ const TransactionsList = () => {
     return `${replacedString}.${decimalPart}`;
   };
 
-  const handleDelete = id => {
-    dispatch(fetchDeleteTransactions(id))
-      .unwrap()
-      .then(dispatch(getCurrentUser()))
-      .catch(error => console.log(error));
+  const handleDelete = async id => {
+    await dispatch(fetchDeleteTransactions(id));
+    dispatch(getCurrentUser());
   };
 
   const isMobile = useMediaQuery({
