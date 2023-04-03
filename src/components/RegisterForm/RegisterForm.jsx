@@ -1,5 +1,4 @@
 import { Button, Input, InputAdornment } from '@mui/material';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 import EmailIcon from '@mui/icons-material/Email';
@@ -7,7 +6,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
 export const RegisterForm = ({ cbOnSubmit }) => {

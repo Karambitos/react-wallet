@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link, Navigate, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = ({ cbOnSubmit }) => {
   const [formLogin, setFormLogin] = useState({ email: '', password: '' });
