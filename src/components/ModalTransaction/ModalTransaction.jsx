@@ -4,70 +4,143 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
-// import { selectModalAddState } from 'redux/modalAddTransaction/selector';
-// import { selectCategories } from 'redux/transactions/selectors';
-// import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
-// import { fetchAddTransactions } from 'redux/transactions/operations';
-// import { fetchAllCategories } from 'redux/transactions/operations';
-// import Selector from '../Selector/Selector';
+import { selectModalAddState } from 'redux/modalAddTransaction/selector';
+import { selectCategories } from 'redux/transactions/selectors';
+import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
+import { fetchAddTransactions } from 'redux/transactions/operations';
+import { fetchAllCategories } from 'redux/transactions/operations';
+import Selector from '../Selector/Selector';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
-export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
+export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
   );
   const [isActive, setIsActive] = useState(true);
+  const [type, setType] = useState('INCOME');
+  const [categoryId, setCategoryId] = useState('');
+  const [comment, setComment] = useState('');
+  const [amountNumber, setAmountNumber] = useState('');
+  const [categoryFiltered, setCategoryFiltered] = useState([]);
 
   const dispatch = useDispatch();
+  const modalState = useSelector(selectModalAddState);
+  const categories = useSelector(selectCategories);
 
-  // const handleCloseModal = () => {
-  //   dispatch(setModalAddTransactionOpen(false));
-  // };
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!categories) {
+      return;
+    }
+    filteredAllCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive, categories]);
+
+  useEffect(() => {
+    const handleKeyPress = event => {
+      if (event.key === 'Escape') {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
+  const filteredAllCategories = () => {
+    const filteredCategory = categories.filter(
+      category => category.type === type
+    );
+
+    if (filteredCategory.length === 1) {
+      setCategoryId(filteredCategory[0].id);
+    }
+    setCategoryFiltered(filteredCategory);
+  };
+  const handleCloseModal = () => {
+    dispatch(setModalAddTransactionOpen(false));
+  };
   const toggle = () => {
     setIsActive(!isActive);
-    // setType(isActive ? 'INCOME' : 'EXPENSE');
+    setType(isActive ? 'INCOME' : 'EXPENSE');
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
+
+    dispatch(
+      fetchAddTransactions({
+        transactionDate,
+        type,
+        categoryId,
+        comment,
+        amount,
+      })
+    );
+    dispatch(setModalAddTransactionOpen(false));
+  };
+
+  const handleOptionSelect = useCallback(
+    option => {
+      setCategoryId(option);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [categories]
+  );
 
   const handleSelectDate = date => {
     setTransactionDate(date);
   };
 
-  // useEffect(() => {
-  //   const handleKeyPress = event => {
-  //     if (event.key === 'Escape') {
-  //       handleCloseModal();
-  //     }
-  //   };
+  const handleChange = event => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'comment':
+        setComment(value);
+        break;
 
-  //   document.addEventListener('keydown', handleKeyPress);
+      case 'amount':
+        setAmountNumber(value);
+        break;
 
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress);
-  //   };
-  // }, []);
+      default:
+        return;
+    }
+  };
 
   return ReactDOM.createPortal(
     <div className={styles.overlay}>
       <div className={styles.modalAddTrans}>
-        <button className={styles.closeButton} type='button'  onClick={onClose}>
+        <button className={styles.closeButton} onClick={handleCloseModal}>
           <CloseIcon className={styles.closeButtonIcon} />
         </button>
         {/* {children} */}
 
-        <h1 className={styles.title}>Edit transaction</h1>
+        <h1 className={styles.title}>Add transaction</h1>
 
         <div className={styles.toggleContainer}>
           <span
-            onClick={toggle}
             className={`${styles.toggleText} ${
               !isActive ? styles.activeIncome : ''
             }`}
           >
             Income
           </span>
-
-          <span
+          <div
+            className={`${styles.toggleButton} ${
+              isActive ? styles.active : ''
+            }`}
             onClick={toggle}
+          ></div>
+          <span
             className={`${styles.toggleText} ${
               isActive ? styles.activeExpense : ''
             }`}
@@ -75,14 +148,14 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
             Expense
           </span>
         </div>
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputsWrapper}>
             {isActive && (
               <div className={styles.selectorWrapper}>
-                {/* <Selector
-                options={categoryFiltered}
-                onSelect={handleOptionSelect}
-                /> */}
+                <Selector
+                  options={categoryFiltered}
+                  onSelect={handleOptionSelect}
+                />
               </div>
             )}
             <div className={styles.numberAndCalendarWrapper}>
@@ -91,9 +164,9 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
                 type="number"
                 placeholder="0.00"
                 required
-                // value={amountNumber}
+                value={amountNumber}
                 name="amount"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
               <div className={styles.datePickerContainer}>
                 <input
@@ -111,101 +184,27 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
               type="text"
               className={styles.inputComment}
               placeholder="Comment"
-              // value={comment}
+              value={comment}
               required
               name="comment"
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className={styles.buttonsContainer}>
             <button type="submit" className={styles.buttonAdd}>
-              <span className={styles.buttonAddName}>Edit</span>
+              <span className={styles.buttonAddName}>Add</span>
             </button>
-            <button type="button" className={styles.buttonCancel}>
+            <button
+              type="button"
+              className={styles.buttonCancel}
+              onClick={handleCloseModal}
+            >
               <span className={styles.buttonCancelName}>Cancel</span>
             </button>
           </div>
         </form>
       </div>
     </div>,
-    document.getElementById('modalEditTransaction')
+    document.getElementById('modalAddTransaction')
   );
 };
-
-//  // const [type, setType] = useState('INCOME');
-//  const [categoryId, setCategoryId] = useState('');
-//  const [comment, setComment] = useState('');
-//  const [amountNumber, setAmountNumber] = useState('');
-//  const [categoryFiltered, setCategoryFiltered] = useState([]);
-
-//  const dispatch = useDispatch();
-//  const modalState = useSelector(selectModalAddState);
-//  const categories = useSelector(selectCategories);
-
-//  useEffect(() => {
-//    dispatch(fetchAllCategories());
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//  }, []);
-
-//  useEffect(() => {
-//    if (!categories) {
-//      return;
-//    }
-//    filteredAllCategories();
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//  }, [isActive, categories]);
-
-//  const filteredAllCategories = () => {
-//    const filteredCategory = categories.filter(
-//      category => category.type === type
-//    );
-
-//    if (filteredCategory.length === 1) {
-//      setCategoryId(filteredCategory[0].id);
-//    }
-//    setCategoryFiltered(filteredCategory);
-//  };
-
-//  const handleSubmit = e => {
-//    e.preventDefault();
-//    const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
-
-//    dispatch(
-//      fetchAddTransactions({
-//        transactionDate,
-//        type,
-//        categoryId,
-//        comment,
-//        amount,
-//      })
-//    );
-//    dispatch(setModalAddTransactionOpen(false));
-//  };
-
-//  const handleOptionSelect = useCallback(
-//    option => {
-//      setCategoryId(option);
-//    },
-//    // eslint-disable-next-line react-hooks/exhaustive-deps
-//    [categories]
-//  );
-
-//  const handleSelectDate = date => {
-//    setTransactionDate(date);
-//  };
-
-//  const handleChange = event => {
-//    const { name, value } = event.target;
-//    switch (name) {
-//      case 'comment':
-//        setComment(value);
-//        break;
-
-//      case 'amount':
-//        setAmountNumber(value);
-//        break;
-
-//      default:
-//        return;
-//    }
-//  };
