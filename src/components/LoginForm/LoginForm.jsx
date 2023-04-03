@@ -43,7 +43,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
         <div className="mainForm-wrapperForm">
           <div className="mainForm-wrapperFormInner">
             <Logo className="mainForm-logo" />
-            <form onSubmit={handleSubmit}>
+            <form className="mainForm-form" onSubmit={handleSubmit}>
               <Input
                 placeholder="E-mail"
                 id="input-with-icon-adornment"

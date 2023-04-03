@@ -80,7 +80,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                 dirty,
               }) => {
                 return (
-                  <form className={styles.box} onSubmit={handleSubmit}>
+                  <form className="mainForm-form" onSubmit={handleSubmit}>
                     <Input
                       placeholder="E-mail"
                       onChange={handleChange}

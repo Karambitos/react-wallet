@@ -14,6 +14,17 @@
       margin: 0;
   }
 
+  &-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    svg {
+        color: #E0E0E0;
+        width: 20px;
+    }
+  }
+
   &-logo{
       max-width: 180px;
       margin: 0 auto 60px;
@@ -106,21 +117,9 @@
           padding: 40px 60px;
           min-height: initial;
       }
-
-      form{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-
-          svg {
-              color: #E0E0E0;
-              width: 20px;
-          }
-      }
       
       .button{
-          margin-top: 40px;
+          margin: 40px auto 0;
           flex: auto;
           max-width: 300px;  
           width: 100%;
