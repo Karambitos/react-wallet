@@ -101,7 +101,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       <p className={'error'}>{errors.email}</p>
                     )}
                     <Input
-                      className="input"
+                      className="input inputRef"
                       onChange={handleChange}
                       placeholder="Password"
                       name="password"
