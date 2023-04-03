@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
+import { fetchUpdateTransactions } from 'redux/transactions/operations';
 // import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 // import { selectCategories } from 'redux/transactions/selectors';
 // import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
@@ -14,23 +15,21 @@ import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
 export const ModalEditTransaction = ({ onClose, transaction }) => {
-  // console.log(
-  //   `${transaction.comment}- Comment, 
-  //   ${transaction.transactionDate} - DATE,
-  //   ${transaction.amount} - NUMBER`
-  // );
-  console.log(transaction);
-const [transactionDate, setTransactionDate] = useState(
-  moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
-);
+  const [transactionDate, setTransactionDate] = useState(
+    moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
+  );
   const [isActive, setIsActive] = useState(true);
-
+  const [selectedCategoryId, setSelectedCategoryId] = useState(
+    transaction.categoryId
+  );
   const [formData, setFormData] = useState({
+    type: transaction.type || '',
     amount: transaction.amount || '',
     transactionDate: transaction.transactionDate || '',
     comment: transaction.comment || '',
-    // type: transaction.type || '',
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -39,11 +38,17 @@ const [transactionDate, setTransactionDate] = useState(
       [name]: value,
     }));
   };
-  // const dispatch = useDispatch();
+
+  const handleCategorySelect = categoryId => {
+    setSelectedCategoryId(categoryId);
+  };
 
   const toggle = () => {
     setIsActive(!isActive);
-    // setType(isActive ? 'INCOME' : 'EXPENSE');
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      type: prevFormData.type === 'INCOME' ? 'EXPENSE' : 'INCOME',
+    }));
   };
 
   const handleSelectDate = date => {
@@ -63,6 +68,25 @@ const [transactionDate, setTransactionDate] = useState(
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
+
+  console.log(selectedCategoryId);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const updatedTransaction = {
+      transactionDate: formData.transactionDate,
+      type: formData.type,
+      categoryId: formData.categoryId,
+      comment: formData.comment,
+      amount: formData.amount,
+    };
+    dispatch(
+      fetchUpdateTransactions({
+        transactionId: transaction.id,
+        credentials: updatedTransaction,
+      })
+    );
+  };
 
   return ReactDOM.createPortal(
     <div className={styles.overlay}>
@@ -93,11 +117,14 @@ const [transactionDate, setTransactionDate] = useState(
             Expense
           </span>
         </div>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputsWrapper}>
             {isActive && (
               <div className={styles.selectorWrapper}>
-                <CustomSelect defaultInputValue={transaction.categoryId} />
+                <CustomSelect
+                  defaultInputValue={transaction.categoryId}
+                  onSelect={handleCategorySelect}
+                />
               </div>
             )}
             <div className={styles.numberAndCalendarWrapper}>
@@ -116,10 +143,7 @@ const [transactionDate, setTransactionDate] = useState(
                   value={transactionDate}
                   onChange={setTransactionDate}
                 />
-                <DatePicker
-                  onSelect={handleSelectDate}
-                  // initialValue={transaction.transactionDate}
-                />
+                <DatePicker onSelect={handleSelectDate} />
               </div>
             </div>
             <input

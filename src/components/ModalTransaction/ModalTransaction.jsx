@@ -69,7 +69,7 @@ export const ModalTransaction = () => {
   };
   const toggle = () => {
     setIsActive(!isActive);
-    setType(isActive ? 'INCOME' : 'EXPENSE');
+    setType(!isActive ? 'EXPENSE' : 'INCOME');
   };
 
   const handleSubmit = e => {

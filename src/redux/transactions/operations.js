@@ -85,11 +85,11 @@ export const getSummaryController = createAsyncThunk(
   }
 );
 
-
 export const fetchUpdateTransactions = createAsyncThunk(
   'transactions/fetchUpdate',
   async ({ transactionId, credentials }, thunkAPI) => {
     try {
+      console.log(credentials);
       const response = await axios.patch(`/api/transactions/${transactionId}`, credentials);
       return response.data;
     } catch (error) {

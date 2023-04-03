@@ -41,13 +41,17 @@ const customStyles = {
   }),
 };
 
-const CustomSelect = ({ defaultInputValue }) => {
+const CustomSelect = ({ defaultInputValue, onSelect }) => {
+  const handleSelectChange = option => {
+    onSelect(option.value);
+  };
   const defaultOption = options.find(
     option => option.value === defaultInputValue
   );
 
   return (
     <Select
+      onChange={handleSelectChange}
       defaultValue={defaultOption}
       options={options}
       styles={customStyles}
