@@ -85,6 +85,7 @@ export const ModalTransaction = () => {
         amount,
       })
     );
+    dispatch(setModalAddTransactionOpen(false));
   };
 
   const handleOptionSelect = useCallback(

@@ -1,19 +1,28 @@
 import { useSelector } from 'react-redux';
-import { getBalanse } from 'redux/auth/authSelectors';
 import style from './balance.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 
 const Balance = () => {
-  const [balanceAfter, setBalanceAfter] = useState(0);
-  const userBalance = useSelector(getBalanse);
+  const [balance, setBalance] = useState(0);
+  const isFirstRender = useRef(true);
   const transactions = useSelector(state => state.transactions.transactions);
-  const formattedUserBalance = `₴ ${formattedValue(userBalance.toFixed(2))}`;
-  const formattedBalanceAfter = `₴ ${formattedValue(balanceAfter.toFixed(2))}`;
+  const formattedBalance = `₴ ${formattedValue(balance.toFixed(2))}`;
 
   useEffect(() => {
-    if (transactions.length !== 0) {
-      setBalanceAfter(transactions[transactions.length - 1].balanceAfter);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
     }
+    async function getCurrentBalance() {
+      try {
+        const response = await axios.get(`/api/users/current`);
+        setBalance(response.data.balance);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    getCurrentBalance();
   }, [transactions]);
 
   function formattedValue(value) {
@@ -30,7 +39,7 @@ const Balance = () => {
       <div className={style.balancewrapper}>
         <span className={style.balancetext}>Your balance</span>
         <span className={style.balancesumm}>
-          {formattedBalanceAfter || formattedUserBalance}
+          {formattedBalance}
         </span>
       </div>
     </div>

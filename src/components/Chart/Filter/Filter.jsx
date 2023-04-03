@@ -5,7 +5,7 @@ import { updateMonth, updateYear } from 'redux/statisticsFilter/slice';
 import { getSummaryController } from 'redux/transactions/operations';
 import Selector from '../../Selector/Selector';
 
-import styles from './Filter.module.scss';
+import scss from './Filter.module.scss';
 
 export default function Filter() {
   const month = useSelector(selectMonth);
@@ -114,7 +114,7 @@ export default function Filter() {
     { id: 2019, name: 2019 },
   ];
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={scss.form} onSubmit={handleSubmit}>
       <Selector
         options={years}
         onSelect={handleYearChange}
