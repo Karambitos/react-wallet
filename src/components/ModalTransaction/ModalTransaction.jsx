@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
-import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 import { selectCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
@@ -80,8 +79,14 @@ export const ModalTransaction = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (categoryId === '') {
+      alert('!!!!');
+      return;
+    }
     const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
 
+    console.log(transactionDate);
     dispatch(
       fetchAddTransactions({
         transactionDate,
@@ -93,6 +98,7 @@ export const ModalTransaction = () => {
     );
     // dispatch(getCurrentUser());
     dispatch(setModalAddTransactionOpen(false));
+    handleCloseModal();
   };
 
   const handleOptionSelect = useCallback(

@@ -1,5 +1,10 @@
 export const selectCategories = state => state.transactions.categories;
-export const selectAllTransactions = state => state.transactions.transactions;
+
+export const sortedTransactions = state => {
+  return [...state.transactions.transactions].sort((a, b) =>
+    b.transactionDate.localeCompare(a.transactionDate)
+  );
+};
 
 export const selectAllCategories = state =>
   state.transactions.categoriesSummary.categories;
