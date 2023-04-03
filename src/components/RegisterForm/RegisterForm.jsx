@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIsLoading } from 'redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
+import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
   const validationsSchema = yup.object().shape({
@@ -108,6 +109,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                         </InputAdornment>
                       }
                     />{' '}
+                    <IsSafePassword value={values.password} />
                     {touched.password && errors.password && (
                       <p className={'error'}>{errors.password}</p>
                     )}
