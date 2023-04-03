@@ -1,7 +1,7 @@
 $colorBorder: #dcdcdf;
 $breakpoint-mobile-xs: 320px;
 $breakpoint-mobile: 375px;
-$breakpoint-mobile-horizontal: 480px;
+$breakpoint-mobile-horizontal: 580px;
 $breakpoint-tablet: 768px;
 $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
@@ -26,13 +26,6 @@ $button-border-radius-xl: 30px;
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
-
-// Styles for Select
-// background: rgba(255, 255, 255, 0.7);
-// box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-// backdrop-filter: blur(25px);
-// /* Note: backdrop-filter has minimal browser support */
-// border-radius: 20px;
 
 $font-default: 'Circe', sans-serif;
 $font-accent: 'Poppins', sans-serif;

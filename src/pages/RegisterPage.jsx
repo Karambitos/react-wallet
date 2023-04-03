@@ -16,15 +16,12 @@ export const RegisterPage = () => {
   };
   return (
     <>
-      <div>
-        <p>Regiter</p>
-        <RegisterForm
-          cbOnSubmit={handleSubmit}
-          btnTitle={'Registrate'}
-          linkTitle={'Login'}
-          pathName="/login"
-        />
-      </div>
+      <RegisterForm
+        cbOnSubmit={handleSubmit}
+        btnTitle={'Registrate'}
+        linkTitle={'Login'}
+        pathName="/login"
+      />
     </>
   );
 };

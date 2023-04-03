@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
 import { fetchAllTransactions } from 'redux/transactions/operations';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { ReactComponent as Plus } from '../../images/plus.svg';
@@ -16,15 +17,18 @@ const HomeTab = () => {
   };
 
   return (
-    <div className={styles.containerBtn}>
-      <button
-        type="button"
-        className={styles.btnPlus}
-        onClick={handleOpenModal}
-      >
-        <Plus />
-      </button>
-    </div>
+    <>
+      <TransactionsList />
+      <div className={styles.containerBtn}>
+        <button
+          type="button"
+          className={styles.btnPlus}
+          onClick={handleOpenModal}
+        >
+          <Plus />
+        </button>
+      </div>
+    </>
   );
 };
 

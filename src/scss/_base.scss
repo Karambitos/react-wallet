@@ -3,55 +3,64 @@
 
 /* poppins-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix')
-      format('embedded-opentype'),
-    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-regular.woff2')
-      format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'),
     /* Super Modern Browsers */
-      url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
-    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-regular.ttf')
-      format('truetype'),
+    url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'),
     /* Safari, Android, iOS */
-      url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+    url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+  /* Legacy iOS */
 }
+
 /* poppins-700 - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/poppins-v20-latin-700.eot'); /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix')
-      format('embedded-opentype'),
-    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-700.woff2')
-      format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-700.eot');
+  /* IE9 Compat Modes */
+  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../assets/fonts/poppins-v20-latin-700.woff2') format('woff2'),
     /* Super Modern Browsers */
-      url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
-    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-700.ttf')
-      format('truetype'),
+    url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
+    /* Modern Browsers */
+    url('../assets/fonts/poppins-v20-latin-700.ttf') format('truetype'),
     /* Safari, Android, iOS */
-      url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
+    url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
+  /* Legacy iOS */
 }
 
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Circe';
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/Circe-Bold.otf'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/Circe-Bold.otf');
+  /* IE9 Compat Modes */
 }
 
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/Circe.otf'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/Circe.otf');
+  /* IE9 Compat Modes */
 }
 
 html {
@@ -95,10 +104,14 @@ body {
     text-decoration: none;
   }
 
-  > em {
+  >em {
     color: var(--color-accent);
     font-style: normal;
   }
+}
+
+#modal-root{
+  z-index: 10;
 }
 
 h1,
@@ -136,6 +149,24 @@ h6,
   @include font-size(16, 18);
 }
 
+.mainContainer {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  @media screen and (min-width: $breakpoint-mobile-horizontal) {
+    background-image: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg);
+    background-repeat: no-repeat;
+    background-position: top 100% left 0, top 0 right 0;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
+      background-image: url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg);
+      background-repeat: no-repeat;
+      background-position: top 100% left 0, top 0 right 0;
+  }
+}
+
 .container {
   padding: 0;
 }
@@ -146,10 +177,25 @@ h6,
   padding: 12px 20px;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
+  position: relative;
+
 
   @media (min-width: $breakpoint-tablet) {
     padding: 32px;
+    &:before{
+      content: '';
+      width: 100vw;
+      height: 100vh;
+      backdrop-filter: blur(40px);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
+
   @media (min-width: $breakpoint-desktop) {
     padding: 45px 16px;
     flex-direction: row;
@@ -159,6 +205,9 @@ h6,
 
 .aside {
   width: 100%;
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 394px;
+  }
 }
 
 .navWrapper {
@@ -167,18 +216,18 @@ h6,
   gap: 10px;
   width: 100%;
   @media (min-width: $breakpoint-tablet) {
-    gap: 30px;
+    gap: 30px
   }
 }
 
 .aside,
 .main {
   display: flex;
-  justify-content: space-around;
   height: auto;
   gap: 30px;
   flex-direction: column;
   align-items: stretch;
+  z-index: 2;
 
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
@@ -200,10 +249,14 @@ h6,
   border-collapse: collapse;
   vertical-align: middle;
   min-width: 715px;
+  width: 100%;
 
   thead {
     padding: 16px 20px;
     text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   th {
@@ -215,6 +268,7 @@ h6,
     border-top-left-radius: $button-border-radius-xl;
     border-bottom-left-radius: $button-border-radius-xl;
   }
+
   th:last-child {
     border-top-right-radius: $button-border-radius-xl;
     border-bottom-right-radius: $button-border-radius-xl;
@@ -249,6 +303,7 @@ h6,
   td:first-child {
     padding-left: 20px;
   }
+
   th:last-child,
   td:last-child {
     padding-right: 20px;
@@ -260,6 +315,15 @@ h6,
       box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
     }
   }
+}
+
+.custom-toast {
+  background-color: #3cb371;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
 }
 
 /* Class for text that should only be visible to screen readers */
@@ -276,6 +340,7 @@ h6,
 .textAlignR {
   text-align: right;
 }
+
 .textAlignL {
   text-align: left;
 }
@@ -295,7 +360,6 @@ h6,
   font-family: inherit;
   outline: none;
   padding: 12px 30px;
-  flex: 1 0 300px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -330,8 +394,7 @@ h6,
     &:hover,
     &:focus,
     &:active {
-      color: $white;
-      background-color: $mainColor;
+      color: $mainColor;
       border-color: $mainColor;
     }
   }
@@ -352,8 +415,16 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
   outline: none;
+
+  &::placeholder{
+    color: #E0E0E0;
+  }
+}
+
+.select__control:hover {
+  border-color: blue;
 }
 
 .active svg {

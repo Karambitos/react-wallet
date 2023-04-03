@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import '../main.scss';
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
@@ -13,35 +14,38 @@ import { PublicRoute } from 'hoc/PublicRoute';
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
+    <>
+      <ToastContainer position="top-center" autoClose={1000} />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route
+            path="/"
+            element={<PrivateRoute redirectTo="/login" component={<Home />} />}
+          />
+          <Route
+            path="/Dashboard"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Dashboard />} />
+            }
+          />
+          <Route
+            path="/statistics"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Statistics />} />
+            }
+          />
+        </Route>
         <Route
-          path="/"
-          element={<PrivateRoute redirectTo="/login" component={<Home />} />}
+          path="/login"
+          element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
         />
         <Route
-          path="/Dashboard"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Dashboard />} />
-          }
+          path="/register"
+          element={<PublicRoute redirectTo="/" component={<RegisterPage />} />}
         />
-        <Route
-          path="/statistics"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Statistics />} />
-          }
-        />
-      </Route>
-      <Route
-        path="/login"
-        element={<PublicRoute redirectTo="/" component={<LoginPage />} />}
-      />
-      <Route
-        path="/register"
-        element={<PublicRoute redirectTo="/" component={<RegisterPage />} />}
-      />
-      <Route path="/BaseStyle" element={<BaseStyle />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="/BaseStyle" element={<BaseStyle />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
