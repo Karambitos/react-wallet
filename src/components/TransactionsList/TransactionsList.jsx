@@ -14,7 +14,7 @@ import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
-import {ModalEditTransaction} from '../ModalTransaction/ModalTransaction'
+import {ModalEditTransaction} from '../ModalTransactionEdit/ModalEditTransaction'
 
 const TransactionsList = () => {
   const dispatch = useDispatch();

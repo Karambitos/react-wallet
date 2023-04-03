@@ -10,19 +10,37 @@ import { DatePicker } from './DatePicker/DatePicker';
 // import { fetchAddTransactions } from 'redux/transactions/operations';
 // import { fetchAllCategories } from 'redux/transactions/operations';
 // import Selector from '../Selector/Selector';
+import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
-export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
-  const [transactionDate, setTransactionDate] = useState(
-    moment().format('YYYY-MM-DD')
-  );
+export const ModalEditTransaction = ({ onClose, transaction }) => {
+  // console.log(
+  //   `${transaction.comment}- Comment, 
+  //   ${transaction.transactionDate} - DATE,
+  //   ${transaction.amount} - NUMBER`
+  // );
+  console.log(transaction);
+const [transactionDate, setTransactionDate] = useState(
+  moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
+);
   const [isActive, setIsActive] = useState(true);
 
-  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    amount: transaction.amount || '',
+    transactionDate: transaction.transactionDate || '',
+    comment: transaction.comment || '',
+    // type: transaction.type || '',
+  });
 
-  // const handleCloseModal = () => {
-  //   dispatch(setModalAddTransactionOpen(false));
-  // };
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  // const dispatch = useDispatch();
+
   const toggle = () => {
     setIsActive(!isActive);
     // setType(isActive ? 'INCOME' : 'EXPENSE');
@@ -32,24 +50,24 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
     setTransactionDate(date);
   };
 
-  // useEffect(() => {
-  //   const handleKeyPress = event => {
-  //     if (event.key === 'Escape') {
-  //       handleCloseModal();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleKeyPress = event => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
 
-  //   document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('keydown', handleKeyPress);
 
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   return ReactDOM.createPortal(
     <div className={styles.overlay}>
       <div className={styles.modalAddTrans}>
-        <button className={styles.closeButton} type='button'  onClick={onClose}>
+        <button className={styles.closeButton} type="button" onClick={onClose}>
           <CloseIcon className={styles.closeButtonIcon} />
         </button>
         {/* {children} */}
@@ -79,10 +97,7 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
           <div className={styles.inputsWrapper}>
             {isActive && (
               <div className={styles.selectorWrapper}>
-                {/* <Selector
-                options={categoryFiltered}
-                onSelect={handleOptionSelect}
-                /> */}
+                <CustomSelect defaultInputValue={transaction.categoryId} />
               </div>
             )}
             <div className={styles.numberAndCalendarWrapper}>
@@ -91,9 +106,9 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
                 type="number"
                 placeholder="0.00"
                 required
-                // value={amountNumber}
+                value={formData.amount}
                 name="amount"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
               <div className={styles.datePickerContainer}>
                 <input
@@ -103,7 +118,7 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
                 />
                 <DatePicker
                   onSelect={handleSelectDate}
-                  initialValue={new Date()}
+                  // initialValue={transaction.transactionDate}
                 />
               </div>
             </div>
@@ -111,10 +126,10 @@ export const ModalEditTransaction = ({ isOpen, onClose, transaction }) => {
               type="text"
               className={styles.inputComment}
               placeholder="Comment"
-              // value={comment}
+              value={formData.comment}
               required
               name="comment"
-              // onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className={styles.buttonsContainer}>
