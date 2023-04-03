@@ -29,10 +29,6 @@ const TransactionsList = () => {
     return type === 'EXPENSE' ? '-' : '+';
   };
 
-  // const getTransactionColor = type => {
-  //   return type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
-  // };
-
   const getTransactionColor = type => {
     const className = type === 'EXPENSE' ? css.expense : css.income;
     const color = type === 'EXPENSE' ? '#FF6596' : '#24CCA7';

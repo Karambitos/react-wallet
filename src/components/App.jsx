@@ -18,7 +18,7 @@ const NotFound = lazy(() => import('pages/NotFound'));
 export default function App() {
   return (
     <>
-      <ToastContainer position="top-right" autoClose={1000} />
+      <ToastContainer position="top-center" autoClose={1000} />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
