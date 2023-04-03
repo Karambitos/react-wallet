@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { PrivateRoute } from 'hoc/PrivateRoute';
@@ -8,6 +8,10 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 import '../main.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from 'redux/auth/authThunks';
+import { getIsRefreshing } from 'redux/auth/authSelectors';
+
 const Home = lazy(() => import('pages/Home'));
 const Statistics = lazy(() => import('pages/Statistics'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -16,7 +20,18 @@ const BaseStyle = lazy(() => import('pages/BaseStyle'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export default function App() {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(getIsRefreshing);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <div className="backdrop">
+      <Loader />
+    </div>
+  ) : (
     <>
       <ToastContainer position="top-right" autoClose={1000} />
       <Suspense fallback={<Loader />}>
