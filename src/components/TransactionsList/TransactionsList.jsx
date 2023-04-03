@@ -5,6 +5,7 @@ import {
   fetchAllTransactions,
   fetchDeleteTransactions,
 } from 'redux/transactions/operations';
+import { getCurrentUser } from 'redux/auth/authThunks';
 import { selectAllTransactions } from 'redux/transactions/selectors';
 import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
@@ -71,6 +72,11 @@ const TransactionsList = () => {
     return `${replacedString}.${decimalPart}`;
   };
 
+  const handleDelete = id => {
+    dispatch(fetchDeleteTransactions(id));
+    dispatch(getCurrentUser());
+  };
+
   const isMobile = useMediaQuery({
     query: '(max-width: 767.98px)',
   });
@@ -119,9 +125,7 @@ const TransactionsList = () => {
                     </IconButton>
                     <button
                       href="#"
-                      onClick={() =>
-                        dispatch(fetchDeleteTransactions(transaction.id))
-                      }
+                      onClick={() => handleDelete(transaction.id)}
                       className={`${css.tableButton} button button button--small`}
                     >
                       Delete
@@ -179,9 +183,7 @@ const TransactionsList = () => {
                   <button
                     type="button"
                     className={`${css.tableButton} button button button--small`}
-                    onClick={() =>
-                      dispatch(fetchDeleteTransactions(transaction.id))
-                    }
+                    onClick={() => handleDelete(transaction.id)}
                   >
                     Delete
                   </button>
