@@ -20,7 +20,14 @@ export const LogoutBtn = ({ children }) => {
 
   return (
     <>
-      <button variant="contained" onClick={handleClick}>
+      <button
+        style={{
+          backgroundColor: 'transparent',
+          border: 'none',
+        }}
+        variant="contained"
+        onClick={handleClick}
+      >
         {children}
       </button>
       {showModalLogout && <ModalLogout onClose={handleModalToggle} />}

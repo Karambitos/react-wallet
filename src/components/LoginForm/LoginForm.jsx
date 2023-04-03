@@ -3,7 +3,6 @@ import { useMediaQuery } from 'react-responsive';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { useState } from 'react';
-import styles from './login.module.scss';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from 'react-router-dom';
@@ -45,6 +44,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
             <Logo className="mainForm-logo" />
             <form className="mainForm-form" onSubmit={handleSubmit}>
               <Input
+                className="input"
                 placeholder="E-mail"
                 id="input-with-icon-adornment"
                 type="email"
@@ -54,11 +54,12 @@ export const LoginForm = ({ cbOnSubmit }) => {
                 onChange={handleChange}
                 startAdornment={
                   <InputAdornment position="start">
-                    <EmailIcon />
+                    <EmailIcon sx={{ fontSize: 200 }} />
                   </InputAdornment>
                 }
               />
               <Input
+                className="input"
                 placeholder="Password"
                 id="input-with-icon-adornment"
                 type="text"
@@ -75,6 +76,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
               <button type="submit" className="mainForm-button button">
                 Log in
               </button>
+
               <Link
                 to="/register"
                 className=" mainForm-button button button--secondary"

@@ -1,6 +1,6 @@
 import { Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
-import styles from './register.module.scss';
+// import styles from './register.module.scss';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/woman_desktop.svg';
 import EmailIcon from '@mui/icons-material/Email';
@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIsLoading } from 'redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
+
+import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
   const validationsSchema = yup.object().shape({
@@ -82,6 +84,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                 return (
                   <form className="mainForm-form" onSubmit={handleSubmit}>
                     <Input
+                      className="input"
                       placeholder="E-mail"
                       onChange={handleChange}
                       // type="email"
@@ -90,14 +93,15 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       value={values.email}
                       startAdornment={
                         <InputAdornment position="start">
-                          <EmailIcon />
+                          <EmailIcon width={'40px'} />
                         </InputAdornment>
                       }
-                    />{' '}
+                    />
                     {touched.email && errors.email && (
                       <p className={'error'}>{errors.email}</p>
                     )}
                     <Input
+                      className="input"
                       onChange={handleChange}
                       placeholder="Password"
                       name="password"
@@ -107,7 +111,8 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                           <LockIcon />
                         </InputAdornment>
                       }
-                    />{' '}
+                    />
+                    <IsSafePassword value={values.password} />
                     {touched.password && errors.password && (
                       <p className={'error'}>{errors.password}</p>
                     )}
@@ -115,7 +120,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       placeholder="Confirm password"
                       value={values.confirmPassword}
                       onChange={handleChange}
-                      className={'input'}
+                      className="input"
                       onBlur={handleBlur}
                       name={'confirmPassword'}
                       startAdornment={
@@ -128,7 +133,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       <p className={'error'}>{errors.confirmPassword}</p>
                     )}
                     <Input
-                      className={'input'}
+                      className="input"
                       placeholder="Username"
                       onChange={handleChange}
                       onBlur={handleBlur}

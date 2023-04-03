@@ -389,3 +389,10 @@ h6,
   font-weight: 700;
   @include font-size(18, 27);
 }
+
+.currencymob {
+  display: block;
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: none;
+  }
+}

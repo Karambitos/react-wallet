@@ -8,6 +8,7 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 import '../main.scss';
+import CurrencyMob from 'pages/Currencymob';
 const Home = lazy(() => import('pages/Home'));
 const Statistics = lazy(() => import('pages/Statistics'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -16,6 +17,8 @@ const BaseStyle = lazy(() => import('pages/BaseStyle'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export default function App() {
+  // const isAuth = useSelector(getIsAuth);
+
   return (
     <>
       <ToastContainer position="top-center" autoClose={1000} />
@@ -32,6 +35,12 @@ export default function App() {
               path="/statistics"
               element={
                 <PrivateRoute redirectTo="/login" component={<Statistics />} />
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <PrivateRoute redirectTo="/login" component={<CurrencyMob />} />
               }
             />
           </Route>
