@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Select from 'react-select';
 
 const customStyles = {
@@ -26,19 +26,29 @@ const customStyles = {
   }),
 };
 
-function Selector({ options, onSelect }) {
+function Selector({
+  options,
+  onSelect,
+  styles,
+  defaultInputValue,
+  placeholder,
+}) {
   const handleOptionSelect = selectedOption => {
     onSelect(selectedOption.value);
   };
 
   return (
     <Select
-      options={options.map(option => ({ value: option, label: option }))}
+      options={options.map((option, index) => ({
+        value: option.id ? option.id : index + 1,
+        label: option.name,
+      }))}
       onChange={handleOptionSelect}
-      placeholder="Select an option"
-      styles={customStyles}
+      placeholder={placeholder ? placeholder : 'Select an option'}
+      styles={styles ? styles : customStyles}
+      defaultInputValue={defaultInputValue}
     />
   );
 }
 
-export default Selector;
+export default memo(Selector);

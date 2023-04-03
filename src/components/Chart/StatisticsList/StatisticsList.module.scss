@@ -1,0 +1,54 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.label{
+  background: $white;
+  font-weight: 700;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.list{
+  @include reset-list;
+
+  li{
+    border-bottom: 1px solid #DCDCDF;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  }
+
+  * {
+    display: flex;
+    align-items: center;
+  }
+
+  .marker{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-right: 16px;
+  }
+}
+
+.label,
+.list li,
+.total{
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+
+.total{
+  font-weight: 700;
+  padding: 8px 20px
+}
+
+
+.red{
+  color: $colorPink;
+}
+
+.green{
+  color: $mainColor;
+}

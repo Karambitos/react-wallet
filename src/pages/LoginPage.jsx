@@ -11,15 +11,14 @@ export const LoginPage = () => {
   };
   return (
     <>
-      <div>
-        <p>Login</p>
-        <LoginForm
-          cbOnSubmit={handleSubmit}
-          btnTitle={'Registrate'}
-          linkTitle={'Login'}
-          pathName="/login"
-        />
-      </div>
+      <LoginForm
+        cbOnSubmit={handleSubmit}
+        btnTitle={'Registrate'}
+        linkTitle={'Login'}
+        pathName="/login"
+      />
     </>
   );
 };
+
+export default LoginPage;

@@ -1,0 +1,26 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  width: 100%;
+}
+
+.mainWrapper {
+  width: 100%;
+}
+
+.title{
+  font-weight: 400;
+}
+
+.chart {
+  width: 288px;
+}
+
+.main{
+  flex: 1 0 280px
+}
