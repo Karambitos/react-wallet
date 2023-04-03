@@ -1,17 +1,17 @@
 import React, { Suspense } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import AppBar from '../AppBar/AppBar';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
-import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
-import { selectModalAddState } from 'redux/modalAddTransaction/selector';
+// import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
+// import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 import Loader from 'components/Loader/Loader';
 
 export default function Layout() {
-  const modalIsOpen = useSelector(selectModalAddState);
+  // const modalIsOpen = useSelector(selectModalAddState);
 
   return (
     <div className="mainContainer">
@@ -31,7 +31,7 @@ export default function Layout() {
           </Suspense>
         </div>
       </div>
-      <div>{modalIsOpen && <ModalTransaction />}</div>
+      {/* <div>{modalIsOpen && <ModalTransaction />}</div> */}
     </div>
   );
 }

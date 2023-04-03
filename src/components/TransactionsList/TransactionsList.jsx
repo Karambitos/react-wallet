@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -13,6 +14,7 @@ import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
+import {ModalEditTransaction} from '../ModalTransaction/ModalTransaction'
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -77,6 +79,20 @@ const TransactionsList = () => {
     query: '(min-width: 768px)',
   });
 
+
+   const [selectedTransaction, setSelectedTransaction] = useState(null);
+   const [isModalOpen, setIsModalOpen] = useState(false);
+
+   const handleEditTransaction = transaction => {
+     setSelectedTransaction(transaction);
+     setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedTransaction(null);
+  };
+
   return (
     <>
       {isLoading && <Loader />}
@@ -117,7 +133,11 @@ const TransactionsList = () => {
                     {sumRef(transaction.amount)}
                   </td>
                   <td className="cell actions">
-                    <IconButton type="button" aria-label="edit">
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                      onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                     </IconButton>
                     <button
@@ -178,6 +198,14 @@ const TransactionsList = () => {
             </ul>
           </li>
         </ul>
+      )}
+
+      {selectedTransaction && (
+        <ModalEditTransaction
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          transaction={selectedTransaction}
+        />
       )}
     </>
   );
