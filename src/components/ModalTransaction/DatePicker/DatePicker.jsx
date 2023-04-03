@@ -13,6 +13,7 @@ export const DatePicker = ({ onSelect }) => {
       <DatePickerIcon onClick={openCalendar} className={css.datePickerIcon} />
     );
   };
+
   return (
     <Datetime
       className={css.rdtPickerOpenUpwards}
