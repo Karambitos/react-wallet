@@ -24,7 +24,6 @@ export const ModalTransaction = () => {
   const [categoryFiltered, setCategoryFiltered] = useState([]);
 
   const dispatch = useDispatch();
-
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
@@ -97,7 +96,7 @@ export const ModalTransaction = () => {
         amount,
       })
     );
-    dispatch(getCurrentUser());
+    // dispatch(getCurrentUser());
     dispatch(setModalAddTransactionOpen(false));
     handleCloseModal();
   };

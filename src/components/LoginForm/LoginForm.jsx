@@ -62,7 +62,7 @@ export const LoginForm = ({ cbOnSubmit }) => {
                 className="input"
                 placeholder="Password"
                 id="input-with-icon-adornment"
-                type="text"
+                type="password"
                 name="password"
                 value={formLogin.name}
                 required

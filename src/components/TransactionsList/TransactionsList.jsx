@@ -74,8 +74,10 @@ const TransactionsList = () => {
   };
 
   const handleDelete = id => {
-    dispatch(fetchDeleteTransactions(id));
-    dispatch(getCurrentUser());
+    dispatch(fetchDeleteTransactions(id))
+      .unwrap()
+      .then(dispatch(getCurrentUser()))
+      .catch(error => console.log(error));
   };
 
   const isMobile = useMediaQuery({
@@ -89,16 +91,20 @@ const TransactionsList = () => {
     <>
       {isLoading && <Loader />}
       {isTabletOrDesktop && (
-        <div className={css.transactionsTableWrapper}>
-          <table className={css.transactionsTable}>
-            <thead className={css.thead}>
-              <tr className={css.tr}>
-                <th className={css.th}>Date</th>
-                <th className={css.th}>Type</th>
-                <th className={css.th}>Category</th>
-                <th className={css.th}>Comment</th>
-                <th className={`${css.th} cell textAlignL`}>Sum</th>
-                <th className={css.th}></th>
+        <div
+          className={`${css.transactionsTableWrapper} ${
+            isLoading && css.isLoading
+          }`}
+        >
+          <table className="transactionsTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Comment</th>
+                <th className="cell textAlignL">Sum</th>
+                <th></th>
               </tr>
             </thead>
             <tbody className={css.tbody}>
@@ -131,7 +137,7 @@ const TransactionsList = () => {
                       <EditIcon />
                     </IconButton>
                     <button
-                      href="#"
+                      disabled={isLoading}
                       onClick={() => handleDelete(transaction.id)}
                       className={`${css.tableButton} button button button--small`}
                     >

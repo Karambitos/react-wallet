@@ -8,4 +8,4 @@ export const selectIncomeSummary = state =>
 export const selectExpenseSummary = state =>
   state.transactions.categoriesSummary.expenseSummary;
 
-export const selectIsLoading = state => state.isLoading;
+export const selectIsLoading = state => state.transactions.isLoading;

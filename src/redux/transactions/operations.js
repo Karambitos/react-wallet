@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setAuthHeader } from '../../api';
+import { balanceUpdate } from 'redux/auth/authSlice';
 
 export const fetchAllTransactions = createAsyncThunk(
   'transactions/fetchAll',
@@ -23,10 +24,15 @@ export const fetchAllTransactions = createAsyncThunk(
 
 export const fetchAddTransactions = createAsyncThunk(
   'transactions/fetchAdd',
-  async (credentials, thunkAPI) => {
-    console.log(credentials);
+  async (credentials, { thunkAPI, dispatch }) => {
     try {
       const response = await axios.post('/api/transactions', credentials);
+      dispatch(balanceUpdate(response.data.balanceAfter));
+      console.log(
+        '(fetchAddTransactions) balanceAfter',
+        response.data.balanceAfter
+      );
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -50,6 +56,14 @@ export const fetchDeleteTransactions = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const isLoading = getState().isLoading;
+      if (isLoading) {
+        return false;
+      }
+    },
   }
 );
 
