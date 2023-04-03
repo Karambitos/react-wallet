@@ -6,16 +6,16 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = form => {
-    console.log(form);
     dispatch(loginUser(form));
   };
+
   return (
     <>
       <LoginForm
         cbOnSubmit={handleSubmit}
-        btnTitle={'Registrate'}
-        linkTitle={'Login'}
-        pathName="/login"
+        // btnTitle={'Registrate'}
+        // linkTitle={'Login'}
+        // pathName="/login"
       />
     </>
   );

@@ -2,7 +2,7 @@ import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/authThunks';
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ username, email, password }) => {
@@ -18,9 +18,9 @@ const RegisterPage = () => {
     <>
       <RegisterForm
         cbOnSubmit={handleSubmit}
-        btnTitle={'Registrate'}
-        linkTitle={'Login'}
-        pathName="/login"
+        // btnTitle={'Registrate'}
+        // linkTitle={'Login'}
+        // pathName="/login"
       />
     </>
   );
