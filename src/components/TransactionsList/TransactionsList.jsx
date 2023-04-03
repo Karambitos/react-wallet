@@ -23,8 +23,14 @@ const TransactionsList = () => {
     return type === 'EXPENSE' ? '-' : '+';
   };
 
+  // const getTransactionColor = type => {
+  //   return type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+  // };
+
   const getTransactionColor = type => {
-    return type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+    const className = type === 'EXPENSE' ? css.expense : css.income;
+    const color = type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+    return { className, color };
   };
 
   const getCategory = categoryId => {
@@ -101,7 +107,7 @@ const TransactionsList = () => {
                   <td>{transaction.comment}</td>
                   <td
                     style={{
-                      color: getTransactionColor(transaction.type),
+                      color: getTransactionColor(transaction.type).color,
                       fontWeight: '700',
                     }}
                   >
@@ -130,44 +136,65 @@ const TransactionsList = () => {
 
       {isMobile && (
         <ul className={css.mobileTransactionsList}>
-          <li>
-            <ul className={css.mobileTransaction}>
-              <li>
-                <span className={css.mobileTransList__title}>Date</span>{' '}
-                <span>04.01.19</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Type</span>{' '}
-                <span>-</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Category</span>{' '}
-                <span>Other</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Comment</span>{' '}
-                <span>Gift for your wife</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Sum</span>{' '}
-                <span className={css.mobileTransaction__summ}>300.00</span>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className={`${css.tableButton} button button button--small`}
-                >
-                  Delete
-                </button>
-                <div>
-                  <IconButton type="button" aria-label="edit">
-                    <EditIcon />
-                    <span className={css.editButtonTitle}>Edit</span>
-                  </IconButton>
-                </div>
-              </li>
-            </ul>
-          </li>
+          {transactions.map(transaction => (
+            <li className={css.mobileTransactionsItem} key={transaction.id}>
+              <ul
+                className={`${css.mobileTransaction}  ${
+                  getTransactionColor(transaction.type).className
+                }`}
+              >
+                <li>
+                  <span className={css.mobileTransList__title}>Date</span>{' '}
+                  <span>
+                    {new Date(transaction.transactionDate).toLocaleDateString(
+                      'ru-RU',
+                      { year: '2-digit', month: '2-digit', day: '2-digit' }
+                    )}
+                  </span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Type</span>{' '}
+                  <span>{getTransactionType(transaction.type)}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Category</span>{' '}
+                  <span>{getCategory(transaction.categoryId)}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Comment</span>{' '}
+                  <span>{transaction.comment}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Sum</span>{' '}
+                  <span
+                    style={{
+                      color: getTransactionColor(transaction.type).color,
+                      fontWeight: '700',
+                    }}
+                  >
+                    {sumRef(transaction.amount)}
+                  </span>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className={`${css.tableButton} button button button--small`}
+                    onClick={() =>
+                      dispatch(fetchDeleteTransactions(transaction.id))
+                    }
+                  >
+                    Delete
+                  </button>
+                  <div>
+                    <IconButton type="button" aria-label="edit">
+                      <EditIcon />
+                      <span className={css.editButtonTitle}>Edit</span>
+                    </IconButton>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          ))}
         </ul>
       )}
     </>

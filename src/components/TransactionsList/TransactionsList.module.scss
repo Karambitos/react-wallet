@@ -108,7 +108,7 @@
 
 ul {
   list-style: none;
-  // border-radius: 10px;
+
   padding: 0;
 }
 
@@ -118,9 +118,12 @@ ul {
   overflow: hidden;
 }
 
+.mobileTransactionsItem {
+  margin-bottom: 8px;
+}
+
 .mobileTransaction {
   position: relative;
-
   &:before {
     content: '';
     width: 5px;
@@ -131,6 +134,15 @@ ul {
     top: 0;
     left: 0;
     z-index: 2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &.income:before {
+    background-color: $mainColor;
+  }
+  &.expense:before {
+    background-color: $colorPink;
   }
 
   li {
@@ -167,10 +179,6 @@ ul {
 
     .mobileTransList__title {
       font-weight: 700;
-    }
-
-    .mobileTransaction__summ {
-      color: $colorPink;
     }
 
     .editButtonTitle {
