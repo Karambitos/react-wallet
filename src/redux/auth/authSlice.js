@@ -66,6 +66,21 @@ const authSlice = createSlice({
         user: payload,
         isLoading: false,
         error: null,
+        isRefreshing: false,
+      };
+    },
+    [getCurrentUser.pending]: (state, { payload }) => {
+      return {
+        ...state,
+        error: null,
+        isRefreshing: true,
+      };
+    },
+    [getCurrentUser.rejected]: (state, { payload }) => {
+      return {
+        ...state,
+        error: payload,
+        isRefreshing: false,
       };
     },
     [logoutUser.fulfilled]: (state, { payload }) => {

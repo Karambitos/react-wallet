@@ -9,9 +9,12 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 import '../main.scss';
-import CurrencyMob from 'pages/Currencymob';
-import { useDispatch } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/authThunks';
+import { getIsRefreshing } from 'redux/auth/authSelectors';
+import CurrencyMob from 'pages/Currencymob';
+
 const Home = lazy(() => import('pages/Home'));
 const Statistics = lazy(() => import('pages/Statistics'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -21,12 +24,17 @@ const NotFound = lazy(() => import('pages/NotFound'));
 
 export default function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(getIsRefreshing);
 
   useEffect(() => {
     dispatch(getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <div className="backdrop">
+      <Loader />
+    </div>
+  ) : (
     <>
       <ToastContainer position="top-center" autoClose={1000} />
       <Suspense fallback={<Loader />}>

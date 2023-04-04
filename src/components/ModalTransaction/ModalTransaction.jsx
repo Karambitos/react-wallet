@@ -16,7 +16,7 @@ export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
   );
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
   const [comment, setComment] = useState('');
@@ -74,7 +74,7 @@ export const ModalTransaction = () => {
   };
   const toggle = () => {
     setIsActive(!isActive);
-    setType(isActive ? 'INCOME' : 'EXPENSE');
+    setType(!isActive ? 'EXPENSE' : 'INCOME');
   };
 
   const handleSubmit = e => {

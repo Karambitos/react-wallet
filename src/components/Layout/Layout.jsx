@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
-
+import { useMediaQuery } from 'react-responsive';
 import AppBar from '../AppBar/AppBar';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
@@ -23,7 +23,9 @@ export default function Layout() {
       setBalanceStatus(true);
     }
   }, [location]);
-
+  const isTabletOrDesktop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   return (
     <div className="mainContainer">
       <div className="blur"></div>
@@ -34,7 +36,7 @@ export default function Layout() {
             <Navigation />
             {isBalanceRender && <Balance />}
           </div>
-          <Currency />
+          {isTabletOrDesktop && <Currency />}
         </div>
         <div className="main">
           <Suspense fallback={<Loader />}>
