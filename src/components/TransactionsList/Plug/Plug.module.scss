@@ -1,0 +1,64 @@
+@import '../../../scss/variables';
+
+.container_btn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      text-align: center;
+      font-size: 15px;
+      line-height: 30px;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      text-align: right;
+    }
+  }
+
+  .btn {
+    font-family: $font-default;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 250px;
+    height: 40px;
+    color: $white;
+    padding: 9px;
+    background-color: $mainColor;
+    border: none;
+    border-radius: 30px;
+    transition: background-color 0.4s ease;
+    outline: none;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      width: 150px;
+      height: 30px;
+      padding: 3px;
+      font-size: 8px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 20px;
+    }
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background-color: $white;
+    color: $mainColor;
+  }
+}

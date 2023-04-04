@@ -183,6 +183,7 @@ export const ModalTransaction = () => {
                 type="number"
                 placeholder="0.00"
                 required
+                min={0}
                 value={amountNumber}
                 name="amount"
                 onChange={handleChange}
