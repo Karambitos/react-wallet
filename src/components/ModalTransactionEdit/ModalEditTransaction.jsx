@@ -10,6 +10,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
+
+const MAX_AMOUNT = 10000000;
+
+
+
 export const ModalEditTransaction = ({ onClose, transaction }) => {
   const [transactionDate, setTransactionDate] = useState(
     moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
@@ -87,6 +92,23 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
+      if (parsedAmount <= 0) {
+        toast.error('Amount must be positive number', {
+          className: 'custom-toast-negative',
+        });
+        return;
+    }
+
+     if (parsedAmount > MAX_AMOUNT) {
+       toast.error('Amount must be less than or equal to 10,000,000', {
+         className: 'custom-toast-negative',
+       });
+
+       
+       return;
+     }
+    
+
     const updatedTransaction = {
       transactionDate: formData.transactionDate,
       type: selectedType,
@@ -96,13 +118,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     };
 
 
-    if (parsedAmount <= 0) {
-      
-       toast.error('Amount must be positive number', {
-         className: 'custom-toast-negative',
-       });
-      return;
-    }
+  
 
     
 
