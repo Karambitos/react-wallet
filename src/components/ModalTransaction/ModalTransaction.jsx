@@ -10,6 +10,7 @@ import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
+import { getUserBalance } from 'redux/balance/operations';
 
 export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
@@ -95,7 +96,7 @@ export const ModalTransaction = () => {
         amount,
       })
     );
-    // dispatch(getCurrentUser());
+    dispatch(getUserBalance());
     dispatch(setModalAddTransactionOpen(false));
     handleCloseModal();
   };
