@@ -137,6 +137,8 @@
   line-height: 24px;
   color: #e0e0e0;
   cursor: pointer;
+
+  pointer-events: none;
 }
 
 
@@ -158,6 +160,8 @@
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 30px;
+
+  pointer-events: none;
 }
 
 .toggleButton::before {
@@ -252,6 +256,8 @@
   line-height: 27px;
 
   color: #000000;
+
+  pointer-events: none;
 }
 
 .inputComment {

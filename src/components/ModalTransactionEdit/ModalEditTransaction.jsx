@@ -5,7 +5,8 @@ import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { fetchUpdateTransactions } from 'redux/transactions/operations';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
@@ -13,7 +14,8 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   const [transactionDate, setTransactionDate] = useState(
     moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
   );
-  const [isActive, setIsActive] = useState(true);
+  // const [isActive, setIsActive] = useState(true);
+    const [isActive, setIsActive] = useState(transaction.type === "EXPENSE" ? true : false);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     transaction.categoryId
   );
@@ -66,8 +68,11 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
 
  const selectedType = isActive ? 'EXPENSE' : 'INCOME'
  const parsedAmount = parseInt(formData.amount);
+  
+  
   const handleSubmit = e => {
     e.preventDefault();
+
     const updatedTransaction = {
       transactionDate: formData.transactionDate,
       type: selectedType,
@@ -75,12 +80,31 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
       comment: formData.comment,
       amount: parsedAmount,
     };
+
+    // проверка на отрицательное и положительное число
+    if (isActive && parsedAmount >= 0) {
+
+      toast.error('Expense must be negative number', {
+        className: 'custom-toast-negative',
+      });
+    
+      return;
+    }
+    if (!isActive && parsedAmount <= 0) {
+      
+       toast.error('Income must be positive number', {
+         className: 'custom-toast-negative',
+       });
+      return;
+    }
+
     dispatch(
       fetchUpdateTransactions({
         transactionId: transaction.id,
         credentials: updatedTransaction,
       })
     );
+    onClose();
   };
 
   return ReactDOM.createPortal(
