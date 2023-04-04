@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currencyRate } from 'redux/currency/operations';
+import Wave from 'react-wavify';
 import {
   selectEurBuy,
   selectEurSell,
@@ -59,6 +60,33 @@ const Currency = ({ mobile = false }) => {
           </tr>
         </tbody>
       </table>
+      <div className={style.wavewraper}>
+        <Wave
+          mask="url(#mask)"
+          fill="#fff"
+          options={{
+            amplitude: 50,
+            speed: 0.05,
+            points: 3,
+          }}
+        >
+          <defs>
+            <linearGradient id="gradient" gradientTransform="rotate(90)">
+              <stop offset="0" stopColor="white" />
+              <stop offset="0.4" stopColor="black" />
+            </linearGradient>
+            <mask id="mask">
+              <rect
+                x="0"
+                y="-20"
+                width="2000"
+                height="250"
+                fill="url(#gradient)"
+              />
+            </mask>
+          </defs>
+        </Wave>
+      </div>
     </div>
   );
 };
