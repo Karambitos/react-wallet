@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/authThunks';
+import { clearTransactionsState } from 'redux/transactions/slice';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -19,6 +20,7 @@ export default function ModalLogout({ onClose }) {
   }, []);
 
   const handleLogout = () => {
+    dispatch(clearTransactionsState());
     dispatch(logoutUser());
     onClose();
   };
