@@ -2,10 +2,19 @@ export const selectCategories = state => state.transactions.categories;
 export const selectMonth = state => state.transactions.month;
 export const selectYear = state => state.transactions.year;
 
-export const sortedTransactions = state => {
-  return [...state.transactions.transactions].sort((a, b) =>
-    b.transactionDate.localeCompare(a.transactionDate)
-  );
+export const sortByDateDescending = state => {
+  const array = [...state.transactions.transactions];
+  console.log(array);
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = 0; j < array.length - i - 1; j++) {
+      if (array[j].transactionDate < array[j + 1].transactionDate) {
+        const temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
+  return array.reverse();
 };
 
 export const selectAllCategories = state =>
