@@ -50,6 +50,10 @@
   transition: transform 0.4s ease-in-out, opacity 4s ease-in-out;
   height: 100%;
   max-height: 690px;
+
+  // height: 100%;
+  // max-height: 690px;
+
   overflow-y: auto;
   overflow-x: hidden;
   padding: 20px 20px 50px 20px;
@@ -315,9 +319,7 @@
   max-height: 50px;
 }
 
-.buttonCancel:hover,
-.buttonCancel:focus {
-}
+
 
 .buttonCancelName {
   display: inline-block;

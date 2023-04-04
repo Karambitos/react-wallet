@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   getCurrentUser,
+  getUserBalance,
   loginUser,
   logoutUser,
   registerUser,
@@ -61,6 +62,15 @@ const authSlice = createSlice({
       };
     },
     [getCurrentUser.fulfilled]: (state, { payload }) => {
+      return {
+        ...state,
+        user: payload,
+        isLoading: false,
+        error: null,
+        isRefreshing: false,
+      };
+    },
+    [getUserBalance.fulfilled]: (state, { payload }) => {
       return {
         ...state,
         user: payload,

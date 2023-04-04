@@ -46,7 +46,6 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReduser),
     transactions: transactionsReducer,
-
     currency: persistReducer(currencyPersistConfig, currencyReducer),
     modal: persistReducer(modalPersistConfig, modalAddReducer),
     statisticsFilter: statisticsFilterReducer,
