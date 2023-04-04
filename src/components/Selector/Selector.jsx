@@ -5,7 +5,7 @@ import { ReactComponent as DropdowArrow } from '../../assets/svg/dropdowArrow.sv
 const customStyles = {
   control: provided => ({
     ...provided,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '0',
     borderBottom: '1px solid #e0e0e0',

@@ -16,7 +16,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const MAX_AMOUNT = 10000000;
 
-
 export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
@@ -81,22 +80,23 @@ export const ModalTransaction = () => {
     setIsActive(!isActive);
     setType(!isActive ? 'EXPENSE' : 'INCOME');
   };
-
   const handleSubmit = e => {
     e.preventDefault();
 
     if (categoryId === '') {
-      alert('!!!!');
+      alert('No such category');
       return;
     }
+
     const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
-       if (amount > MAX_AMOUNT) {
-         toast.error('Amount must be less than or equal to 10,000,000', {
-           className: 'custom-toast-negative',
-         });
-         return;
-       }
-    console.log(transactionDate);
+
+    if (amount > MAX_AMOUNT) {
+      toast.error('Amount must be less than or equal to 10,000,000', {
+        className: 'custom-toast-negative',
+      });
+      return;
+    }
+
     dispatch(
       fetchAddTransactions({
         transactionDate,
@@ -106,7 +106,6 @@ export const ModalTransaction = () => {
         amount,
       })
     );
-    // dispatch(getUserBalance());
     dispatch(setModalAddTransactionOpen(false));
     handleCloseModal();
   };
