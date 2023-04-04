@@ -14,8 +14,12 @@ const customStyles = {
     fontSize: '18px',
     fontFamily: 'Circe',
     lineHeight: '27px',
-    fontWeight: '700',
+    fontWeight: '400',
     color: '#bdbdbd',
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    ':hover': { background: '#fff', color: '#FF6596' },
   }),
   input: provided => ({
     ...provided,
@@ -34,15 +38,6 @@ const customStyles = {
     fontWeight: '400',
     color: '#BDBDBD',
   }),
-  singleValue: provided => ({
-    ...provided,
-    color: 'black',
-  }),
-  dropdownIndicator: provided => ({
-    ...provided,
-    padding: '0',
-    color: 'red',
-  }),
   indicatorsContainer: provided => ({
     ...provided,
     padding: '0',
@@ -54,20 +49,15 @@ const customStyles = {
   }),
   menu: provided => ({
     ...provided,
-    background: 'rgba(255, 255, 255, 0.7)',
+    background: 'rgba(0, 0, 0, 0.05)',
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.5)',
     backdropFilter: 'blur(25px)',
     borderRadius: '20px',
     color: '#000',
     fontSize: '16px',
     overflow: 'hidden',
+    cursor: 'pointer',
   }),
-  // option: provided => ({
-  //   ...provided,
-  //   color: 'black',
-  //   fontSize: '18px',
-  // }),
-  // ":hover": { background: "red" }
 };
 
 const DropdownIndicator = props => {
@@ -83,6 +73,7 @@ function Selector({
   onSelect,
   styles,
   defaultInputValue,
+  defaultValue,
   placeholder,
 }) {
   const handleOptionSelect = selectedOption => {
@@ -100,6 +91,7 @@ function Selector({
         onChange={handleOptionSelect}
         placeholder={placeholder ? placeholder : 'Select an option'}
         styles={styles ? styles : customStyles}
+        defaultValue={defaultValue && defaultValue}
         defaultInputValue={defaultInputValue}
         required
       />
