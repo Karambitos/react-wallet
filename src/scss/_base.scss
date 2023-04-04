@@ -410,13 +410,19 @@ h6,
 }
 
 
-.custom-toast-negative {
-  background-color: $colorPink;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
+
+
+.custom-toast-negative {
+  color: red;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+}
+.Toastify__toast-icon svg {
+  fill: red;
+}
+.Toastify__progress-bar--error {
+  background: red;
 }
