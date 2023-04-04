@@ -391,12 +391,6 @@ h6,
   @include font-size(18, 27);
 }
 
-.backdrop {
-  display: grid;
-  place-content: center;
-  height: 100vh;
-}
-
 .currencymob {
   display: block;
   @media screen and (min-width: $breakpoint-tablet) {
