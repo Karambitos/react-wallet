@@ -115,6 +115,9 @@ const TransactionsList = () => {
                 <th className={css.th}>Comment</th>
                 <th className={`${css.th} cell textAlignL`}>Sum</th>
                 <th className={css.th}></th>
+                <th className={css.th}></th>
+                <th className={css.th}></th>
+                <th className={css.th}></th>
               </tr>
             </thead>
             <tbody className={css.tbody}>
