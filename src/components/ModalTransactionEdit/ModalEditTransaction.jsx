@@ -19,9 +19,15 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     transaction.categoryId
   );
+
+  const propsParsedAmount = parseInt(transaction.amount); 
+  const positivePropsAmount =
+    propsParsedAmount >= 0 ? propsParsedAmount : Math.abs(propsParsedAmount);
+ 
+
   const [formData, setFormData] = useState({
     type: transaction.type || '',
-    amount: transaction.amount ,
+    amount: positivePropsAmount,
     transactionDate: transaction.transactionDate || '',
     comment: transaction.comment || '',
   });
@@ -81,22 +87,16 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
       amount: parsedAmount,
     };
 
-    // проверка на отрицательное и положительное число
-    if (isActive && parsedAmount >= 0) {
 
-      toast.error('Expense must be negative number', {
-        className: 'custom-toast-negative',
-      });
-    
-      return;
-    }
-    if (!isActive && parsedAmount <= 0) {
+    if (parsedAmount <= 0) {
       
-       toast.error('Income must be positive number', {
+       toast.error('Amount must be positive number', {
          className: 'custom-toast-negative',
        });
       return;
     }
+
+    
 
     dispatch(
       fetchUpdateTransactions({
@@ -179,7 +179,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
             <button type="submit" className={styles.buttonAdd}>
               <span className={styles.buttonAddName}>Edit</span>
             </button>
-            <button type="button" className={styles.buttonCancel}>
+            <button type="button" className={styles.buttonCancel} onClick={onClose}>
               <span className={styles.buttonCancelName}>Cancel</span>
             </button>
           </div>
