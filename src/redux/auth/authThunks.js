@@ -55,6 +55,23 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+export const getUserBalance = createAsyncThunk(
+  'auth/currentBalance',
+  async (_, { rejectWithValue, getState }) => {
+    const { token } = getState().auth;
+    if (!token) {
+      return rejectWithValue('Unable to fetch user');
+    }
+    try {
+      setAuthHeader(token);
+      const { data } = await axios.get(`/api/users/current`, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue, getState }) => {

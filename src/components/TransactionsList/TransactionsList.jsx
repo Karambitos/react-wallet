@@ -6,7 +6,7 @@ import {
   fetchAllTransactions,
   fetchDeleteTransactions,
 } from 'redux/transactions/operations';
-import { getCurrentUser } from 'redux/auth/authThunks';
+import { getUserBalance } from 'redux/auth/authThunks';
 import {
   selectIsLoading,
   sortedTransactions,
@@ -16,7 +16,7 @@ import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
 import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
-import { getUserBalance } from 'redux/balance/operations';
+// import { getUserBalance } from 'redux/balance/operations';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
