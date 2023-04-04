@@ -2,18 +2,32 @@
 
 .dateInput {
     background-image: url(../../../assets/imgages/DatePickerIcon.svg);
-    background-position-x: 90%;
     background-repeat: no-repeat;
     background-size: 24px;
+    background-position-x: 100%;
     border-bottom: 1px solid #bdbdbd;
+    
 
-    max-width: 190px;
-    padding-left: 30px;
+        font-family: 'Circe';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        width: 201px;
 
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+
+
+
+        @media screen and (min-width: $breakpoint-tablet) {
+            background-position-x: 90%;
+            max-width: 190px;
+            padding-left: 30px;
+        }
+
+
+
+
+
+
 }
 

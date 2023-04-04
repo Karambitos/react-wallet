@@ -17,9 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const MAX_AMOUNT = 10000000;
 
 export const ModalTransaction = () => {
-  // const [transactionDate, setTransactionDate] = useState(
-  //   moment().format('YYYY-MM-DD')
-  // );
   const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
@@ -97,13 +94,13 @@ export const ModalTransaction = () => {
       return;
     }
 
-    const transactionDate = e.target.elements.date.value;
-    const momentTransactionDate = moment(transactionDate, 'DD.MM.YYYY');
-    const parsedTransactionDate = momentTransactionDate.format('YYYY-MM-DD');
+    const inputDate = e.target.elements.date.value;
+    const momentTransactionDate = moment(inputDate, 'DD.MM.YYYY');
+    const transactionDate = momentTransactionDate.format('YYYY-MM-DD');
 
     dispatch(
       fetchAddTransactions({
-        parsedTransactionDate,
+        transactionDate,
         type,
         categoryId,
         comment,
@@ -121,10 +118,6 @@ export const ModalTransaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [categories]
   );
-
-  // const handleSelectDate = date => {
-  //   setTransactionDate(date);
-  // };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -195,15 +188,7 @@ export const ModalTransaction = () => {
                 onChange={handleChange}
               />
               <div className={styles.datePickerContainer}>
-                {/* <input
-                  className={styles.inputCalendar}
-                  value={transactionDate}
-                  onChange={setTransactionDate}
-                /> */}
-                <DatePicker
-                // onSelect={handleSelectDate}
-                // initialValue={new Date()}
-                />
+                <DatePicker />
               </div>
             </div>
             <input

@@ -10,20 +10,17 @@ export const DatePicker = () => {
 
   const renderInput = (props, openCalendar) => {
     return (
-      <div className="rdt">
-        <input
-          {...props}
-          className={css.dateInput}
-          type="text"
-          onClick={openCalendar}
-        />
-      </div>
+      <input
+        {...props}
+        className={css.dateInput}
+        type="text"
+        onClick={openCalendar}
+      />
     );
   };
 
   return (
     <Datetime
-      // className={css.dateInput}
       closeOnSelect
       timeFormat={false}
       dateFormat={'DD.MM.YYYY'}
