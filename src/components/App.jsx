@@ -34,7 +34,11 @@ export default function App() {
     <Loader />
   ) : (
     <>
-      <ToastContainer position="top-center" autoClose={1000} />
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+      />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>

@@ -73,6 +73,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOverlayClick = event => {
@@ -192,7 +193,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
           </div>
           <div className={styles.buttonsContainer}>
             <button type="submit" className={styles.buttonAdd}>
-              <span className={styles.buttonAddName}>Edit</span>
+              <span className={styles.buttonAddName}>Save</span>
             </button>
             <button
               type="button"

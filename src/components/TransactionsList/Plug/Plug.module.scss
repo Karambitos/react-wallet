@@ -20,6 +20,10 @@
       font-size: 15px;
       line-height: 30px;
     }
+
+    @media (max-width: $breakpoint-tablet) {
+      text-align: right;
+    }
   }
 
   .btn {

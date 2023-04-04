@@ -272,12 +272,15 @@ h6,
 }
 
 .custom-toast {
-  color: $mainColor;
+  color: $white;
+  background-color: $mainColor;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
+  fill: $white;
 }
+
 .Toastify__toast-icon svg {
   fill: $mainColor;
 }
