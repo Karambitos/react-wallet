@@ -14,10 +14,16 @@
     display: flex;
     align-items: center;
     text-align: center;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      text-align: center;
+      font-size: 15px;
+      line-height: 30px;
+    }
   }
 
   .btn {
-    font-family: 'Circe';
+    font-family: $font-default;
     cursor: pointer;
     font-weight: bold;
     font-size: 14px;
@@ -34,6 +40,16 @@
     border-radius: 30px;
     transition: background-color 0.4s ease;
     outline: none;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      width: 150px;
+      height: 30px;
+      padding: 3px;
+      font-size: 8px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 20px;
+    }
   }
 
   .btn:hover,
