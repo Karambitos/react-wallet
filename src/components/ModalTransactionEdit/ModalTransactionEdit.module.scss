@@ -78,17 +78,23 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+ 
+
+
+ 
 }
 
 .closeButtonIcon {
   width: 18px;
   height: 18px;
+  stroke: $color-text;
 
-  transition: stroke 0.2s ease-in-out;
+  transition: stroke 0.2s ease;
 }
 
 .closeButton:hover .closeButtonIcon {
-  fill: #4a56e2;
+  stroke: $colorPink;
 }
 
 .title {
