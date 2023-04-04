@@ -339,9 +339,9 @@ h6,
   &:hover,
   &:focus,
   &:active {
-    color: $colorBlue;
+    color: $colorPink;
     background-color: transparent;
-    border-color: $colorBlue;
+    border-color: $mainColor;
   }
 
   &:disabled,

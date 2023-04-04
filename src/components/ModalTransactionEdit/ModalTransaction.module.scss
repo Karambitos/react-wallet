@@ -45,7 +45,8 @@
 .modalAddTrans {
   position: relative;
   background-color: #fff;
-
+  animation: opacity 400ms;
+  transition: transform 0.4s ease-in-out, opacity 4s ease-in-out;
   max-width: 320px;
   width: 100%;
 
@@ -138,8 +139,6 @@
   color: #e0e0e0;
   cursor: pointer;
 }
-
-
 
 .toggleText.activeExpense {
   color: #ff6596;
@@ -346,4 +345,13 @@
   text-transform: uppercase;
 
   color: #4a56e2;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
