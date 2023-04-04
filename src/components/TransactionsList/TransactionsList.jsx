@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -10,10 +11,11 @@ import {
   selectIsLoading,
   sortedTransactions,
 } from 'redux/transactions/selectors';
-import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
+import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
+import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -85,6 +87,19 @@ const TransactionsList = () => {
     query: '(min-width: 768px)',
   });
 
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditTransaction = transaction => {
+    setSelectedTransaction(transaction);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedTransaction(null);
+  };
+
   return (
     <>
       {isLoading && <Loader />}
@@ -97,7 +112,7 @@ const TransactionsList = () => {
                 <th className={css.th}>Type</th>
                 <th className={css.th}>Category</th>
                 <th className={css.th}>Comment</th>
-                <th className={`${css.th} cell textAlignL`}>Sum</th>
+                <th className={`${css.th} textAlignL`}>Sum</th>
                 <th className={css.th}></th>
               </tr>
             </thead>
@@ -126,8 +141,13 @@ const TransactionsList = () => {
                   >
                     {sumRef(transaction.amount)}
                   </td>
+
                   <td className={`${css.th} cell textAlignL`}>
-                    <IconButton type="button" aria-label="edit">
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                      onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                     </IconButton>
                     <button
@@ -205,6 +225,14 @@ const TransactionsList = () => {
             </li>
           ))}
         </ul>
+      )}
+
+      {selectedTransaction && (
+        <ModalEditTransaction
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          transaction={selectedTransaction}
+        />
       )}
     </>
   );

@@ -4,6 +4,7 @@ import { fetchAddTransactions } from './operations';
 import { fetchDeleteTransactions } from './operations';
 import { fetchAllCategories } from './operations';
 import { getSummaryController } from './operations';
+import { fetchUpdateTransactions } from './operations';
 
 const initialState = {
   transactions: [],
@@ -21,6 +22,11 @@ const initialState = {
 export const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
+  reducers: {
+    clearTransactionsState() {
+      return initialState;
+    },
+  },
   extraReducers: builder => {
     builder
 
@@ -53,6 +59,15 @@ export const transactionsSlice = createSlice({
         };
       })
 
+      .addCase(fetchUpdateTransactions.fulfilled, (state, action) => {
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload.id
+        );
+        if (index >= 0) {
+          state.transactions[index] = action.payload;
+        }
+      })
+
       .addMatcher(
         action => action.type.endsWith('/pending'),
         (state, action) => {
@@ -77,4 +92,5 @@ export const transactionsSlice = createSlice({
   },
 });
 
+export const { clearTransactionsState } = transactionsSlice.actions;
 export const transactionsReducer = transactionsSlice.reducer;
