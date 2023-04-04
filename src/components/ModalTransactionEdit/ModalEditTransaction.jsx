@@ -8,7 +8,7 @@ import { fetchUpdateTransactions } from 'redux/transactions/operations';
 import { toast } from 'react-toastify';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
-import CustomSelect from './CustomSelect/CustomSelect';
+
 import styles from './ModalTransactionEdit.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,9 +21,38 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   const [isActive, setIsActive] = useState(
     transaction.type === 'EXPENSE' ? true : false
   );
-  const [selectedCategoryId, setSelectedCategoryId] = useState(
-    transaction.categoryId
-  );
+
+  const getCategory = categoryId => {
+    switch (categoryId) {
+      case 'c9d9e447-1b83-4238-8712-edc77b18b739':
+        return 'Main Expenses';
+      case '27eb4b75-9a42-4991-a802-4aefe21ac3ce':
+        return 'Products';
+      case 'bbdd58b8-e804-4ab9-bf4f-695da5ef64f4':
+        return 'Self care';
+      case '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386':
+        return 'Car';
+      case '76cc875a-3b43-4eae-8fdb-f76633821a34':
+        return 'Child care';
+      case '128673b5-2f9a-46ae-a428-ec48cf1effa1':
+        return 'Household products';
+      case '1272fcc4-d59f-462d-ad33-a85a075e5581':
+        return 'Education';
+      case 'c143130f-7d1e-4011-90a4-54766d4e308e':
+        return 'Leisure';
+      case '719626f1-9d23-4e99-84f5-289024e437a8':
+        return 'Other expenses';
+      case '3acd0ecd-5295-4d54-8e7c-d3908f4d0402':
+        return 'Entertainment';
+      case '063f1132-ba5d-42b4-951d-44011ca46262':
+        return 'Income';
+      default:
+        return;
+    }
+  };
+
+const translatedCategory = getCategory(transaction.categoryId);
+  
 
   const propsParsedAmount = parseInt(transaction.amount);
 
@@ -47,11 +76,6 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     }));
   };
 
-
-
-  const handleCategorySelect = categoryId => {
-    setSelectedCategoryId(categoryId);
-  };
 
   const toggle = () => {
     setIsActive(!isActive);
@@ -86,6 +110,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     }
   };
 
+
   const selectedType = isActive ? 'EXPENSE' : 'INCOME';
   const parsedAmount = parseInt(formData.amount);
 
@@ -112,7 +137,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     const updatedTransaction = {
       transactionDate: formData.transactionDate,
       type: selectedType,
-      categoryId: selectedCategoryId,
+      categoryId: transaction.categoryId,
       comment: formData.comment,
       amount: amount,
     };
@@ -133,8 +158,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
         <button className={styles.closeButton} type="button" onClick={onClose}>
           <CloseIcon className={styles.closeButtonIcon} />
         </button>
-     
-       
+
         <h1 className={styles.title}>Edit transaction</h1>
         <div className={styles.toggleContainer}>
           <span
@@ -145,7 +169,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
           >
             Income
           </span>
-<span className={styles.toggleText}>/</span>
+          <span className={styles.toggleText}>/</span>
           <span
             onClick={toggle}
             className={`${styles.toggleText} ${
@@ -159,20 +183,13 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
           <div className={styles.inputsWrapper}>
             {isActive && (
               <div className={styles.selectorWrapper}>
-                <CustomSelect
-                  defaultInputValue={transaction.categoryId}
-                  onSelect={handleCategorySelect}
+
+                <input
+                  type="text"
+                  className={styles.categoryInput}
+                  value={translatedCategory}
+                  readOnly
                 />
-                {/* <Selector
-                  defaultValue={transaction.categoryId}
-                  defaultInputValue={getCategoryText(transaction.categoryId)}
-                  options={[
-                    {
-                      value: transaction.categoryId,
-                      label: getCategoryText(transaction.categoryId),
-                    },
-                  ]}
-                /> */}
               </div>
             )}
             <div className={styles.numberAndCalendarWrapper}>
@@ -205,15 +222,15 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
             />
           </div>
           <div className={styles.buttonsContainer}>
-            <button type="submit" className={styles.buttonAdd}>
-              <span className={styles.buttonAddName}>Save</span>
+            <button type="submit" className="button">
+              Save
             </button>
             <button
               type="button"
-              className={styles.buttonCancel}
+              className="button button--secondary"
               onClick={onClose}
             >
-              <span className={styles.buttonCancelName}>Cancel</span>
+              Cancel
             </button>
           </div>
         </form>
