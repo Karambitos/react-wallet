@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom';
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { getUserBalance } from 'redux/auth/authThunks';
-import { DatePicker } from './DatePicker/DatePicker';
 import { useDispatch } from 'react-redux';
 import { fetchUpdateTransactions } from 'redux/transactions/operations';
 import { toast } from 'react-toastify';
@@ -88,9 +87,9 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     }));
   };
 
-  const handleSelectDate = date => {
-    setTransactionDate(date);
-  };
+  // const handleSelectDate = date => {
+  //   setTransactionDate(date);
+  // };
 
   useEffect(() => {
     const handleKeyPress = event => {
@@ -152,6 +151,11 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     );
     dispatch(getUserBalance());
     onClose();
+  };
+
+  const parseTransactionDate = date => {
+    const momentTransactionDate = moment(date, 'YYYY-MM-DD');
+    return momentTransactionDate.format('DD.MM.YYYY');
   };
 
   return ReactDOM.createPortal(
@@ -216,10 +220,9 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
               <div className={styles.datePickerContainer}>
                 <input
                   className={styles.inputCalendar}
-                  value={transactionDate}
+                  value={parseTransactionDate(transactionDate)}
                   onChange={setTransactionDate}
                 />
-                {/* <DatePicker /> */}
               </div>
             </div>
             <input
