@@ -28,6 +28,11 @@ const authSlice = createSlice({
     isRefreshing: false,
     error: null,
   },
+  reducers: {
+    balanceUpdate(state, action) {
+      state.user.balance = action.payload;
+    },
+  },
   extraReducers: {
     [registerUser.pending]: handlePending,
     [loginUser.pending]: handlePending,
@@ -94,4 +99,7 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const { balanceUpdate } = authSlice.actions;
+
 export default authSlice.reducer;

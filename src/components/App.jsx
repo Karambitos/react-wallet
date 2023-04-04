@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { MobileRoute } from 'hoc/MobileRoute';
 import { PrivateRoute } from 'hoc/PrivateRoute';
 import { PublicRoute } from 'hoc/PublicRoute';
 
@@ -8,9 +9,11 @@ import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
 
 import '../main.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/authThunks';
 import { getIsRefreshing } from 'redux/auth/authSelectors';
+import CurrencyMob from 'pages/Currencymob';
 
 const Home = lazy(() => import('pages/Home'));
 const Statistics = lazy(() => import('pages/Statistics'));
@@ -33,7 +36,7 @@ export default function App() {
     </div>
   ) : (
     <>
-      <ToastContainer position="top-right" autoClose={1000} />
+      <ToastContainer position="top-center" autoClose={1000} />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -47,6 +50,12 @@ export default function App() {
               path="/statistics"
               element={
                 <PrivateRoute redirectTo="/login" component={<Statistics />} />
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <MobileRoute redirectTo="/login" component={<CurrencyMob />} />
               }
             />
           </Route>
