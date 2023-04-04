@@ -10,6 +10,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import CustomSelect from './CustomSelect/CustomSelect';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
 
+
+const MAX_AMOUNT = 10000000;
+
+
+
 export const ModalEditTransaction = ({ onClose, transaction }) => {
   const [transactionDate, setTransactionDate] = useState(
     moment(transaction.transactionDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
@@ -42,6 +47,8 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     }));
   };
 
+
+
   const handleCategorySelect = categoryId => {
     setSelectedCategoryId(categoryId);
   };
@@ -72,12 +79,35 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     };
   }, []);
 
+  const handleOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
  const selectedType = isActive ? 'EXPENSE' : 'INCOME'
  const parsedAmount = parseInt(formData.amount);
   
   
   const handleSubmit = e => {
     e.preventDefault();
+
+      if (parsedAmount <= 0) {
+        toast.error('Amount must be positive number', {
+          className: 'custom-toast-negative',
+        });
+        return;
+    }
+
+     if (parsedAmount > MAX_AMOUNT) {
+       toast.error('Amount must be less than or equal to 10,000,000', {
+         className: 'custom-toast-negative',
+       });
+
+       
+       return;
+     }
+    
 
     const updatedTransaction = {
       transactionDate: formData.transactionDate,
@@ -88,13 +118,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
     };
 
 
-    if (parsedAmount <= 0) {
-      
-       toast.error('Amount must be positive number', {
-         className: 'custom-toast-negative',
-       });
-      return;
-    }
+  
 
     
 
@@ -108,7 +132,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay}>
+    <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={styles.modalAddTrans}>
         <button className={styles.closeButton} type="button" onClick={onClose}>
           <CloseIcon className={styles.closeButtonIcon} />
@@ -155,6 +179,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
                 value={formData.amount}
                 name="amount"
                 onChange={handleChange}
+                
               />
               <div className={styles.datePickerContainer}>
                 <input
@@ -179,7 +204,11 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
             <button type="submit" className={styles.buttonAdd}>
               <span className={styles.buttonAddName}>Edit</span>
             </button>
-            <button type="button" className={styles.buttonCancel} onClick={onClose}>
+            <button
+              type="button"
+              className={styles.buttonCancel}
+              onClick={onClose}
+            >
               <span className={styles.buttonCancelName}>Cancel</span>
             </button>
           </div>
