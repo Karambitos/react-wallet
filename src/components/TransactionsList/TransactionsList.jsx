@@ -216,7 +216,11 @@ const TransactionsList = () => {
                     Delete
                   </button>
                   <div>
-                    <IconButton type="button" aria-label="edit">
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                      onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                       <span className={css.editButtonTitle}>Edit</span>
                     </IconButton>
