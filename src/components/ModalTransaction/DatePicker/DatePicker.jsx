@@ -1,26 +1,32 @@
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import css from './DatePicker.module.scss';
-import { ReactComponent as DatePickerIcon } from 'assets/imgages/DatePickerIcon.svg';
 
-export const DatePicker = ({ onSelect }) => {
-  const handleChange = e => {
-    onSelect(e.format('YYYY-MM-DD'));
+export const DatePicker = () => {
+  const inputProps = {
+    placeholder: 'DD.MM.YYYY',
+    name: 'date',
   };
 
   const renderInput = (props, openCalendar) => {
     return (
-      <DatePickerIcon onClick={openCalendar} className={css.datePickerIcon} />
+      <input
+        {...props}
+        className={css.dateInput}
+        type="text"
+        onClick={openCalendar}
+      />
     );
   };
 
   return (
     <Datetime
-      className={css.rdtPickerOpenUpwards}
-      renderInput={renderInput}
       closeOnSelect
-      onChange={handleChange}
       timeFormat={false}
+      dateFormat={'DD.MM.YYYY'}
+      initialValue={new Date()}
+      inputProps={inputProps}
+      renderInput={renderInput}
     />
   );
 };

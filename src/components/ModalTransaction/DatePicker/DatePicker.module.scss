@@ -1,17 +1,33 @@
 @import "../../../scss/variables";
 
-.datePickerIcon:hover{
-    cursor: pointer;
-}
+.dateInput {
+    background-image: url(../../../assets/imgages/DatePickerIcon.svg);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position-x: 100%;
+    border-bottom: 1px solid #bdbdbd;
+    
 
-.datePickerIcon{
-    margin-left: -24px;
-}
+        font-family: 'Circe';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        width: 201px;
 
-.rdtPickerOpenUpwards div:nth-child(2){
-    right: -25px;
-    @media screen and (min-width: $breakpoint-tablet) {
-        rigth: 0;
-    }
+
+
+
+        @media screen and (min-width: $breakpoint-tablet) {
+            background-position-x: 90%;
+            max-width: 190px;
+            padding-left: 30px;
+        }
+
+
+
+
+
+
 }
 

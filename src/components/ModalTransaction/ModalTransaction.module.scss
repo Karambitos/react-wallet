@@ -222,27 +222,11 @@
 
 .datePickerContainer {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
+  // justify-content: center;
+  // flex-wrap: wrap;
+  align-items: flex-end;
+  max-width: 190px;
   min-height: 32px;
-}
-
-.inputCalendar {
-  display: inline-block;
-  width: 100%;
-
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #bdbdbd;
-
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-
-  color: #000000;
 }
 
 .inputComment {
