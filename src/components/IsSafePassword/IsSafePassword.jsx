@@ -21,6 +21,8 @@ export const IsSafePassword = ({ value }) => {
   };
 
   const changePasswordColor = () => ({
+    transition: 'all ease-in 0.5s',
+
     width: `${scoreWidth}%`,
     height: '4px',
     background: color(),

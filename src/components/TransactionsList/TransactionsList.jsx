@@ -16,6 +16,7 @@ import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
 import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
+import { getUserBalance } from 'redux/balance/operations';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ const TransactionsList = () => {
 
   const handleDelete = async id => {
     await dispatch(fetchDeleteTransactions(id));
-    dispatch(getCurrentUser());
+    dispatch(getUserBalance());
   };
 
   const isMobile = useMediaQuery({
@@ -215,7 +216,11 @@ const TransactionsList = () => {
                     Delete
                   </button>
                   <div>
-                    <IconButton type="button" aria-label="edit">
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                      onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                       <span className={css.editButtonTitle}>Edit</span>
                     </IconButton>

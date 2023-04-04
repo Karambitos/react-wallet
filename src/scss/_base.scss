@@ -406,4 +406,23 @@ h6,
   @media screen and (min-width: $breakpoint-tablet) {
     display: none;
   }
+
+}
+
+
+
+
+
+.custom-toast-negative {
+  color: red;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+}
+.Toastify__toast-icon svg {
+  fill: red;
+}
+.Toastify__progress-bar--error {
+  background: red;
 }

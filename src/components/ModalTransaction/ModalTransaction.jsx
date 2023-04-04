@@ -10,6 +10,12 @@ import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
+import { getUserBalance } from 'redux/balance/operations';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const MAX_AMOUNT = 10000000;
+
 
 export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
@@ -84,7 +90,12 @@ export const ModalTransaction = () => {
       return;
     }
     const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
-
+       if (amount > MAX_AMOUNT) {
+         toast.error('Amount must be less than or equal to 10,000,000', {
+           className: 'custom-toast-negative',
+         });
+         return;
+       }
     console.log(transactionDate);
     dispatch(
       fetchAddTransactions({
@@ -95,7 +106,7 @@ export const ModalTransaction = () => {
         amount,
       })
     );
-    // dispatch(getCurrentUser());
+    dispatch(getUserBalance());
     dispatch(setModalAddTransactionOpen(false));
     handleCloseModal();
   };

@@ -1,4 +1,4 @@
-import { Input, InputAdornment } from '@mui/material';
+import { IconButton, Input, InputAdornment, Paper } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
 // import styles from './register.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
@@ -6,13 +6,17 @@ import { ReactComponent as Image } from '../../assets/svg/woman_desktop.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 
 import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
+import { createRef } from 'react';
 
 export const RegisterForm = ({ cbOnSubmit }) => {
+  const pass = createRef();
+  const comfirmPass = createRef();
   const validationsSchema = yup.object().shape({
     username: yup
       .string()
@@ -29,6 +33,8 @@ export const RegisterForm = ({ cbOnSubmit }) => {
       .matches(/[a-z]/, 'Must contain at least one lowercase letter')
       .matches(/[A-Z]/, 'Must contain at least one capital letter')
       .matches(/[0-9]/, 'Must be at least one number')
+      .max(12, 'Must be shorter than 12 characters')
+
       .required('Please, enter your password'),
     confirmPassword: yup
       .string()
@@ -88,31 +94,58 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       // required
                       value={values.email}
                       startAdornment={
-                        <InputAdornment position="start">
-                          <EmailIcon width={'40px'} />
-                        </InputAdornment>
+                        <>
+                          <InputAdornment position="start">
+                            <EmailIcon width={'40px'} />
+                          </InputAdornment>
+                        </>
                       }
                     />
                     {touched.email && errors.email && (
                       <p className={'error'}>{errors.email}</p>
                     )}
+
                     <Input
-                      className="input inputRef"
+                      // sx={{ position: 'relative' }}
+                      ref={pass}
+                      // className="input"
+                      className="input"
                       onChange={handleChange}
                       placeholder="Password"
                       name="password"
+                      type="password"
                       value={values.password}
                       startAdornment={
-                        <InputAdornment position="start">
-                          <LockIcon />
-                        </InputAdornment>
+                        <>
+                          <InputAdornment position="start">
+                            <LockIcon />
+                          </InputAdornment>
+                          <IconButton
+                            type="button"
+                            sx={{
+                              position: 'absolute',
+                              right: '0',
+                            }}
+                            aria-label="search"
+                            onClick={event => {
+                              pass.current.lastChild.type === 'password'
+                                ? (pass.current.lastChild.type = 'text')
+                                : (pass.current.lastChild.type = 'password');
+                            }}
+                          >
+                            <VisibilityIcon />
+                          </IconButton>
+                        </>
                       }
                     />
+
                     <IsSafePassword value={values.password} />
                     {touched.password && errors.password && (
                       <p className={'error'}>{errors.password}</p>
                     )}
                     <Input
+                      ref={comfirmPass}
+                      // sx={{ position: 'relative' }}
                       placeholder="Confirm password"
                       value={values.confirmPassword}
                       onChange={handleChange}
@@ -120,11 +153,30 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       onBlur={handleBlur}
                       name={'confirmPassword'}
                       startAdornment={
-                        <InputAdornment position="start">
-                          <LockIcon />
-                        </InputAdornment>
+                        <>
+                          <InputAdornment position="start">
+                            <LockIcon />
+                          </InputAdornment>
+                          <IconButton
+                            type="button"
+                            sx={{
+                              position: 'absolute',
+                              right: '0',
+                            }}
+                            aria-label="search"
+                            onClick={event => {
+                              comfirmPass.current.lastChild.type === 'password'
+                                ? (comfirmPass.current.lastChild.type = 'text')
+                                : (comfirmPass.current.lastChild.type =
+                                    'password');
+                            }}
+                          >
+                            <VisibilityIcon />
+                          </IconButton>
+                        </>
                       }
                     />
+
                     {touched.confirmPassword && errors.confirmPassword && (
                       <p className={'error'}>{errors.confirmPassword}</p>
                     )}

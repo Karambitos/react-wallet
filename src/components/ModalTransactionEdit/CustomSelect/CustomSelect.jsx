@@ -15,7 +15,7 @@ const options = [
   { value: 'c143130f-7d1e-4011-90a4-54766d4e308e', label: 'Leisure' },
   { value: '719626f1-9d23-4e99-84f5-289024e437a8', label: 'Other expenses' },
   { value: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402', label: 'Entertainment' },
-  { value: '063f1132-ba5d-42b4-951d-44011ca46262', label: 'Income' },
+  
 ];
 
 
@@ -30,6 +30,7 @@ const customStyles = {
     '&:hover': {
       borderColor: 'grey',
     },
+    pointerEvents: 'none',
   }),
   option: (provided, state) => ({
     ...provided,

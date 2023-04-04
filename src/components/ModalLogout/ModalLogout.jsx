@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/authThunks';
 import { clearTransactionsState } from 'redux/transactions/slice';
+import { clearBalance } from 'redux/balance/slice';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -21,6 +22,7 @@ export default function ModalLogout({ onClose }) {
 
   const handleLogout = () => {
     dispatch(clearTransactionsState());
+    dispatch(clearBalance());
     dispatch(logoutUser());
     onClose();
   };
