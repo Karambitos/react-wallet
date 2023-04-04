@@ -13,7 +13,7 @@ const HomeTab = () => {
 
   return (
     <>
-      <TransactionsList />
+      <TransactionsList openModal={handleOpenModal} />
       <div className={styles.containerBtn}>
         <button
           type="button"

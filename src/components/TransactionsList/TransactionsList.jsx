@@ -15,9 +15,10 @@ import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
+import Plug from './Plug/Plug';
 import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
 
-const TransactionsList = () => {
+const TransactionsList = ({ openModal }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const transactions = useSelector(sortedTransactions);
@@ -102,68 +103,79 @@ const TransactionsList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
-      {isTabletOrDesktop && (
-        <div className={css.transactionsTableWrapper}>
-          <table className={css.transactionsTable}>
-            <thead className={css.thead}>
-              <tr className={css.tr}>
-                <th className={css.th}>Date</th>
-                <th className={css.th}>Type</th>
-                <th className={css.th}>Category</th>
-                <th className={css.th}>Comment</th>
-                <th className={`${css.th} textAlignL`}>Sum</th>
-                <th className={css.th}></th>
-              </tr>
-            </thead>
-            <tbody className={css.tbody}>
-              {transactions.map(transaction => (
-                <tr key={transaction.id} className={css.tr}>
-                  <td className={css.td}>
-                    {new Date(transaction.transactionDate).toLocaleDateString(
-                      'ru-RU',
-                      { year: '2-digit', month: '2-digit', day: '2-digit' }
-                    )}
-                  </td>
-                  <td className={css.td}>
-                    {getTransactionType(transaction.type)}
-                  </td>
-                  <td className={css.td}>
-                    {getCategory(transaction.categoryId)}
-                  </td>
-                  <td className={css.td}>{transaction.comment}</td>
-                  <td
-                    className={css.td}
-                    style={{
-                      color: getTransactionColor(transaction.type).color,
-                      fontWeight: '700',
-                    }}
-                  >
-                    {sumRef(transaction.amount)}
-                  </td>
+      <div>
+        {isLoading && <Loader />}
+        {isTabletOrDesktop && (
+          <>
+            {transactions.length > 0 ? (
+              <div className={css.transactionsTableWrapper}>
+                <table className={css.transactionsTable}>
+                  <thead className={css.thead}>
+                    <tr className={css.tr}>
+                      <th className={css.th}>Date</th>
+                      <th className={css.th}>Type</th>
+                      <th className={css.th}>Category</th>
+                      <th className={css.th}>Comment</th>
+                      <th className={`${css.th} textAlignL`}>Sum</th>
+                      <th className={css.th}></th>
+                    </tr>
+                  </thead>
+                  <tbody className={css.tbody}>
+                    {transactions.map(transaction => (
+                      <tr key={transaction.id} className={css.tr}>
+                        <td className={css.td}>
+                          {new Date(
+                            transaction.transactionDate
+                          ).toLocaleDateString('ru-RU', {
+                            year: '2-digit',
+                            month: '2-digit',
+                            day: '2-digit',
+                          })}
+                        </td>
+                        <td className={css.td}>
+                          {getTransactionType(transaction.type)}
+                        </td>
+                        <td className={css.td}>
+                          {getCategory(transaction.categoryId)}
+                        </td>
+                        <td className={css.td}>{transaction.comment}</td>
+                        <td
+                          className={css.td}
+                          style={{
+                            color: getTransactionColor(transaction.type).color,
+                            fontWeight: '700',
+                          }}
+                        >
+                          {sumRef(transaction.amount)}
+                        </td>
 
-                  <td className={`${css.th} cell textAlignL`}>
-                    <IconButton
-                      type="button"
-                      aria-label="edit"
-                      onClick={() => handleEditTransaction(transaction)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                    <button
-                      disabled={isLoading}
-                      onClick={() => handleDelete(transaction.id)}
-                      className={`${css.tableButton} button button button--small`}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+                        <td className={`${css.th} cell textAlignL`}>
+                          <IconButton
+                            type="button"
+                            aria-label="edit"
+                            onClick={() => handleEditTransaction(transaction)}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                          <button
+                            disabled={isLoading}
+                            onClick={() => handleDelete(transaction.id)}
+                            className={`${css.tableButton} button button button--small`}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <Plug handleOpenModal={openModal} />
+            )}
+          </>
+        )}
+      </div>
 
       {isMobile && (
         <ul className={css.mobileTransactionsList}>
@@ -239,3 +251,66 @@ const TransactionsList = () => {
 };
 
 export default TransactionsList;
+
+// {isLoading && <Loader />}
+//       {isTabletOrDesktop && (
+//         <div className={css.transactionsTableWrapper}>
+//           <table className={css.transactionsTable}>
+//             <thead className={css.thead}>
+//               <tr className={css.tr}>
+//                 <th className={css.th}>Date</th>
+//                 <th className={css.th}>Type</th>
+//                 <th className={css.th}>Category</th>
+//                 <th className={css.th}>Comment</th>
+//                 <th className={`${css.th} textAlignL`}>Sum</th>
+//                 <th className={css.th}></th>
+//               </tr>
+//             </thead>
+//             <tbody className={css.tbody}>
+//               {transactions.map(transaction => (
+//                 <tr key={transaction.id} className={css.tr}>
+//                   <td className={css.td}>
+//                     {new Date(transaction.transactionDate).toLocaleDateString(
+//                       'ru-RU',
+//                       { year: '2-digit', month: '2-digit', day: '2-digit' }
+//                     )}
+//                   </td>
+//                   <td className={css.td}>
+//                     {getTransactionType(transaction.type)}
+//                   </td>
+//                   <td className={css.td}>
+//                     {getCategory(transaction.categoryId)}
+//                   </td>
+//                   <td className={css.td}>{transaction.comment}</td>
+//                   <td
+//                     className={css.td}
+//                     style={{
+//                       color: getTransactionColor(transaction.type).color,
+//                       fontWeight: '700',
+//                     }}
+//                   >
+//                     {sumRef(transaction.amount)}
+//                   </td>
+
+//                   <td className={`${css.th} cell textAlignL`}>
+//                     <IconButton
+//                       type="button"
+//                       aria-label="edit"
+//                       onClick={() => handleEditTransaction(transaction)}
+//                     >
+//                       <EditIcon />
+//                     </IconButton>
+//                     <button
+//                       disabled={isLoading}
+//                       onClick={() => handleDelete(transaction.id)}
+//                       className={`${css.tableButton} button button button--small`}
+//                     >
+//                       Delete
+//                     </button>
+//                   </td>
+//                 </tr>
+//               ))}
+//             </tbody>
+//           </table>
+//         </div>
+//       )}
