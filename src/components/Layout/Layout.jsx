@@ -7,12 +7,12 @@ import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import { ModalTransaction } from '../ModalTransaction/ModalTransaction';
-import { selectModalAddState } from 'redux/modalAddTransaction/selector';
+import { getModalAddState } from 'redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
 
 export default function Layout() {
-  const modalIsOpen = useSelector(selectModalAddState);
+  const modalIsOpen = useSelector(getModalAddState);
   const location = useLocation();
 
   const [isBalanceRender, setBalanceStatus] = useState(true);

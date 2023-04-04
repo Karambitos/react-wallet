@@ -5,7 +5,7 @@ import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectCategories } from 'redux/transactions/selectors';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
+import { setModalAddTransactionOpen } from 'redux/auth/authSlice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';

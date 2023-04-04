@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
+import { setModalAddTransactionOpen } from 'redux/auth/authSlice';
 import { ReactComponent as Plus } from '../../assets/svg/plus.svg';
 import styles from '../HomeTab/HomeTab.module.scss';
 

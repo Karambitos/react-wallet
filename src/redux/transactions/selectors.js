@@ -1,4 +1,6 @@
 export const selectCategories = state => state.transactions.categories;
+export const selectMonth = state => state.transactions.month;
+export const selectYear = state => state.transactions.year;
 
 export const sortedTransactions = state => {
   return [...state.transactions.transactions].sort((a, b) =>

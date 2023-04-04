@@ -27,11 +27,15 @@ const authSlice = createSlice({
     token: null,
     isLoading: false,
     isRefreshing: false,
+    isModalAddTransactionOpen: false,
     error: null,
   },
   reducers: {
     balanceUpdate(state, action) {
       state.user.balance = action.payload;
+    },
+    setModalAddTransactionOpen: (state, action) => {
+      state.isModalAddTransactionOpen = action.payload;
     },
   },
   extraReducers: {
@@ -110,6 +114,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { balanceUpdate } = authSlice.actions;
+export const { balanceUpdate, setModalAddTransactionOpen } = authSlice.actions;
 
 export default authSlice.reducer;
