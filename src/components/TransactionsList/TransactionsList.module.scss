@@ -7,24 +7,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: 400px;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: $white;
-    border-radius: 5px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $colorBlue;
-    -webkit-box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-    -moz-box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-    box-shadow: 10px 10px 198px 91px rgba(30, 0, 255, 0.15);
-
-    border-radius: 5px;
-  }
 }
 .isLoading {
   opacity: 0.5;
@@ -43,7 +25,9 @@
     background: $white;
     position: sticky;
     top: 0;
-    z-index: 1;
+    width: 100%;
+
+    border-radius: 30px;
   }
 
   .th {
@@ -177,7 +161,6 @@ ul {
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: 3;
       }
     }
 
