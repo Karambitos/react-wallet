@@ -31,9 +31,7 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <div className="backdrop">
-      <Loader />
-    </div>
+    <Loader />
   ) : (
     <>
       <ToastContainer position="top-center" autoClose={1000} />
