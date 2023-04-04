@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import { fetchAllTransactions } from 'redux/transactions/operations';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
-import { ReactComponent as Plus } from '../../images/plus.svg';
+import { ReactComponent as Plus } from '../../assets/svg/plus.svg';
 import styles from '../HomeTab/HomeTab.module.scss';
 
 const HomeTab = () => {
