@@ -14,11 +14,11 @@
     width: 5px;
   }
   &::-webkit-scrollbar-track {
-    background-color: $white;
+    background-color: transparent;
     border-radius: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $colorBlue;
+    background-color: transparent;
     -webkit-box-shadow: 0;
     -moz-box-shadow: 0;
     box-shadow: none;
@@ -42,7 +42,9 @@
     background: $white;
     position: sticky;
     top: 0;
-    z-index: 1;
+    width: 100%;
+
+    border-radius: 30px;
   }
 
   .th {
@@ -178,7 +180,6 @@ ul {
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: 3;
       }
     }
 
