@@ -134,15 +134,14 @@
   }
   .input {
     margin-bottom: 40px;
-  }
-
-  .inputRef{
-    margin-bottom: 0;
+    // position: relative;
   }
 
   .safe_password {
-    background: transparent !important;
-    margin-bottom: 40px;
+    position: absolute;
+    width: 102%;
+    left: -4px;
+    top: 108px;
   }
 
   p.error {
@@ -151,5 +150,3 @@
     @include font-size(14, 16);
   }
 }
-
-

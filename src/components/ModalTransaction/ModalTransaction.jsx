@@ -10,13 +10,12 @@ import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';
 import { ReactComponent as CloseIcon } from '../../assets/imgages/close.svg';
-import { getCurrentUser } from 'redux/auth/authThunks';
 
 export const ModalTransaction = () => {
   const [transactionDate, setTransactionDate] = useState(
     moment().format('YYYY-MM-DD')
   );
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
   const [comment, setComment] = useState('');

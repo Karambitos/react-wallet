@@ -1,14 +1,15 @@
 @import '../../scss/variables';
 
 .tablewrapper {
-  display: none;
+  display: block;
+  position: relative;
   width: 100%;
-  @media (min-width: $breakpoint-tablet) {
-    display: block;
-  }
 }
 
-.currencywrapper {
+.wavewraper {
+  position: absolute;
+  width: 100%;
+  top: 55%;
 }
 
 .table {
@@ -20,23 +21,16 @@
   background-color: #4a56e2;
   color: #fff;
   width: 100%;
-
+  min-height: 300px;
   border-radius: 30px;
-  background-image: url(./galary/bottom-vector.svg);
-
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: top 100px right 0;
   padding: 20px 0px;
 
   @media (min-width: $breakpoint-tablet) {
+    min-height: auto;
     min-width: 335px;
     width: 100%;
     background-position: top 100px right 0;
   }
-  // @media (min-width: $breakpoint-tablet-horizontal) {
-  //   background-position: top 100px right 0;
-  // }
 
   @media (min-width: $breakpoint-desktop) {
     min-height: 300px;

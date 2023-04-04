@@ -11,11 +11,11 @@ import {
   selectIsLoading,
   sortedTransactions,
 } from 'redux/transactions/selectors';
-import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
+import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
-import {ModalEditTransaction} from '../ModalTransactionEdit/ModalEditTransaction'
+import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -87,15 +87,14 @@ const TransactionsList = () => {
     query: '(min-width: 768px)',
   });
 
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-   const [selectedTransaction, setSelectedTransaction] = useState(null);
-   const [isModalOpen, setIsModalOpen] = useState(false);
-
-   const handleEditTransaction = transaction => {
-     setSelectedTransaction(transaction);
-     setIsModalOpen(true);
+  const handleEditTransaction = transaction => {
+    setSelectedTransaction(transaction);
+    setIsModalOpen(true);
   };
-  
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedTransaction(null);
@@ -113,7 +112,7 @@ const TransactionsList = () => {
                 <th className={css.th}>Type</th>
                 <th className={css.th}>Category</th>
                 <th className={css.th}>Comment</th>
-                <th className={`${css.th} cell textAlignL`}>Sum</th>
+                <th className={`${css.th} textAlignL`}>Sum</th>
                 <th className={css.th}></th>
               </tr>
             </thead>
@@ -147,7 +146,7 @@ const TransactionsList = () => {
                     <IconButton
                       type="button"
                       aria-label="edit"
-                       onClick={() => handleEditTransaction(transaction)}
+                      onClick={() => handleEditTransaction(transaction)}
                     >
                       <EditIcon />
                     </IconButton>
