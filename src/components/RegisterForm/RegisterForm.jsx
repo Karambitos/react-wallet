@@ -1,7 +1,7 @@
 import { Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
 // import styles from './register.module.scss';
-import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/woman_desktop.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -9,9 +9,6 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getIsLoading } from 'redux/auth/authSelectors';
-import Loader from 'components/Loader/Loader';
 
 import { IsSafePassword } from 'components/IsSafePassword/IsSafePassword';
 
@@ -39,14 +36,13 @@ export const RegisterForm = ({ cbOnSubmit }) => {
       .typeError('Must be string')
       .required('Please, enter your password'),
   });
-  const isLoading = useSelector(getIsLoading);
+
   const isTablet = useMediaQuery({
     query: '(min-width: 580px)',
   });
   return (
     <div className="mainContainer">
       <div className="mainForm">
-        {isLoading && <Loader />}
         {isTablet && (
           <div className="mainForm-wrapperImage">
             <div className="mainForm-image">

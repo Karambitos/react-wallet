@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../images/logo.svg';
-import { ReactComponent as Logout } from '../../images/logout.svg';
-import { ReactComponent as Divider } from '../../images/divider.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
+import { ReactComponent as Logout } from '../../assets/svg/logout.svg';
+import { ReactComponent as Divider } from '../../assets/svg/divider.svg';
 
 import styles from './AppBar.module.scss';
 import { LogoutBtn } from 'components/logoutBtn/logoutBtn';

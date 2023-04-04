@@ -11,7 +11,7 @@ import {
   selectIsLoading,
   sortedTransactions,
 } from 'redux/transactions/selectors';
-import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
+import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
