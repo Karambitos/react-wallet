@@ -8,7 +8,7 @@ import {
 import { getUserBalance } from 'redux/auth/authThunks';
 import {
   selectIsLoading,
-  sortedTransactions,
+  sortByDateDescending,
 } from 'redux/transactions/selectors';
 import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
@@ -20,7 +20,7 @@ import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransacti
 const TransactionsList = ({ openModal }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const transactions = useSelector(sortedTransactions);
+  const transactions = useSelector(sortByDateDescending);
 
   useEffect(() => {
     dispatch(fetchAllTransactions());
