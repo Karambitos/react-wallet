@@ -47,6 +47,7 @@ function Selector({
       placeholder={placeholder ? placeholder : 'Select an option'}
       styles={styles ? styles : customStyles}
       defaultInputValue={defaultInputValue}
+      required
     />
   );
 }
