@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
-import { DatePicker } from './DatePicker/DatePicker';
+import { DatePicker } from 'components/DatePicker/DatePicker';
 import { selectCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/auth/authSlice';
 import { fetchAddTransactions } from 'redux/transactions/operations';

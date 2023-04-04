@@ -219,7 +219,7 @@ export const ModalEditTransaction = ({ onClose, transaction }) => {
                   value={transactionDate}
                   onChange={setTransactionDate}
                 />
-                <DatePicker onSelect={handleSelectDate} />
+                {/* <DatePicker /> */}
               </div>
             </div>
             <input
