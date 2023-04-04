@@ -96,6 +96,14 @@ export const ModalTransaction = () => {
 
     const inputDate = e.target.elements.date.value;
     const momentTransactionDate = moment(inputDate, 'DD.MM.YYYY');
+
+    if (!momentTransactionDate.isValid()) {
+      return toast.error('Please, enter valid date (DD.MM.YYYY)', {
+        className: 'custom-toast-negative',
+        autoClose: 3000,
+      });
+    }
+
     const transactionDate = momentTransactionDate.format('YYYY-MM-DD');
 
     dispatch(
