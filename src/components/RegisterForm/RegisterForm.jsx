@@ -155,7 +155,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       startAdornment={
                         <>
                           <InputAdornment position="start">
-                            <EmailIcon width={'40px'} />
+                            <LockIcon />
                           </InputAdornment>
                           <IconButton
                             type="button"
