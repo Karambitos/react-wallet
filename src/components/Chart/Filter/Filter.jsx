@@ -48,19 +48,26 @@ export default function Filter() {
       fontWeight: '400',
       color: '#000',
     }),
+
     placeholder: provided => ({
       ...provided,
       color: '#000',
     }),
     menu: provided => ({
       ...provided,
-      background: 'rgba(255, 255, 255, 0.7)',
-      boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+      background: 'rgba(0, 0, 0, 0.05)',
+      boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.5)',
       backdropFilter: 'blur(25px)',
       borderRadius: '20px',
       color: '#000',
       fontSize: '16px',
       overflow: 'hidden',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      ':hover': { background: '#fff' },
+      ':active': { background: '#fff' },
+      ':focus': { background: '#fff' },
     }),
     singleValue: provided => ({
       ...provided,

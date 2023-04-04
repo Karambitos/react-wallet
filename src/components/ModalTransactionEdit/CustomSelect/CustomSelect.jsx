@@ -15,30 +15,64 @@ const options = [
   { value: 'c143130f-7d1e-4011-90a4-54766d4e308e', label: 'Leisure' },
   { value: '719626f1-9d23-4e99-84f5-289024e437a8', label: 'Other expenses' },
   { value: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402', label: 'Entertainment' },
-  
 ];
-
-
-
-
 
 const customStyles = {
   control: provided => ({
     ...provided,
+    backgroundColor: 'transparent',
+    border: 'none',
     borderRadius: '0',
-    borderColor: 'grey',
-    '&:hover': {
-      borderColor: 'grey',
-    },
+    borderBottom: '1px solid #e0e0e0',
+    padding: '0 8px',
+    minHeight: '32px',
+    fontSize: '18px',
+    fontFamily: 'Circe',
+    lineHeight: '27px',
+    fontWeight: '400',
+    color: '#bdbdbd',
     pointerEvents: 'none',
   }),
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isSelected ? 'blue' : 'white',
-    color: state.isSelected ? 'white' : 'black',
-    '&:hover': {
-      backgroundColor: state.isSelected ? 'blue' : '#f2f2f2',
-    },
+    ':hover': { background: '#fff', color: '#FF6596' },
+  }),
+  input: provided => ({
+    ...provided,
+    padding: '0',
+    margin: '0',
+  }),
+  valueContainer: provided => ({
+    ...provided,
+    padding: '0',
+  }),
+  placeholder: provided => ({
+    ...provided,
+    fontSize: '16px',
+    fontFamily: 'Circe',
+    lineHeight: '24px',
+    fontWeight: '400',
+    color: '#BDBDBD',
+  }),
+  indicatorsContainer: provided => ({
+    ...provided,
+    padding: '0',
+    display: 'none',
+  }),
+  indicatorSeparator: provided => ({
+    ...provided,
+    display: 'none',
+  }),
+  menu: provided => ({
+    ...provided,
+    background: 'rgba(0, 0, 0, 0.05)',
+    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.5)',
+    backdropFilter: 'blur(25px)',
+    borderRadius: '20px',
+    color: '#000',
+    fontSize: '16px',
+    overflow: 'hidden',
+    cursor: 'pointer',
   }),
 };
 
