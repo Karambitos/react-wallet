@@ -1,6 +1,6 @@
 import { IconButton, Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
-import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/men_desktop.svg';
 import { createRef, useState } from 'react';
 import EmailIcon from '@mui/icons-material/Email';
@@ -15,7 +15,6 @@ export const LoginForm = ({ cbOnSubmit }) => {
   const pass = createRef();
 
   const [formLogin, setFormLogin] = useState({ email: '', password: '' });
-  const isLoading = useSelector(getIsLoading);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -33,7 +32,6 @@ export const LoginForm = ({ cbOnSubmit }) => {
   return (
     <div className="mainContainer">
       <div className="mainForm">
-        {isLoading && <Loader />}
         {isTablet && (
           <div className="mainForm-wrapperImage">
             <div className="mainForm-image">

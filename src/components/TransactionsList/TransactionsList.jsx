@@ -1,35 +1,40 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import {
   fetchAllTransactions,
   fetchDeleteTransactions,
 } from 'redux/transactions/operations';
+import { getCurrentUser } from 'redux/auth/authThunks';
 import {
-  selectAllTransactions,
   selectIsLoading,
+  sortedTransactions,
 } from 'redux/transactions/selectors';
-import { ReactComponent as EditIcon } from 'images/edit-pensil.svg';
+import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
 import Loader from 'components/Loader/Loader';
+import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const transactions = useSelector(sortedTransactions);
 
   useEffect(() => {
     dispatch(fetchAllTransactions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const transactions = useSelector(selectAllTransactions);
 
   const getTransactionType = type => {
     return type === 'EXPENSE' ? '-' : '+';
   };
 
   const getTransactionColor = type => {
-    return type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+    const className = type === 'EXPENSE' ? css.expense : css.income;
+    const color = type === 'EXPENSE' ? '#FF6596' : '#24CCA7';
+    return { className, color };
   };
 
   const getCategory = categoryId => {
@@ -70,6 +75,11 @@ const TransactionsList = () => {
     return `${replacedString}.${decimalPart}`;
   };
 
+  const handleDelete = async id => {
+    await dispatch(fetchDeleteTransactions(id));
+    dispatch(getCurrentUser());
+  };
+
   const isMobile = useMediaQuery({
     query: '(max-width: 767.98px)',
   });
@@ -77,54 +87,72 @@ const TransactionsList = () => {
     query: '(min-width: 768px)',
   });
 
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditTransaction = transaction => {
+    setSelectedTransaction(transaction);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedTransaction(null);
+  };
+
   return (
     <>
       {isLoading && <Loader />}
       {isTabletOrDesktop && (
-        <div
-          className={css.transactionsTableWrapper}
-          style={{ overflow: 'auto', height: '400px' }}
-        >
-          <table className="transactionsTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Comment</th>
-                <th className="cell textAlignL">Sum</th>
-                <th></th>
+        <div className={css.transactionsTableWrapper}>
+          <table className={css.transactionsTable}>
+            <thead className={css.thead}>
+              <tr className={css.tr}>
+                <th className={css.th}>Date</th>
+                <th className={css.th}>Type</th>
+                <th className={css.th}>Category</th>
+                <th className={css.th}>Comment</th>
+                <th className={`${css.th} textAlignL`}>Sum</th>
+                <th className={css.th}></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={css.tbody}>
               {transactions.map(transaction => (
-                <tr key={transaction.id}>
-                  <td>
+                <tr key={transaction.id} className={css.tr}>
+                  <td className={css.td}>
                     {new Date(transaction.transactionDate).toLocaleDateString(
                       'ru-RU',
                       { year: '2-digit', month: '2-digit', day: '2-digit' }
                     )}
                   </td>
-                  <td>{getTransactionType(transaction.type)}</td>
-                  <td>{getCategory(transaction.categoryId)}</td>
-                  <td>{transaction.comment}</td>
+                  <td className={css.td}>
+                    {getTransactionType(transaction.type)}
+                  </td>
+                  <td className={css.td}>
+                    {getCategory(transaction.categoryId)}
+                  </td>
+                  <td className={css.td}>{transaction.comment}</td>
                   <td
+                    className={css.td}
                     style={{
-                      color: getTransactionColor(transaction.type),
+                      color: getTransactionColor(transaction.type).color,
                       fontWeight: '700',
                     }}
                   >
                     {sumRef(transaction.amount)}
                   </td>
-                  <td className="cell actions">
-                    <IconButton type="button" aria-label="edit">
+
+                  <td className={`${css.th} cell textAlignL`}>
+                    <IconButton
+                      type="button"
+                      aria-label="edit"
+                      onClick={() => handleEditTransaction(transaction)}
+                    >
                       <EditIcon />
                     </IconButton>
                     <button
-                      href="#"
-                      onClick={() =>
-                        dispatch(fetchDeleteTransactions(transaction.id))
-                      }
+                      disabled={isLoading}
+                      onClick={() => handleDelete(transaction.id)}
                       className={`${css.tableButton} button button button--small`}
                     >
                       Delete
@@ -139,45 +167,72 @@ const TransactionsList = () => {
 
       {isMobile && (
         <ul className={css.mobileTransactionsList}>
-          <li>
-            <ul className={css.mobileTransaction}>
-              <li>
-                <span className={css.mobileTransList__title}>Date</span>{' '}
-                <span>04.01.19</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Type</span>{' '}
-                <span>-</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Category</span>{' '}
-                <span>Other</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Comment</span>{' '}
-                <span>Gift for your wife</span>
-              </li>
-              <li>
-                <span className={css.mobileTransList__title}>Sum</span>{' '}
-                <span className={css.mobileTransaction__summ}>300.00</span>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className={`${css.tableButton} button button button--small`}
-                >
-                  Delete
-                </button>
-                <div>
-                  <IconButton type="button" aria-label="edit">
-                    <EditIcon />
-                    <span className={css.editButtonTitle}>Edit</span>
-                  </IconButton>
-                </div>
-              </li>
-            </ul>
-          </li>
+          {transactions.map(transaction => (
+            <li className={css.mobileTransactionsItem} key={transaction.id}>
+              <ul
+                className={`${css.mobileTransaction}  ${
+                  getTransactionColor(transaction.type).className
+                }`}
+              >
+                <li>
+                  <span className={css.mobileTransList__title}>Date</span>{' '}
+                  <span>
+                    {new Date(transaction.transactionDate).toLocaleDateString(
+                      'ru-RU',
+                      { year: '2-digit', month: '2-digit', day: '2-digit' }
+                    )}
+                  </span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Type</span>{' '}
+                  <span>{getTransactionType(transaction.type)}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Category</span>{' '}
+                  <span>{getCategory(transaction.categoryId)}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Comment</span>{' '}
+                  <span>{transaction.comment}</span>
+                </li>
+                <li>
+                  <span className={css.mobileTransList__title}>Sum</span>{' '}
+                  <span
+                    style={{
+                      color: getTransactionColor(transaction.type).color,
+                      fontWeight: '700',
+                    }}
+                  >
+                    {sumRef(transaction.amount)}
+                  </span>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className={`${css.tableButton} button button button--small`}
+                    onClick={() => handleDelete(transaction.id)}
+                  >
+                    Delete
+                  </button>
+                  <div>
+                    <IconButton type="button" aria-label="edit">
+                      <EditIcon />
+                      <span className={css.editButtonTitle}>Edit</span>
+                    </IconButton>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          ))}
         </ul>
+      )}
+
+      {selectedTransaction && (
+        <ModalEditTransaction
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          transaction={selectedTransaction}
+        />
       )}
     </>
   );

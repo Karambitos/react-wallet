@@ -4,11 +4,12 @@ import { fetchAddTransactions } from './operations';
 import { fetchDeleteTransactions } from './operations';
 import { fetchAllCategories } from './operations';
 import { getSummaryController } from './operations';
+import { fetchUpdateTransactions } from './operations'
 
 const initialState = {
   transactions: [],
   categories: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
   categoriesSummary: {
     categories: [],
@@ -51,6 +52,15 @@ export const transactionsSlice = createSlice({
           month: action.payload.month,
           year: action.payload.year,
         };
+      })
+
+      .addCase(fetchUpdateTransactions.fulfilled, (state, action) => {
+        const index = state.transactions.findIndex(
+          transaction => transaction.id === action.payload.id
+        );
+        if (index >= 0) {
+          state.transactions[index] = action.payload;
+        }
       })
 
       .addMatcher(

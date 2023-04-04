@@ -28,6 +28,11 @@ const authSlice = createSlice({
     isRefreshing: false,
     error: null,
   },
+  reducers: {
+    balanceUpdate(state, action) {
+      state.user.balance = action.payload;
+    },
+  },
   extraReducers: {
     [registerUser.pending]: handlePending,
     [loginUser.pending]: handlePending,
@@ -61,6 +66,21 @@ const authSlice = createSlice({
         user: payload,
         isLoading: false,
         error: null,
+        isRefreshing: false,
+      };
+    },
+    [getCurrentUser.pending]: (state, { payload }) => {
+      return {
+        ...state,
+        error: null,
+        isRefreshing: true,
+      };
+    },
+    [getCurrentUser.rejected]: (state, { payload }) => {
+      return {
+        ...state,
+        error: payload,
+        isRefreshing: false,
       };
     },
     [logoutUser.fulfilled]: (state, { payload }) => {
@@ -79,4 +99,7 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const { balanceUpdate } = authSlice.actions;
+
 export default authSlice.reducer;

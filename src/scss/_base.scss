@@ -10,15 +10,16 @@
   font-weight: 400;
   src: url('../assets/fonts/poppins-v20-latin-regular.eot');
   /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('../assets/fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-regular.woff2')
+      format('woff2'),
     /* Super Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
-    /* Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-regular.ttf') format('truetype'),
+      url('../assets/fonts/poppins-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-regular.ttf')
+      format('truetype'),
     /* Safari, Android, iOS */
-    url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+      url('../assets/fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
   /* Legacy iOS */
 }
 
@@ -31,15 +32,16 @@
   font-weight: 700;
   src: url('../assets/fonts/poppins-v20-latin-700.eot');
   /* IE9 Compat Modes */
-  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('../assets/fonts/poppins-v20-latin-700.woff2') format('woff2'),
+  src: url('../assets/fonts/poppins-v20-latin-700.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../assets/fonts/poppins-v20-latin-700.woff2')
+      format('woff2'),
     /* Super Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
-    /* Modern Browsers */
-    url('../assets/fonts/poppins-v20-latin-700.ttf') format('truetype'),
+      url('../assets/fonts/poppins-v20-latin-700.woff') format('woff'),
+    /* Modern Browsers */ url('../assets/fonts/poppins-v20-latin-700.ttf')
+      format('truetype'),
     /* Safari, Android, iOS */
-    url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
+      url('../assets/fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
   /* Legacy iOS */
 }
 
@@ -104,13 +106,13 @@ body {
     text-decoration: none;
   }
 
-  >em {
+  > em {
     color: var(--color-accent);
     font-style: normal;
   }
 }
 
-#modal-root{
+#modal-root {
   z-index: 10;
 }
 
@@ -150,20 +152,24 @@ h6,
 }
 
 .mainContainer {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
 
   @media screen and (min-width: $breakpoint-mobile-horizontal) {
-    background-image: url(../assets/svg/ellipse_tabl1.svg), url(../assets/svg/ellipse_tabl2.svg);
+    background-image: url(../assets/svg/ellipse_tabl1.svg),
+      url(../assets/svg/ellipse_tabl2.svg);
     background-repeat: no-repeat;
     background-position: top 100% left 0, top 0 right 0;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
-      background-image: url(../assets/svg/ellipse_desktop1.svg), url(../assets/svg/ellipse_desktop2.svg);
-      background-repeat: no-repeat;
-      background-position: top 100% left 0, top 0 right 0;
+    background-image: url(../assets/svg/ellipse_desktop1.svg),
+      url(../assets/svg/ellipse_desktop2.svg);
+    background-repeat: no-repeat;
+    background-position: top 100% left 0, top 0 right 0;
   }
 }
 
@@ -171,22 +177,34 @@ h6,
   padding: 0;
 }
 
+.navWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: 30px;
+  }
+}
+
 .pageWrapper {
   display: flex;
   align-items: stretch;
-  padding: 12px 20px;
+  padding: 0 20px;
   flex-direction: column;
   gap: 20px;
-  height: 100%;
+  min-height: 100%;
+  flex: 1;
   position: relative;
 
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: 32px;
-    &:before{
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    padding: 0 32px;
+    &:before {
       content: '';
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%;
       backdrop-filter: blur(40px);
       display: block;
       position: absolute;
@@ -197,26 +215,33 @@ h6,
   }
 
   @media (min-width: $breakpoint-desktop) {
-    padding: 45px 16px;
+    padding: 0 16px;
     flex-direction: row;
-    gap: 100px;
+    gap: 140px;
   }
 }
 
 .aside {
   width: 100%;
-  @media (min-width: $breakpoint-desktop) {
-    max-width: 394px;
-  }
-}
-
-.navWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  margin-top: 12px;
   @media (min-width: $breakpoint-tablet) {
-    gap: 30px
+    margin-top: 32px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: 0;
+    max-width: 394px;
+    position: relative;
+    &:before {
+      content: '';
+      width: 2px;
+      height: 100%;
+      box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+        1px 0px 0px rgba(255, 255, 255, 0.6);
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -69px;
+    }
   }
 }
 
@@ -225,6 +250,7 @@ h6,
   display: flex;
   height: auto;
   gap: 30px;
+  // padding: 12px 0;
   flex-direction: column;
   align-items: stretch;
   z-index: 2;
@@ -234,96 +260,29 @@ h6,
   }
 
   @media (min-width: $breakpoint-desktop) {
+    padding: 45px 0;
     flex-direction: column;
   }
 }
 
 .main {
   width: 100%;
-}
-
-// Tables
-
-.transactionsTable {
-  border: none;
-  border-collapse: collapse;
-  vertical-align: middle;
-  min-width: 715px;
-  width: 100%;
-
-  thead {
-    padding: 16px 20px;
-    text-align: left;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-
-  th {
-    overflow: hidden;
-    background: $white;
-  }
-
-  th:first-child {
-    border-top-left-radius: $button-border-radius-xl;
-    border-bottom-left-radius: $button-border-radius-xl;
-  }
-
-  th:last-child {
-    border-top-right-radius: $button-border-radius-xl;
-    border-bottom-right-radius: $button-border-radius-xl;
-  }
-
-  th:nth-child(2) {
-    text-align: center;
-  }
-  th:nth-child(5) {
-    text-align: end;
-  }
-
-  td:nth-child(2) {
-    text-align: center;
-  }
-
-  td:nth-child(5) {
-    text-align: end;
-  }
-  td:nth-child(6) {
-    text-align: end;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  th,
-  td {
-    padding: 16px;
-  }
-
-  th:first-child,
-  td:first-child {
-    padding-left: 20px;
-  }
-
-  th:last-child,
-  td:last-child {
-    padding-right: 20px;
-  }
-
-  tbody {
-    tr:not(:last-child) {
-      border-bottom: 1px solid $colorBorder;
-      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-    }
-  }
+  position: relative;
+  overflow: hidden;
 }
 
 .custom-toast {
-  background-color: #3cb371;
-  color: #fff;
+  color: $mainColor;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
+}
+.Toastify__toast-icon svg {
+  fill: $mainColor;
+}
+.Toastify__progress-bar--success {
+  background: $mainColor;
 }
 
 /* Class for text that should only be visible to screen readers */
@@ -345,8 +304,13 @@ h6,
   text-align: left;
 }
 
+.cell {
+  display: flex;
+}
+
 .contentMaxWidth {
   max-width: $contentMaxWidth;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -415,11 +379,11 @@ h6,
   line-height: 1.5;
   background-color: transparent;
   border: none;
-  border: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   outline: none;
 
-  &::placeholder{
-    color: #E0E0E0;
+  &::placeholder {
+    color: #e0e0e0;
   }
 }
 
@@ -432,7 +396,20 @@ h6,
   box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
 }
 
-.active span{
+.active span {
   font-weight: 700;
-  @include font-size(18, 27)
+  @include font-size(18, 27);
+}
+
+.backdrop {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.currencymob {
+  display: block;
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: none;
+  }
 }

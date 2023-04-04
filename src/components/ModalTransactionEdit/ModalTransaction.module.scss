@@ -1,0 +1,349 @@
+@import '../../scss/variables';
+
+@mixin mobile {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modalAddTrans {
+  position: relative;
+  background-color: #fff;
+
+  max-width: 320px;
+  width: 100%;
+
+  height: 100%;
+  max-height: 690px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 20px 20px 50px 20px;
+  border-radius: 8px;
+
+  @include tablet {
+    max-width: 540px;
+    width: 100%;
+
+    height: auto;
+    max-height: 603px;
+
+    border-radius: 20px;
+    padding: 40px 73px 60px 73px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.closeButtonIcon {
+  width: 16px;
+  height: 16px;
+
+  transition: stroke 0.2s ease-in-out;
+}
+
+.closeButton:hover .closeButtonIcon {
+  fill: #4a56e2;
+}
+
+.title {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+
+  color: #000000;
+
+  @include tablet {
+    font-size: 30px;
+    line-height: 45px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  align-items: center;
+}
+
+.inputsWrapper {
+  height: 256px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.toggleContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.toggleText {
+  font-family: $font-default;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #e0e0e0;
+  cursor: pointer;
+}
+
+
+
+.toggleText.activeExpense {
+  color: #ff6596;
+}
+.toggleText.activeIncome {
+  color: #6fcf97;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  position: relative;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+}
+
+.toggleButton::before {
+  content: '';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  background: #24cca7 url('../../assets/imgages/icon-plus.svg') no-repeat center;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggleButton.active::before {
+  content: '';
+  transform: translateX(100%);
+  background: #ff6596 url('../../assets/imgages/icon-minus.svg') no-repeat
+    center;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+}
+
+///////////// FOR SELECT COMPONENT
+.selectorWrapper {
+  display: block;
+  width: 100%;
+  max-height: 32px;
+}
+
+.numberAndCalendarWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include mobile {
+    gap: 26px;
+  }
+}
+
+.inputNumber {
+  display: flex;
+  width: 100%;
+
+  min-height: 32px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.inputNumber::placeholder {
+  font-family: $font-default;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: #bdbdbd;
+}
+
+.datePickerContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 32px;
+}
+
+.inputCalendar {
+  display: inline-block;
+  width: 100%;
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: #000000;
+}
+
+.inputComment {
+  display: block;
+  width: 100%;
+
+  max-height: 84px;
+
+  font-size: 18px;
+  line-height: 27px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+
+  @include tablet {
+    min-height: 32px;
+    max-height: 32px;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttonAdd {
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 50px;
+  max-height: 50px;
+
+  display: block;
+  background: #24cca7;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.buttonAdd:hover,
+.buttonAdd:focus {
+  background: #007058;
+}
+
+.buttonAddName {
+  display: inline-block;
+  padding: 13px 65px 13px 71px;
+
+  font-family: $font-default;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.buttonCancel {
+  display: block;
+  background: transparent;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #4a56e2;
+  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
+
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 50px;
+  max-height: 50px;
+}
+
+.buttonCancel:hover,
+.buttonCancel:focus {
+}
+
+.buttonCancelName {
+  display: inline-block;
+  padding: 11px 65px 11px 71px;
+
+  font-family: $font-default;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #4a56e2;
+}

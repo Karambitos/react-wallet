@@ -3,81 +3,110 @@
 
 // Tables
 .transactionsTableWrapper {
-  width: 100%;
+  width: calc(100% + 6px);
+  padding-right: 6px;
+  margin-right: -12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 400px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    -webkit-box-shadow: 0;
+    -moz-box-shadow: 0;
+    box-shadow: none;
+    border-radius: 5px;
+  }
+}
+.isLoading {
+  opacity: 0.5;
 }
 
-// .transactionsTable {
-//   border: none;
-//   border-collapse: collapse;
-//   vertical-align: middle;
-//   max-width: 715px;
-//   min-width: 704px;
+.transactionsTable {
+  border: none;
+  border-collapse: collapse;
+  vertical-align: middle;
+  width: 100%;
+  min-width: 704px;
 
-//   thead {
-//     padding: 16px 20px;
-//     text-align: left;
-//   }
+  .thead {
+    padding: 16px 20px;
+    text-align: left;
+    background: $white;
+    position: sticky;
+    top: 0;
+    width: 100%;
 
-//   th {
-//     overflow: hidden;
-//     background: $white;
-//   }
+    border-radius: 30px;
+  }
 
-//   th:first-child {
-//     border-top-left-radius: $button-border-radius-xl;
-//     border-bottom-left-radius: $button-border-radius-xl;
-//   }
+  .th {
+    overflow: hidden;
+  }
 
-//   th:last-child {
-//     border-top-right-radius: $button-border-radius-xl;
-//     border-bottom-right-radius: $button-border-radius-xl;
-//   }
+  .th:first-child {
+    border-top-left-radius: $button-border-radius-xl;
+    border-bottom-left-radius: $button-border-radius-xl;
+  }
 
-//   th:nth-child(2) {
-//     text-align: center;
-//   }
+  .th:last-child {
+    border-top-right-radius: $button-border-radius-xl;
+    border-bottom-right-radius: $button-border-radius-xl;
+  }
 
-//   th:nth-child(5) {
-//     text-align: end;
-//   }
+  .th:nth-child(2) {
+    text-align: center;
+  }
 
-//   td:nth-child(2) {
-//     text-align: center;
-//   }
+  .th:nth-child(5) {
+    text-align: end;
+  }
 
-//   td:nth-child(5) {
-//     text-align: end;
-//   }
+  .td:nth-child(2) {
+    text-align: center;
+  }
 
-//   td:nth-child(6) {
-//     text-align: end;
-//     display: flex;
-//     justify-content: flex-end;
-//   }
+  .td:nth-child(5) {
+    text-align: end;
+  }
 
-//   th,
-//   td {
-//     padding: 16px;
-//     font-weight: 700;
-//   }
+  .td:nth-child(6) {
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-//   th:first-child,
-//   td:first-child {
-//     padding-left: 20px;
-//   }
+  .th,
+  .td {
+    padding: 16px;
+  }
 
-//   th:last-child,
-//   td:last-child {
-//     padding-right: 20px;
-//   }
+  .th:first-child,
+  .td:first-child {
+    padding-left: 20px;
+  }
 
-//   tbody {
-//     tr:not(:last-child) {
-//       border-bottom: 1px solid $colorBorder;
-//       box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-//     }
-//   }
-// }
+  .th:last-child,
+  .td:last-child {
+    padding-right: 4px;
+    padding-right: 8px;
+    justify-content: end;
+  }
+
+  .tbody {
+    .tr:not(:last-child) {
+      border-bottom: 1px solid $colorBorder;
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    }
+  }
+}
 
 .tableButton {
   max-width: 67px;
@@ -88,7 +117,7 @@
 
 ul {
   list-style: none;
-  // border-radius: 10px;
+
   padding: 0;
 }
 
@@ -98,9 +127,12 @@ ul {
   overflow: hidden;
 }
 
+.mobileTransactionsItem {
+  margin-bottom: 8px;
+}
+
 .mobileTransaction {
   position: relative;
-
   &:before {
     content: '';
     width: 5px;
@@ -111,6 +143,15 @@ ul {
     top: 0;
     left: 0;
     z-index: 2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &.income:before {
+    background-color: $mainColor;
+  }
+  &.expense:before {
+    background-color: $colorPink;
   }
 
   li {
@@ -130,8 +171,6 @@ ul {
       border-top-right-radius: 10px;
     }
     &:not(:last-child) {
-      // border-bottom: 1px solid $colorBorder;
-
       &:before {
         content: '';
         width: 100%;
@@ -141,16 +180,11 @@ ul {
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: 3;
       }
     }
 
     .mobileTransList__title {
       font-weight: 700;
-    }
-
-    .mobileTransaction__summ {
-      color: $colorPink;
     }
 
     .editButtonTitle {

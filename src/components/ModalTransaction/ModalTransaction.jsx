@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
-import { selectModalAddState } from 'redux/modalAddTransaction/selector';
 import { selectCategories } from 'redux/transactions/selectors';
 import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
@@ -24,7 +23,6 @@ export const ModalTransaction = () => {
   const [categoryFiltered, setCategoryFiltered] = useState([]);
 
   const dispatch = useDispatch();
-  const modalState = useSelector(selectModalAddState);
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
@@ -39,6 +37,12 @@ export const ModalTransaction = () => {
     filteredAllCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive, categories]);
+
+  const handleBackDropClick = event => {
+    if (event.currentTarget === event.target) {
+      handleCloseModal();
+    }
+  };
 
   useEffect(() => {
     const handleKeyPress = event => {
@@ -69,13 +73,19 @@ export const ModalTransaction = () => {
   };
   const toggle = () => {
     setIsActive(!isActive);
-    setType(isActive ? 'INCOME' : 'EXPENSE');
+    setType(!isActive ? 'EXPENSE' : 'INCOME');
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (categoryId === '') {
+      alert('!!!!');
+      return;
+    }
     const amount = isActive ? Number(`-${amountNumber}`) : Number(amountNumber);
 
+    console.log(transactionDate);
     dispatch(
       fetchAddTransactions({
         transactionDate,
@@ -85,7 +95,9 @@ export const ModalTransaction = () => {
         amount,
       })
     );
+    // dispatch(getCurrentUser());
     dispatch(setModalAddTransactionOpen(false));
+    handleCloseModal();
   };
 
   const handleOptionSelect = useCallback(
@@ -117,7 +129,7 @@ export const ModalTransaction = () => {
   };
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay}>
+    <div className={styles.overlay} onClick={handleBackDropClick}>
       <div className={styles.modalAddTrans}>
         <button className={styles.closeButton} onClick={handleCloseModal}>
           <CloseIcon className={styles.closeButtonIcon} />

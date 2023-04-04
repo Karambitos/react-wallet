@@ -1,5 +1,10 @@
 export const selectCategories = state => state.transactions.categories;
-export const selectAllTransactions = state => state.transactions.transactions;
+
+export const sortedTransactions = state => {
+  return [...state.transactions.transactions].sort((a, b) =>
+    b.transactionDate.localeCompare(a.transactionDate)
+  );
+};
 
 export const selectAllCategories = state =>
   state.transactions.categoriesSummary.categories;
@@ -8,4 +13,4 @@ export const selectIncomeSummary = state =>
 export const selectExpenseSummary = state =>
   state.transactions.categoriesSummary.expenseSummary;
 
-export const selectIsLoading = state => state.isLoading;
+export const selectIsLoading = state => state.transactions.isLoading;

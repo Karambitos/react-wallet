@@ -2,7 +2,7 @@ import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/authThunks';
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ username, email, password }) => {

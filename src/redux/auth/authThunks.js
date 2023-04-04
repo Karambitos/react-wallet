@@ -18,6 +18,7 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (form, { rejectWithValue }) => {
@@ -34,27 +35,32 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
 export const getCurrentUser = createAsyncThunk(
   'auth/current',
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
+
+    if (!token) {
+      return rejectWithValue('Unable to fetch user');
+    }
+
     try {
       setAuthHeader(token);
       const { data } = await axios.get(`/api/users/current`, token);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
 export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
     try {
       setAuthHeader(token);
-      console.log(token);
       const { data } = await axios.delete(`/api/auth/sign-out`, token);
       clearAuthHeader();
       return data;

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currencyRate } from 'redux/currency/operations';
+import Wave from 'react-wavify';
 import {
   selectEurBuy,
   selectEurSell,
@@ -11,7 +12,7 @@ import {
 import { updateLastActionTime } from 'redux/currency/slice';
 import style from './currency.module.scss';
 
-const Currency = () => {
+const Currency = ({ mobile = false }) => {
   const dispatch = useDispatch();
   const lastActionTime = useSelector(selectLastActionTime);
   const usdBuy = useSelector(selectUsdBuy).toFixed(2);
@@ -37,7 +38,7 @@ const Currency = () => {
   }, []);
 
   return (
-    <div className={style.tablewrapper}>
+    <div className={style.tablewrapper} style={{ display: mobile && 'block' }}>
       <table className={style.table}>
         <thead className={style.tablehead}>
           <tr className={style.tableheadtext}>
@@ -59,6 +60,33 @@ const Currency = () => {
           </tr>
         </tbody>
       </table>
+      <div className={style.wavewraper}>
+        <Wave
+          mask="url(#mask)"
+          fill="#fff"
+          options={{
+            amplitude: 50,
+            speed: 0.05,
+            points: 3,
+          }}
+        >
+          <defs>
+            <linearGradient id="gradient" gradientTransform="rotate(90)">
+              <stop offset="0" stopColor="white" />
+              <stop offset="0.4" stopColor="black" />
+            </linearGradient>
+            <mask id="mask">
+              <rect
+                x="0"
+                y="-20"
+                width="2000"
+                height="250"
+                fill="url(#gradient)"
+              />
+            </mask>
+          </defs>
+        </Wave>
+      </div>
     </div>
   );
 };
