@@ -10,7 +10,7 @@
   overflow-x: hidden;
   height: 400px;
 
-  @media (max-width: $breakpoint-desktop) {
+  @media (max-width: $breakpoint-desktop - 1) {
     margin-top: 80px;
   }
 
@@ -48,7 +48,7 @@
     width: 100%;
     border-radius: 30px;
     justify-content: space-between;
-    @media (max-width: $breakpoint-desktop) {
+    @media (max-width: $breakpoint-desktop - 1) {
       top: 24px;
     }
   }
@@ -67,17 +67,19 @@
 
   .th:nth-child(2),
   .td:nth-child(2) {
-    width: 70px;
+    width: 100px;
   }
 
   .th:nth-child(3),
   .td:nth-child(3) {
     width: 120px;
+    text-align: left;
   }
 
   .th:nth-child(4),
   .td:nth-child(4) {
-    width: 170px;
+    width: 140px;
+    text-align: left;
   }
 
   .th:nth-child(5),
