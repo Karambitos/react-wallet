@@ -83,12 +83,13 @@
 .closeButtonIcon {
   width: 18px;
   height: 18px;
+  stroke: $color-text;
 
-  transition: stroke 0.2s ease-in-out;
+  transition: stroke 0.2s ease;
 }
 
 .closeButton:hover .closeButtonIcon {
-  fill: #4a56e2;
+  stroke: $colorPink;
 }
 
 .title {
@@ -210,6 +211,8 @@
   font-size: 18px;
   line-height: 27px;
   background-color: transparent;
+
+  text-align: center;
 }
 
 .inputNumber::placeholder {
@@ -245,81 +248,19 @@
     min-height: 32px;
     max-height: 32px;
   }
+
+  text-align: center;
 }
 
 .buttonsContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.buttonAdd {
-  min-width: 300px;
   max-width: 300px;
-  min-height: 50px;
-  max-height: 50px;
-
-  display: block;
-  background: #24cca7;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.buttonAdd:hover,
-.buttonAdd:focus {
-  background: #007058;
-}
-
-.buttonAddName {
-  display: inline-block;
-  padding: 13px 65px 13px 71px;
-
-  font-family: $font-default;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #ffffff;
-}
-
-.buttonCancel {
-  display: block;
-  background: transparent;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  border: 1px solid #4a56e2;
-  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
-
-  min-width: 300px;
-  max-width: 300px;
-  min-height: 50px;
-  max-height: 50px;
+  width: 100%;
 }
 
 
-
-.buttonCancelName {
-  display: inline-block;
-  padding: 11px 65px 11px 71px;
-
-  font-family: $font-default;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #4a56e2;
-}
 
 @keyframes opacity {
   from {

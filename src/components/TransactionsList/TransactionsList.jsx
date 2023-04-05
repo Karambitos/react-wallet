@@ -253,7 +253,6 @@ const TransactionsList = ({ openModal }) => {
           )}
         </>
       )}
-
       {selectedTransaction && (
         <ModalEditTransaction
           isOpen={isModalOpen}

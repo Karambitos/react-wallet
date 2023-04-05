@@ -14,8 +14,6 @@ import storage from 'redux-persist/lib/storage';
 
 import authReduser from './auth/authSlice';
 import { currencyReducer } from './currency/slice';
-import { modalAddReducer } from './modalAddTransaction/slice';
-import { statisticsFilterReducer } from './statisticsFilter/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,11 +25,6 @@ const currencyPersistConfig = {
   key: 'currency',
   storage,
   whitelist: ['lastActionTime', 'currencies'],
-};
-
-const modalPersistConfig = {
-  key: 'modal',
-  storage,
 };
 
 const middleware = [
@@ -47,8 +40,6 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReduser),
     transactions: transactionsReducer,
     currency: persistReducer(currencyPersistConfig, currencyReducer),
-    modal: persistReducer(modalPersistConfig, modalAddReducer),
-    statisticsFilter: statisticsFilterReducer,
   },
   middleware,
 });

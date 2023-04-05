@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
-import { DatePicker } from './DatePicker/DatePicker';
+import { DatePicker } from 'components/DatePicker/DatePicker';
 import { selectCategories } from 'redux/transactions/selectors';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
+import { setModalAddTransactionOpen } from 'redux/auth/authSlice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';
@@ -96,6 +96,14 @@ export const ModalTransaction = () => {
 
     const inputDate = e.target.elements.date.value;
     const momentTransactionDate = moment(inputDate, 'DD.MM.YYYY');
+
+    if (!momentTransactionDate.isValid()) {
+      return toast.error('Please, enter valid date (DD.MM.YYYY)', {
+        className: 'custom-toast-negative',
+        autoClose: 3000,
+      });
+    }
+
     const transactionDate = momentTransactionDate.format('YYYY-MM-DD');
 
     dispatch(
@@ -203,15 +211,15 @@ export const ModalTransaction = () => {
             />
           </div>
           <div className={styles.buttonsContainer}>
-            <button type="submit" className={styles.buttonAdd}>
-              <span className={styles.buttonAddName}>Add</span>
+            <button type="submit" className="button ">
+              Add
             </button>
             <button
               type="button"
-              className={styles.buttonCancel}
+              className="button button--secondary"
               onClick={handleCloseModal}
             >
-              <span className={styles.buttonCancelName}>Cancel</span>
+              Cancel
             </button>
           </div>
         </form>
