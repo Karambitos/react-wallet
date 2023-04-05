@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/react-wallet/static/css/main.7e3d6d48.css",
-    "main.js": "/react-wallet/static/js/main.388af2ad.js",
-    "static/css/571.7b417e9b.chunk.css": "/react-wallet/static/css/571.7b417e9b.chunk.css",
-    "static/js/571.84b1bf03.chunk.js": "/react-wallet/static/js/571.84b1bf03.chunk.js",
+    "main.css": "/react-wallet/static/css/main.79890ebe.css",
+    "main.js": "/react-wallet/static/js/main.e35719e6.js",
+    "static/css/996.f972f4b2.chunk.css": "/react-wallet/static/css/996.f972f4b2.chunk.css",
+    "static/js/996.18a60c1e.chunk.js": "/react-wallet/static/js/996.18a60c1e.chunk.js",
     "static/css/396.e4b5ebe6.chunk.css": "/react-wallet/static/css/396.e4b5ebe6.chunk.css",
-    "static/js/396.17741752.chunk.js": "/react-wallet/static/js/396.17741752.chunk.js",
+    "static/js/396.d41bfd20.chunk.js": "/react-wallet/static/js/396.d41bfd20.chunk.js",
     "static/js/436.012fcee6.chunk.js": "/react-wallet/static/js/436.012fcee6.chunk.js",
     "static/js/408.8d05ef2b.chunk.js": "/react-wallet/static/js/408.8d05ef2b.chunk.js",
     "static/js/450.c9a34a35.chunk.js": "/react-wallet/static/js/450.c9a34a35.chunk.js",
@@ -33,7 +33,7 @@
     "static/media/nav-dollar.svg": "/react-wallet/static/media/nav-dollar.6d455fd1b3b48c83933224c4db68b109.svg",
     "static/media/edit-pensil.svg": "/react-wallet/static/media/edit-pensil.bb8574415ac50161324284392ae9af00.svg",
     "static/media/logout.svg": "/react-wallet/static/media/logout.030b68913f37151d2b4c102bf455a5e3.svg",
-    "static/media/DatePickerIcon.svg": "/react-wallet/static/media/DatePickerIcon.2cbf98a7948692ea9639d261ef7c682a.svg",
+    "static/media/DatePickerIcon.svg": "/react-wallet/static/media/DatePickerIcon.2cbf98a7948692ea9639.svg",
     "static/media/nav-house.svg": "/react-wallet/static/media/nav-house.92901bec7f7cefdeac5ab663bfb85b5f.svg",
     "static/media/ellipse_desktop1.svg": "/react-wallet/static/media/ellipse_desktop1.e7cbaa19930a91cc921b.svg",
     "static/media/ellipse_tabl1.svg": "/react-wallet/static/media/ellipse_tabl1.f6c24d3e33e7e1253ac7.svg",
@@ -44,13 +44,13 @@
     "static/media/dropdowArrow.svg": "/react-wallet/static/media/dropdowArrow.77b989b3724c691229812f9ba569ef26.svg",
     "static/media/divider.svg": "/react-wallet/static/media/divider.4197971255a4c6a047f2d568d14b817e.svg",
     "static/media/icon-minus.svg": "/react-wallet/static/media/icon-minus.a2189924598eeb008f66.svg",
-    "static/media/close.svg": "/react-wallet/static/media/close.597283e18f87a7847d7084da5408293b.svg",
-    "main.7e3d6d48.css.map": "/react-wallet/static/css/main.7e3d6d48.css.map",
-    "main.388af2ad.js.map": "/react-wallet/static/js/main.388af2ad.js.map",
-    "571.7b417e9b.chunk.css.map": "/react-wallet/static/css/571.7b417e9b.chunk.css.map",
-    "571.84b1bf03.chunk.js.map": "/react-wallet/static/js/571.84b1bf03.chunk.js.map",
+    "static/media/close.svg": "/react-wallet/static/media/close.468ec37fe57dfdcb74c55e7183fb7475.svg",
+    "main.79890ebe.css.map": "/react-wallet/static/css/main.79890ebe.css.map",
+    "main.e35719e6.js.map": "/react-wallet/static/js/main.e35719e6.js.map",
+    "996.f972f4b2.chunk.css.map": "/react-wallet/static/css/996.f972f4b2.chunk.css.map",
+    "996.18a60c1e.chunk.js.map": "/react-wallet/static/js/996.18a60c1e.chunk.js.map",
     "396.e4b5ebe6.chunk.css.map": "/react-wallet/static/css/396.e4b5ebe6.chunk.css.map",
-    "396.17741752.chunk.js.map": "/react-wallet/static/js/396.17741752.chunk.js.map",
+    "396.d41bfd20.chunk.js.map": "/react-wallet/static/js/396.d41bfd20.chunk.js.map",
     "436.012fcee6.chunk.js.map": "/react-wallet/static/js/436.012fcee6.chunk.js.map",
     "408.8d05ef2b.chunk.js.map": "/react-wallet/static/js/408.8d05ef2b.chunk.js.map",
     "450.c9a34a35.chunk.js.map": "/react-wallet/static/js/450.c9a34a35.chunk.js.map",
@@ -60,7 +60,7 @@
     "485.6c6dec0f.chunk.js.map": "/react-wallet/static/js/485.6c6dec0f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e3d6d48.css",
-    "static/js/main.388af2ad.js"
+    "static/css/main.79890ebe.css",
+    "static/js/main.e35719e6.js"
   ]
 }
