@@ -3,26 +3,27 @@
 
 // Tables
 .transactionsTableWrapper {
-  width: calc(100% + 6px);
-  padding-right: 6px;
+  width: 100%;
+  margin-top: 60px;
   margin-right: -12px;
   overflow-y: auto;
   overflow-x: hidden;
   height: 400px;
 
+  @media (max-width: $breakpoint-desktop) {
+    margin-top: 80px;
+  }
+
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 5px;
+    background-color: rgba($color: $white, $alpha: 0.7);
+    border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    -webkit-box-shadow: 0;
-    -moz-box-shadow: 0;
-    box-shadow: none;
-    border-radius: 5px;
+    background-color: $colorBlue;
+    border-radius: 10px;
   }
 }
 .isLoading {
@@ -37,67 +38,66 @@
   min-width: 704px;
 
   .thead {
-    padding: 16px 20px;
     text-align: left;
     background: $white;
-    position: sticky;
-    top: 0;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 714px;
     width: 100%;
-
     border-radius: 30px;
+    justify-content: space-between;
+    @media (max-width: $breakpoint-desktop) {
+      top: 24px;
+    }
+  }
+
+  .tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .th:nth-child(1),
+  .td:nth-child(1) {
+    width: 90px;
+  }
+
+  .th:nth-child(2),
+  .td:nth-child(2) {
+    width: 70px;
+  }
+
+  .th:nth-child(3),
+  .td:nth-child(3) {
+    width: 120px;
+  }
+
+  .th:nth-child(4),
+  .td:nth-child(4) {
+    width: 170px;
+  }
+
+  .th:nth-child(5),
+  .td:nth-child(5) {
+    width: 125px;
+  }
+
+  .th:nth-child(6),
+  .td:nth-child(6) {
+    width: 130px;
   }
 
   .th {
-    overflow: hidden;
-  }
-
-  .th:first-child {
-    border-top-left-radius: $button-border-radius-xl;
-    border-bottom-left-radius: $button-border-radius-xl;
-  }
-
-  .th:last-child {
-    border-top-right-radius: $button-border-radius-xl;
-    border-bottom-right-radius: $button-border-radius-xl;
-  }
-
-  .th:nth-child(2) {
+    padding: 16px 14px;
     text-align: center;
   }
 
-  .th:nth-child(5) {
-    text-align: end;
-  }
-
-  .td:nth-child(2) {
-    text-align: center;
-  }
-
-  .td:nth-child(5) {
-    text-align: end;
-  }
-
-  .td:nth-child(6) {
-    text-align: end;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .th,
   .td {
-    padding: 16px;
-  }
-
-  .th:first-child,
-  .td:first-child {
-    padding-left: 20px;
-  }
-
-  .th:last-child,
-  .td:last-child {
-    padding-right: 4px;
-    padding-right: 8px;
-    justify-content: end;
+    padding: 14px;
+    text-align: center;
   }
 
   .tbody {
