@@ -50,8 +50,8 @@
   max-width: 320px;
   width: 100%;
 
-  // height: 100%;
-  // max-height: 690px;
+  
+  max-height: 690px;
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -78,17 +78,23 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+ 
+
+
+ 
 }
 
 .closeButtonIcon {
   width: 18px;
   height: 18px;
+  stroke: $color-text;
 
-  transition: stroke 0.2s ease-in-out;
+  transition: stroke 0.2s ease;
 }
 
 .closeButton:hover .closeButtonIcon {
-  fill: #4a56e2;
+  stroke: $colorPink;
 }
 
 .title {
@@ -187,9 +193,26 @@
 
 ///////////// FOR SELECT COMPONENT
 .selectorWrapper {
-  display: block;
+  display: flex;
   width: 100%;
   max-height: 32px;
+  justify-content: center;
+}
+
+.categoryInput {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 8px;
+  min-height: 32px;
+  font-size: 18px;
+  font-family: Circe;
+  line-height: 27px;
+  font-weight: 400;
+  color: #000000;
+  pointer-events: none;
 }
 
 .numberAndCalendarWrapper {
@@ -220,6 +243,8 @@
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #bdbdbd;
+
+  text-align: center;
 }
 
 .inputNumber::placeholder {
@@ -260,15 +285,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
   color: #bdbdbd;
-
   pointer-events: none;
 }
 
 .inputComment {
   display: block;
   width: 100%;
+  padding: 0 8px;
 
   max-height: 84px;
 
@@ -288,76 +312,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.buttonAdd {
-  min-width: 300px;
   max-width: 300px;
-  min-height: 50px;
-  max-height: 50px;
-
-  display: block;
-  background: #24cca7;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.buttonAdd:hover,
-.buttonAdd:focus {
-  background: #007058;
-}
-
-.buttonAddName {
-  display: inline-block;
-  padding: 13px 65px 13px 71px;
-
-  font-family: $font-default;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #ffffff;
-}
-
-.buttonCancel {
-  display: block;
-  background: transparent;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  border: 1px solid #4a56e2;
-  transition: 250ms background-color cubic-bezier(0.19, 1, 0.22, 1);
-
-  min-width: 300px;
-  max-width: 300px;
-  min-height: 50px;
-  max-height: 50px;
-}
-
-.buttonCancel:hover,
-.buttonCancel:focus {
-}
-
-.buttonCancelName {
-  display: inline-block;
-  padding: 11px 65px 11px 71px;
-
-  font-family: $font-default;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  color: #4a56e2;
+  width: 100%;
 }
 
 @keyframes opacity {
