@@ -35,8 +35,8 @@ export default function Chart() {
   const doughnutKey = `doughnut-${countUserBalance()}`;
 
   const getValues = (array, value) => {
-    // return array.filter(item => item.type !== 'INCOME').map(obj => obj[value]);
-    return array.map(obj => obj[value]);
+    return array.filter(item => item.type !== 'INCOME').map(obj => obj[value]);
+    // return array.map(obj => obj[value]);
   };
 
   const backgroundColor = [
