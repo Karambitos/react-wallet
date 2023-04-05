@@ -152,6 +152,7 @@ export const RegisterForm = ({ cbOnSubmit }) => {
                       className="input"
                       onBlur={handleBlur}
                       name={'confirmPassword'}
+                      type="password"
                       startAdornment={
                         <>
                           <InputAdornment position="start">
