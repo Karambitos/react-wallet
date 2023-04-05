@@ -272,12 +272,15 @@ h6,
 }
 
 .custom-toast {
-  color: $mainColor;
+  color: $white;
+  background-color: $mainColor;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
+  fill: $white;
 }
+
 .Toastify__toast-icon svg {
   fill: $mainColor;
 }
@@ -339,9 +342,9 @@ h6,
   &:hover,
   &:focus,
   &:active {
-    color: $colorBlue;
+    color: $colorPink;
     background-color: transparent;
-    border-color: $colorBlue;
+    border-color: $mainColor;
   }
 
   &:disabled,
@@ -406,12 +409,7 @@ h6,
   @media screen and (min-width: $breakpoint-tablet) {
     display: none;
   }
-
 }
-
-
-
-
 
 .custom-toast-negative {
   color: red;

@@ -5,7 +5,7 @@ import moment from 'moment';
 import styles from './ModalTransaction.module.scss';
 import { DatePicker } from './DatePicker/DatePicker';
 import { selectCategories } from 'redux/transactions/selectors';
-import { setModalAddTransactionOpen } from 'redux/modalAddTransaction/slice';
+import { setModalAddTransactionOpen } from 'redux/auth/authSlice';
 import { fetchAddTransactions } from 'redux/transactions/operations';
 import { fetchAllCategories } from 'redux/transactions/operations';
 import Selector from '../Selector/Selector';
@@ -17,9 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const MAX_AMOUNT = 10000000;
 
 export const ModalTransaction = () => {
-  const [transactionDate, setTransactionDate] = useState(
-    moment().format('YYYY-MM-DD')
-  );
   const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState('INCOME');
   const [categoryId, setCategoryId] = useState('');
@@ -97,6 +94,10 @@ export const ModalTransaction = () => {
       return;
     }
 
+    const inputDate = e.target.elements.date.value;
+    const momentTransactionDate = moment(inputDate, 'DD.MM.YYYY');
+    const transactionDate = momentTransactionDate.format('YYYY-MM-DD');
+
     dispatch(
       fetchAddTransactions({
         transactionDate,
@@ -117,10 +118,6 @@ export const ModalTransaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [categories]
   );
-
-  const handleSelectDate = date => {
-    setTransactionDate(date);
-  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -186,20 +183,13 @@ export const ModalTransaction = () => {
                 type="number"
                 placeholder="0.00"
                 required
+                min={0}
                 value={amountNumber}
                 name="amount"
                 onChange={handleChange}
               />
               <div className={styles.datePickerContainer}>
-                <input
-                  className={styles.inputCalendar}
-                  value={transactionDate}
-                  onChange={setTransactionDate}
-                />
-                <DatePicker
-                  onSelect={handleSelectDate}
-                  initialValue={new Date()}
-                />
+                <DatePicker />
               </div>
             </div>
             <input

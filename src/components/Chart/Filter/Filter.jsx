@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMonth, selectYear } from 'redux/statisticsFilter/selectors';
-import { updateMonth, updateYear } from 'redux/statisticsFilter/slice';
+import { selectMonth, selectYear } from 'redux/transactions/selectors';
+import { updateMonth, updateYear } from 'redux/transactions/slice';
 import { getSummaryController } from 'redux/transactions/operations';
 import Selector from '../../Selector/Selector';
 
@@ -65,9 +65,9 @@ export default function Filter() {
     }),
     option: (provided, state) => ({
       ...provided,
-      ':hover': { background: '#fff' },
-      ':active': { background: '#fff' },
-      ':focus': { background: '#fff' },
+      ':hover': { background: '#fff', color: '#000' },
+      ':active': { background: '#fff', color: '#000' },
+      ':focus': { background: '#fff', color: '#000' },
     }),
     singleValue: provided => ({
       ...provided,

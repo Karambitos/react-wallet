@@ -11,6 +11,8 @@ const initialState = {
   categories: [],
   isLoading: true,
   error: null,
+  month: new Date().getMonth() + 1,
+  year: new Date().getFullYear(),
   categoriesSummary: {
     categories: [],
     expenseSummary: 0,
@@ -25,6 +27,12 @@ export const transactionsSlice = createSlice({
   reducers: {
     clearTransactionsState() {
       return initialState;
+    },
+    updateMonth(state, action) {
+      state.month = action.payload;
+    },
+    updateYear(state, action) {
+      state.year = action.payload;
     },
   },
   extraReducers: builder => {
@@ -92,5 +100,6 @@ export const transactionsSlice = createSlice({
   },
 });
 
-export const { clearTransactionsState } = transactionsSlice.actions;
+export const { clearTransactionsState, updateMonth, updateYear } =
+  transactionsSlice.actions;
 export const transactionsReducer = transactionsSlice.reducer;
