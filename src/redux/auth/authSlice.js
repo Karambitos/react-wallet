@@ -25,7 +25,7 @@ const authSlice = createSlice({
       balance: 0,
     },
     token: null,
-    isLoading: false,
+    isLoading: true,
     isRefreshing: false,
     isModalAddTransactionOpen: false,
     error: null,
@@ -69,7 +69,6 @@ const authSlice = createSlice({
       return {
         ...state,
         user: payload,
-        isLoading: false,
         error: null,
         isRefreshing: false,
       };
@@ -78,7 +77,6 @@ const authSlice = createSlice({
       return {
         ...state,
         user: payload,
-        isLoading: false,
         error: null,
         isRefreshing: false,
       };

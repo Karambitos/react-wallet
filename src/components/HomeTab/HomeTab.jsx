@@ -20,7 +20,7 @@ const HomeTab = () => {
           className={styles.btnPlus}
           onClick={handleOpenModal}
         >
-          <Plus className={styles.btn_icon} />
+          <Plus />
         </button>
       </div>
     </>
