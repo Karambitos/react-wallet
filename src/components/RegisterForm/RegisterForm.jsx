@@ -1,6 +1,5 @@
-import { IconButton, Input, InputAdornment, Paper } from '@mui/material';
+import { IconButton, Input, InputAdornment } from '@mui/material';
 import { useMediaQuery } from 'react-responsive';
-// import styles from './register.module.scss';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import { ReactComponent as Image } from '../../assets/svg/woman_desktop.svg';
 import EmailIcon from '@mui/icons-material/Email';
