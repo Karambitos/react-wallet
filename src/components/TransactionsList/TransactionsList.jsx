@@ -169,7 +169,7 @@ const TransactionsList = ({ openModal }) => {
                 </table>
               </div>
             ) : (
-              <Plug handleOpenModal={openModal} />
+              <>{!isLoading && <Plug handleOpenModal={openModal} />}</>
             )}
           </>
         )}
