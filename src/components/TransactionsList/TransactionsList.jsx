@@ -13,7 +13,6 @@ import {
 import { ReactComponent as EditIcon } from '../../assets/svg/edit-pensil.svg';
 import { IconButton } from 'components/IconButton/IconButton';
 import css from './TransactionsList.module.scss';
-import Loader from 'components/Loader/Loader';
 import Plug from './Plug/Plug';
 import { ModalEditTransaction } from '../ModalTransactionEdit/ModalEditTransaction';
 
@@ -24,6 +23,7 @@ const TransactionsList = ({ openModal }) => {
 
   useEffect(() => {
     dispatch(fetchAllTransactions());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -103,7 +103,6 @@ const TransactionsList = ({ openModal }) => {
   return (
     <>
       <div>
-        {isLoading && <Loader />}
         {isTabletOrDesktop && (
           <>
             {transactions.length > 0 ? (

@@ -75,6 +75,7 @@ export const transactionsSlice = createSlice({
           state.error = null;
         }
       )
+
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
