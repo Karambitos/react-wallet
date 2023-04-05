@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom';
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { getUserBalance } from 'redux/auth/authThunks';
-import { DatePicker } from './DatePicker/DatePicker';
 import { useDispatch } from 'react-redux';
 import { fetchUpdateTransactions } from 'redux/transactions/operations';
 import { toast } from 'react-toastify';
@@ -85,9 +84,9 @@ const translatedCategory = getCategory(transaction.categoryId);
     }));
   };
 
-  const handleSelectDate = date => {
-    setTransactionDate(date);
-  };
+  // const handleSelectDate = date => {
+  //   setTransactionDate(date);
+  // };
 
   useEffect(() => {
     const handleKeyPress = event => {
@@ -152,6 +151,11 @@ const translatedCategory = getCategory(transaction.categoryId);
     onClose();
   };
 
+  const parseTransactionDate = date => {
+    const momentTransactionDate = moment(date, 'YYYY-MM-DD');
+    return momentTransactionDate.format('DD.MM.YYYY');
+  };
+
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div className={styles.modalAddTrans}>
@@ -205,10 +209,9 @@ const translatedCategory = getCategory(transaction.categoryId);
               <div className={styles.datePickerContainer}>
                 <input
                   className={styles.inputCalendar}
-                  value={transactionDate}
+                  value={parseTransactionDate(transactionDate)}
                   onChange={setTransactionDate}
                 />
-                <DatePicker onSelect={handleSelectDate} />
               </div>
             </div>
             <input
