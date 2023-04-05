@@ -211,15 +211,15 @@ export const ModalTransaction = () => {
             />
           </div>
           <div className={styles.buttonsContainer}>
-            <button type="submit" className={styles.buttonAdd}>
-              <span className={styles.buttonAddName}>Add</span>
+            <button type="submit" className="button ">
+              Add
             </button>
             <button
               type="button"
-              className={styles.buttonCancel}
+              className="button button--secondary"
               onClick={handleCloseModal}
             >
-              <span className={styles.buttonCancelName}>Cancel</span>
+              Cancel
             </button>
           </div>
         </form>

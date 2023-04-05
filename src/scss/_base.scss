@@ -281,9 +281,7 @@ h6,
   fill: $white;
 }
 
-.Toastify__toast-icon svg {
-  fill: $mainColor;
-}
+
 .Toastify__progress-bar--success {
   background: $mainColor;
 }
@@ -418,9 +416,9 @@ h6,
   font-weight: bold;
   padding: 15px;
 }
-.Toastify__toast-icon svg {
-  fill: red;
-}
+
 .Toastify__progress-bar--error {
   background: red;
 }
+
+
