@@ -200,9 +200,8 @@
 }
 
 .categoryInput {
-
-
-    background-color: transparent;
+  width: 100%;
+  background-color: transparent;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #e0e0e0;
@@ -212,12 +211,8 @@
   font-family: Circe;
   line-height: 27px;
   font-weight: 400;
-  color: #bdbdbd;
-
+  color: #000000;
   pointer-events: none;
-
-  text-align: center;
-
 }
 
 .numberAndCalendarWrapper {
@@ -290,17 +285,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
   color: #bdbdbd;
-
   pointer-events: none;
-
-  text-align: center;
 }
 
 .inputComment {
   display: block;
   width: 100%;
+  padding: 0 8px;
 
   max-height: 84px;
 
@@ -314,8 +306,6 @@
     min-height: 32px;
     max-height: 32px;
   }
-
-  text-align: center;
 }
 
 .buttonsContainer {
