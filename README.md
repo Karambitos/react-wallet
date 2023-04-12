@@ -29,8 +29,6 @@ Next, you need to go to the settings of the GitHub repository (`Settings` >
 `Pages`) and set the distribution of the production version of files from the
 `/root` folder of the `gh-pages` branch, if this was not done automatically.
 
-![GitHub Pages settings](./assets/repo-settings.png)
-
 ### Deployment status
 
 The deployment status of the latest commit is displayed with an icon next to its
