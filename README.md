@@ -41,14 +41,11 @@ ID.
 More detailed information about the status can be viewed by clicking on the
 icon, and in the drop-down window, follow the link `Details`.
 
-![Deployment status](./assets/deploy-status.png)
-
 ### Live page
 
 After some time, usually a couple of minutes, the live page can be viewed at the
 address specified in the edited `homepage` property. For example, here is a link
 to a live version for this repository
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
 
 If a blank page opens, make sure there are no errors in the `Console` tab
 related to incorrect paths to the CSS and JS files of the project (**404**). You
@@ -69,8 +66,6 @@ the line are required.
 ```
 
 ## How it works
-
-![How it works](./assets/how-it-works.png)
 
 1. After each push to the `main` branch of the GitHub repository, a special
    script (GitHub Action) is launched from the `.github/workflows/deploy.yml`
